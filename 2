@@ -1,0 +1,23 @@
+# Compiler and Flags
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+
+# Source and Includes
+SRC = src/main.c  # Update with the path to your source files
+INC = includes  # Update if your headers are in a different path
+
+# Target executable
+TARGET = test
+#-lXrandr -lXrender -lXfixes -lm -lbsd
+# Build rule for target
+all: $(TARGET)
+
+$(TARGET): $(SRC)
+	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) -I $(INC) -L. -lmlx \
+	    -L /usr/lib -lX11 
+
+# Clean rule
+clean:
+	rm -f $(TARGET)
+
+re: clean all
