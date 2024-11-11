@@ -6,13 +6,13 @@
 #    By: quentin <quentin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/09 10:39:19 by qmorinea          #+#    #+#              #
-#    Updated: 2024/10/25 16:11:20 by quentin          ###   ########.fr        #
+#    Updated: 2024/11/11 15:23:09 by quentin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(INC_DIR)
+CFLAGS = -Wall -Wextra -Werror -I $(INC_DIR) -fsanitize=address -g
 
 # Directories
 SRC_DIR = src

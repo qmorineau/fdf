@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-t_point	*map_newpoint(int x, int y, int z)
+t_point	*map_newpoint(double x, double y, double z)
 {
 	t_point	*node;
 

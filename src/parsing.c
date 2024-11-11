@@ -1,9 +1,9 @@
 #include "fdf.h"
 
-static int add_line(t_point ***map, char *line, int x)
+static int add_line(t_mlx *param, char *line, int y)
 {
 	char	**tab;
-	int		y;
+	int		x;
 	t_point **row;
 	t_point *tmp;
 	int		tab_len;
@@ -18,19 +18,20 @@ static int add_line(t_point ***map, char *line, int x)
 	while (tab[tab_len])
 		tab_len++;
 	row = ft_calloc(tab_len + 1, sizeof(t_point *));
-	y = 0;
-	while (tab[y])
+	x = 0;
+	while (tab[x])
 	{
-		tmp = map_newpoint(x + 1, y + 1, ft_atoi(tab[y]));
+		tmp = map_newpoint((double) x, (double)y, (double) ft_atoi(tab[x]));
 		if (!tmp)
 		{
 			free_ptr(&line);
 			return (0);
 		}
-		row[y] = tmp;
-		y++;
+		row[x] = tmp;
+		x++;
 	}
-	map[x - 1] = row;
+	param->center_x = (double) ((x - 1) / 2.0);
+	param->map[y] = row;
 	free_tab(tab);
 	free(tab);
 	tab = NULL;
@@ -61,23 +62,24 @@ int parsing(char *argv[], t_mlx *all)
 	t_point	***tmp;
 	int		fd;
 	char	*line;
-	int		x;
+	int		y;
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		return (0);
 	line = get_next_line(fd);
-	x = 1;
+	y = 1;
 	while (line)
 	{
-		tmp = ft_calloc(x + 1, sizeof(t_point **));
+		tmp = ft_calloc(y + 1, sizeof(t_point **));
 		if (!tmp)
 			return (0);
-		all->map = init_map(tmp, &all->map, x);
-		if (!add_line(all->map, line, x))
+		all->map = init_map(tmp, &all->map, y);
+		if (!add_line(all, line, y - 1))
 			return (0);
 		line = get_next_line(fd);
-		x++;
+		y++;
 	}
+	all->center_y = (double) ((y - 2) / 2.0);
 	return (1);
 }
