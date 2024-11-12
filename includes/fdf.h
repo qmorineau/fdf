@@ -10,8 +10,11 @@
 # include "libft.h"
 # include "key.h"
 
-# define HEIGHT 360
-# define WIDTH 640
+# define HEIGHT 720
+# define WIDTH 1280
+# define DEEP 100
+/* # define HEIGHT 1080
+# define WIDTH 1920 */
 
 #ifndef M_PI
 # define M_PI 3.14159265358979323846
@@ -57,15 +60,19 @@ void	decenter_matrix(double matrix[4][4], t_mlx *param);
 void	center_obj_matrix(t_mlx *param, double matrix[4][4]);
 void	decenter_obj_matrix(t_mlx *param, double matrix[4][4]);
 void	center_win_matrix(double matrix[4][4]);
-void	decenter_win_matrix(double matrix[4][4]);
 void	translation_matrix(double matrix[4][4]);
+void	norm_matrix(double m[4][4], double matrix[4][4]);
+
+
+void centered_win(t_mlx *param);
+void centered_obj(t_mlx *param);
 
 void	orthographic(t_mlx *param);
 void	multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4]);
 void	rotate_x(t_mlx *param, double angle);
 void	rotate_y(t_mlx *param, double angle);
 void	rotate_z(t_mlx *param, double angle);
-void	scaling(t_mlx *param);
+void	scaling(t_mlx *param, double adding);
 void	centered_win_obj(t_mlx *param);
 void	decentered_win_obj(t_mlx *param);
 double	convert_angle(double angle);

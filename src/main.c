@@ -13,16 +13,16 @@ void draw_point(t_mlx *param, t_point ***map)
 		j = 0;
 		while (tmp[i][j])
 		{
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x, (tmp[i][j]->y) - (tmp[i][j]->z), 0255000255);
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x + 1, (tmp[i][j]->y) - (tmp[i][j]->z), 0255000255);
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x + 2, (tmp[i][j]->y) - (tmp[i][j]->z), 0255000255);
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x - 1, (tmp[i][j]->y) - (tmp[i][j]->z), 0255000255);
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x - 2, (tmp[i][j]->y) - (tmp[i][j]->z), 0255000255);
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x, (tmp[i][j]->y + 1) - (tmp[i][j]->z), 0255000255);
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x, (tmp[i][j]->y + 2) - (tmp[i][j]->z), 0255000255);
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x, (tmp[i][j]->y - 1) - (tmp[i][j]->z), 0255000255);
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x, (tmp[i][j]->y - 2) - (tmp[i][j]->z), 0255000255);
-			//printf("here x = %f, y = %f, z = %f\n", tmp[i][j]->x, tmp[i][j]->y, tmp[i][j]->z);
+			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x, (tmp[i][j]->y) - (tmp[i][j]->z), 0xFFFFFF);
+			/* mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x + 1, (tmp[i][j]->y) - (tmp[i][j]->z), 0xFFFFFF);
+			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x + 2, (tmp[i][j]->y) - (tmp[i][j]->z), 0xFFFFFF);
+			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x - 1, (tmp[i][j]->y) - (tmp[i][j]->z), 0xFFFFFF);
+			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x - 2, (tmp[i][j]->y) - (tmp[i][j]->z), 0xFFFFFF);
+			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x, (tmp[i][j]->y + 1) - (tmp[i][j]->z), 0xFFFFFF);
+			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x, (tmp[i][j]->y + 2) - (tmp[i][j]->z), 0xFFFFFF);
+			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x, (tmp[i][j]->y - 1) - (tmp[i][j]->z), 0xFFFFFF);
+			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x, (tmp[i][j]->y - 2) - (tmp[i][j]->z), 0xFFFFFF);
+ */			printf("here x = %f, y = %f, z = %f\n", tmp[i][j]->x, tmp[i][j]->y, tmp[i][j]->z);
 			j++;
 		}
 		i++;
@@ -58,23 +58,24 @@ void zoom_in(t_mlx *param)
 void draw_line(t_mlx *param, t_point *a, t_point *b)
 {
 	int i;
+	int	j;
+	double x_distance;
+	double y_distance;
 
-	i = 1;
-	if (a->x == b->x)
+	x_distance = a->x - b->x;
+	y_distance = a->y - b->y;
+	
+	i = 0;
+	j = 0;
+	while (i <= x_distance && i <= (x_distance * -1))
 	{
-		while (a->y + i != b->y)
+		j = 0;
+		while (j <= y_distance / x_distance && j <= (y_distance / x_distance) * -1)
 		{
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, a->x, a->y + i, 0255000255);
-			i++;
+			mlx_pixel_put(param->mlx_ptr, param->win_ptr, a->x + i, a->y + j + (j * i), 0255000255);
+			j++;
 		}
-	}
-	else
-	{
-		while (a->x + i != b->x)
-		{
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, a->x + i, a->y, 0255000255);
-			i++;
-		}
+		i++;
 	}
 }
 
@@ -147,12 +148,10 @@ int handle_keypress(int keycode, t_mlx *param)
 	else if (keycode == Z)
 		rotate_z(param, 10);
 	else if (keycode == C)
-	{
-		decentered_win_obj(param);
-		centered_win_obj(param);
-	}
+		centered_obj(param);
 	mlx_clear_window(param->mlx_ptr, param->win_ptr);
-	draw_point(param, param->map);
+	orthographic(param);
+	//draw_point(param, param->map);
 	//join_point(param);
     return (0);
 }
@@ -170,7 +169,7 @@ int main(int argc, char *argv[])
 	all->win_ptr = mlx_new_window(all->mlx_ptr, WIDTH, HEIGHT, "fdf");
 	if (!all->win_ptr)
 		return (free(all), 0);
-	all->scale = 80;
+	all->scale = 10000;
 	all->center_x = 0;
 	all->center_y = 0;
 	if (!parsing(argv, all))
@@ -178,12 +177,14 @@ int main(int argc, char *argv[])
 		mlx_destroy_window(all->mlx_ptr, all->win_ptr);
 		return(free(all), 0);
 	}
-	//orthographic(all);
-	scaling(all);
-	centered_win_obj(all);
-	draw_point(all, all->map);
-	//join_point(all);
-	ft_printf("y\n");
+	centered_obj(all);
+	scaling(all, 0);
+	rotate_x(all, 45);
+	rotate_y(all, 45);
+	centered_win(all);
+	orthographic(all);
+	//draw_point(all, all->map);
+	join_point(all);
 	mlx_key_hook(all->win_ptr, handle_keypress, all);
 	mlx_loop(all->mlx_ptr);
 }
