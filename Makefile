@@ -23,6 +23,8 @@ SRC_LIST = main.c\
 			utils/free.c\
 			utils/map_lst.c\
 			utils/matrices.c\
+			utils/matrices_func.c\
+			utils/radian.c\
 			parsing.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_LIST))
