@@ -1,0 +1,57 @@
+#include "fdf.h"
+
+void	center_obj_matrix(t_mlx *param, double matrix[4][4])
+{
+	matrix[0][0] = 1;
+	matrix[0][1] = 0;
+	matrix[0][2] = 0;
+	matrix[0][3] = -param->center_x;
+	matrix[1][0] = 0;
+	matrix[1][1] = 1;
+	matrix[1][2] = 0;
+	matrix[1][3] = -param->center_y;
+	matrix[2][0] = 0;
+	matrix[2][1] = 0;
+	matrix[2][2] = 1;
+	matrix[2][3] = 0;
+	matrix[3][0] = 0;
+	matrix[3][1] = 0;
+	matrix[3][2] = 0;
+	matrix[3][3] = 1;
+}
+
+void	center_win_matrix(double matrix[4][4])
+{
+	matrix[0][0] = 1;
+	matrix[0][1] = 0;
+	matrix[0][2] = 0;
+	matrix[0][3] = (WIDTH / 2);
+	matrix[1][0] = 0;
+	matrix[1][1] = 1;
+	matrix[1][2] = 0;
+	matrix[1][3] = (HEIGHT / 2);
+	matrix[2][0] = 0;
+	matrix[2][1] = 0;
+	matrix[2][2] = 1;
+	matrix[2][3] = 0;
+	matrix[3][0] = 0;
+	matrix[3][1] = 0;
+	matrix[3][2] = 0;
+	matrix[3][3] = 1;
+}
+
+void centered_obj(t_mlx *param)
+{
+	double matrix[4][4];
+
+	center_obj_matrix(param, matrix);
+	m_to_point(param, matrix);
+}
+
+void centered_win(t_mlx *param)
+{
+	double matrix[4][4];
+
+	center_win_matrix(matrix);
+	m_to_point(param, matrix);
+}

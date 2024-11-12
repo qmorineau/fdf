@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-void draw_point(t_mlx *param, t_point ***map)
+/* void draw_point(t_mlx *param, t_point ***map)
 {
 	t_point ***tmp;
 	int		i;
@@ -14,7 +14,7 @@ void draw_point(t_mlx *param, t_point ***map)
 		while (tmp[i][j])
 		{
 			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x, (tmp[i][j]->y) - (tmp[i][j]->z), 0xFFFFFF);
-			/* mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x + 1, (tmp[i][j]->y) - (tmp[i][j]->z), 0xFFFFFF);
+			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x + 1, (tmp[i][j]->y) - (tmp[i][j]->z), 0xFFFFFF);
 			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x + 2, (tmp[i][j]->y) - (tmp[i][j]->z), 0xFFFFFF);
 			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x - 1, (tmp[i][j]->y) - (tmp[i][j]->z), 0xFFFFFF);
 			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x - 2, (tmp[i][j]->y) - (tmp[i][j]->z), 0xFFFFFF);
@@ -22,12 +22,12 @@ void draw_point(t_mlx *param, t_point ***map)
 			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x, (tmp[i][j]->y + 2) - (tmp[i][j]->z), 0xFFFFFF);
 			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x, (tmp[i][j]->y - 1) - (tmp[i][j]->z), 0xFFFFFF);
 			mlx_pixel_put(param->mlx_ptr, param->win_ptr, tmp[i][j]->x, (tmp[i][j]->y - 2) - (tmp[i][j]->z), 0xFFFFFF);
- */			printf("here x = %f, y = %f, z = %f\n", tmp[i][j]->x, tmp[i][j]->y, tmp[i][j]->z);
+			printf("here x = %f, y = %f, z = %f\n", tmp[i][j]->x, tmp[i][j]->y, tmp[i][j]->z);
 			j++;
 		}
 		i++;
 	}
-}
+} */
 
 void add_x(t_point *node)
 {
@@ -54,43 +54,36 @@ void zoom_in(t_mlx *param)
 	param->scale -= 5;
 }
 
-
-void draw_line(t_mlx *param, t_point *a, t_point *b)
+void ortho_point(t_mlx *param, double x, double y, double z)
 {
-	int i;
-	int	j;
-	double x_distance;
-	double y_distance;
+	double matrix[4][4];
+	double 	new_x;
+	double	new_y;
 
-	x_distance = a->x - b->x;
-	y_distance = a->y - b->y;
-	
-	i = 0;
-	j = 0;
-	while (i <= x_distance && i <= (x_distance * -1))
-	{
-		j = 0;
-		while (j <= y_distance / x_distance && j <= (y_distance / x_distance) * -1)
-		{
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, a->x + i, a->y + j + (j * i), 0255000255);
-			j++;
-		}
-		i++;
-	}
+	ortho_matrix(matrix);
+	new_x = (matrix[0][0] * x) + (matrix[0][1]
+		* y) + (matrix[0][2] * z) + matrix[0][3];
+	new_y = (matrix[1][0] * x) + (matrix[1][1]
+		* y) + (matrix[1][2] * z) + matrix[1][3];
+	mlx_pixel_put(param->mlx_ptr, param->win_ptr, new_x, new_y, 0xFFFFFF);
+	/* mlx_pixel_put(param->mlx_ptr, param->win_ptr, x * param->scale, y * param->scale, 0xFFFFFF); */
 }
 
-void join_point(t_mlx *param)
+/* void join_point(t_mlx *param)
 {
 	int x;
 	int y;
 
 	x = 0;
 	y = 0;
+	//printf("1\n");
 	while (param->map[y])
 	{
+		//printf("2\n");
 		x = 0;
 		while (param->map[y][x])
 		{
+			//printf("3\n");
 			if (param->map[y + 1])
 				draw_line(param, param->map[y][x], param->map[y + 1][x]);
 			if (param->map[y][x + 1])
@@ -100,7 +93,7 @@ void join_point(t_mlx *param)
 		y++;
 	}
 
-}
+} */
 
 void	test2(t_point ***map, void (*f)(t_point *, double x, double y, double z))
 {
@@ -151,8 +144,6 @@ int handle_keypress(int keycode, t_mlx *param)
 		centered_obj(param);
 	mlx_clear_window(param->mlx_ptr, param->win_ptr);
 	orthographic(param);
-	//draw_point(param, param->map);
-	//join_point(param);
     return (0);
 }
 
@@ -183,8 +174,7 @@ int main(int argc, char *argv[])
 	rotate_y(all, 45);
 	centered_win(all);
 	orthographic(all);
-	//draw_point(all, all->map);
-	join_point(all);
+
 	mlx_key_hook(all->win_ptr, handle_keypress, all);
 	mlx_loop(all->mlx_ptr);
 }

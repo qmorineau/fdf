@@ -46,34 +46,31 @@ int		parsing(char *argv[], t_mlx *all);
 void	free_ptr(char **ptr);
 void	free_tab(char **tab);
 
-void	do_origin_matrix(t_mlx *param, double matrix[4][4]);
-void	undo_origin_matrix(t_mlx *param, double matrix[4][4]);
+
+double	convert_angle(double angle);
+
+/* Rotate matrix */
 void 	rx_matrix(double matrix[4][4], double angle);
 void	ry_matrix(double matrix[4][4], double angle);
 void	rz_matrix(double matrix[4][4], double angle);
-void	ortho_matrix(double matrix[4][4]);
-void	t_matrix(double matrix[4][4], double x, double y, double z);
-void	scale_matrix(double matrix[4][4], double scale);
-void	descale_matrix(double matrix[4][4], double scale);
-void	center_matrix(double matrix[4][4], t_mlx *param);
-void	decenter_matrix(double matrix[4][4], t_mlx *param);
-void	center_obj_matrix(t_mlx *param, double matrix[4][4]);
-void	decenter_obj_matrix(t_mlx *param, double matrix[4][4]);
-void	center_win_matrix(double matrix[4][4]);
-void	translation_matrix(double matrix[4][4]);
-void	norm_matrix(double m[4][4], double matrix[4][4]);
-
-
-void centered_win(t_mlx *param);
-void centered_obj(t_mlx *param);
-
-void	orthographic(t_mlx *param);
-void	multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4]);
 void	rotate_x(t_mlx *param, double angle);
 void	rotate_y(t_mlx *param, double angle);
 void	rotate_z(t_mlx *param, double angle);
+/* Center matrix */
+void	center_obj_matrix(t_mlx *param, double matrix[4][4]);
+void	center_win_matrix(double matrix[4][4]);
+void	centered_obj(t_mlx *param);
+void	centered_win(t_mlx *param);
+/* Projection */
+void	ortho_matrix(double matrix[4][4]);
+void	orthographic(t_mlx *param);
+/* Translate matrix */
+void	t_matrix(double matrix[4][4], double x, double y, double z);
+void	translation_matrix(double matrix[4][4]);
+/* Utils matrix */
+void	multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4]);
+void	m_to_point(t_mlx *param, double matrix[4][4]);
+/* Scale matrix */
+void	scale_matrix(double matrix[4][4], double scale);
 void	scaling(t_mlx *param, double adding);
-void	centered_win_obj(t_mlx *param);
-void	decentered_win_obj(t_mlx *param);
-double	convert_angle(double angle);
 #endif

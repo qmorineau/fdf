@@ -20,10 +20,16 @@ MLX_INC = /usr/local/include
 
 # Source and Object files
 SRC_LIST = main.c\
+			matrix/center_mtx.c\
+			matrix/utils_mtx.c\
+			matrix/projection_ft.c\
+			matrix/projection_mtx.c\
+			matrix/rotate_ft.c\
+			matrix/rotate_mtx.c\
+			matrix/scale_mtx.c\
+			matrix/translate_mtx.c\
 			utils/free.c\
 			utils/map_lst.c\
-			utils/matrices.c\
-			utils/matrices_func.c\
 			utils/radian.c\
 			parsing.c
 
@@ -42,6 +48,7 @@ all: $(OBJ_DIR) $(NAME)
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/utils
+	@mkdir -p $(OBJ_DIR)/matrix
 
 # Linking object files
 $(NAME): $(OBJ) $(LIBFT)
