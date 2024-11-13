@@ -10,6 +10,9 @@ t_point	*map_newpoint(double x, double y, double z)
 	node->x = x;
 	node->y = y;
 	node->z = z;
+	node->x_origin = x;
+	node->y_origin = y;
+	node->z_origin = z;
 	return (node);
 }
 

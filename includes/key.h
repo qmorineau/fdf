@@ -1,5 +1,7 @@
 #ifndef KEY_H
 # define KEY_H
+# define KEY_PRESS 4
+# define KEY_RELEASE 5
 # define ESC 65307
 # define UP 65362
 # define DOWN 65364

@@ -25,16 +25,28 @@ typedef struct s_point
 	double		x;
 	double		y;
 	double		z;
+	double		x_origin;
+	double		y_origin;
+	double		z_origin;
 } t_point;
+
+typedef struct s_transform
+{
+	int rx;
+	int ry;
+	int rz;
+} t_transform;
 
 typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_point	***map;
+	t_transform *transformation;
 	double	scale;
 	double	center_x;
 	double	center_y;
+	int		key_press;
 }	t_mlx;
 
 t_point	*map_newpoint(double x, double y, double z);

@@ -24,7 +24,14 @@ void orthographic(t_mlx *param)
 			y = (matrix[1][0] * map[i][j]->x) + (matrix[1][1]
 				* map[i][j]->y) + (matrix[1][2] * map[i][j]->z) + matrix[1][3];
 			mlx_pixel_put(param->mlx_ptr, param->win_ptr, x, y, 0xFFFFFF);
+			printf("x = %f, y = %f\n", x, y);
+			printf("x = %f, y = %f, z = %f\n", map[i][j]->x, map[i][j]->y, map[i][j]->z);
 			j++;
 		}
 	}
 }
+
+/* void stereographic(t_mlx *param)
+{
+
+} */

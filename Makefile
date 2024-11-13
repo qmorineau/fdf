@@ -76,6 +76,6 @@ fclean:
 re: fclean all
 
 test: all
-	./$(NAME) "map.txt"
+	./$(NAME) "test_maps/42.fdf"
 
 .PHONY: all clean fclean re test
