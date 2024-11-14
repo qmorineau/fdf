@@ -1,5 +1,20 @@
 #include "fdf.h"
 
+int color(t_point p1, t_point p2)
+{
+	(void) p2;
+	if (p1.z_origin != p2.z_origin)
+	{
+		return (0x00FF00);
+	}
+	else if (p1.z_origin == 0)
+	{
+		return (0x0000FF);
+	}
+	else
+		return (0xFFFFFF);
+}
+
 static void	x_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 {
 	int param1;
@@ -22,7 +37,7 @@ static void	x_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 		}
 		param1 += 2 * d_s_xyz[0][1];
 		param2 += 2 * d_s_xyz[0][2];
-		mlx_pixel_put(param->mlx_ptr, param->win_ptr, p1.x, p1.y, 0xFFFFFF);
+		mlx_pixel_put(param->mlx_ptr, param->win_ptr, p1.x, p1.y, color(p1, p2));
 	}
 }
 
@@ -48,7 +63,7 @@ static void	y_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 		}
 		param1 += 2 * d_s_xyz[0][0];
 		param2 += 2 * d_s_xyz[0][2];
-		mlx_pixel_put(param->mlx_ptr, param->win_ptr, p1.x, p1.y, 0xFFFFFF);
+		mlx_pixel_put(param->mlx_ptr, param->win_ptr, p1.x, p1.y, color(p1, p2));
 	}
 }
 
@@ -74,7 +89,7 @@ static void	z_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 		}
 		param1 += 2 * d_s_xyz[0][0];
 		param2 += 2 * d_s_xyz[0][1];
-		mlx_pixel_put(param->mlx_ptr, param->win_ptr, p1.x, p1.y, 0xFFFFFF);
+		mlx_pixel_put(param->mlx_ptr, param->win_ptr, p1.x, p1.y, color(p1, p2));
 	}
 }
 

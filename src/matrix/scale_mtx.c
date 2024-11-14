@@ -21,16 +21,19 @@ void	scale_matrix(double matrix[4][4], double scale)
 	matrix[3][3] = 1;
 }
 
-void scaling(t_mlx *param, double adding)
+void scaling(t_mlx *param)
 {
 	double matrix[4][4];
-	double tmp;
 
-	tmp = param->scale;
-	param->scale /= tmp;
 	scale_matrix(matrix, param->scale);
 	m_to_point(param, matrix);
-	param->scale *= (tmp + adding);
+}
+
+void scaling_percent(t_mlx *param, double percent)
+{
+	double matrix[4][4];
+
+	param->scale *= percent/100;
 	scale_matrix(matrix, param->scale);
 	m_to_point(param, matrix);
 }

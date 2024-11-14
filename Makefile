@@ -29,10 +29,12 @@ SRC_LIST = main.c\
 			matrix/scale_mtx.c\
 			matrix/translate_mtx.c\
 			algorithm/bresenham.c\
+			projection/orthographic.c\
 			utils/free.c\
 			utils/map_lst.c\
 			utils/radian.c\
-			parsing.c
+			parsing.c\
+			init.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_LIST))
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC_LIST:.c=.o))
@@ -51,6 +53,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)/utils
 	@mkdir -p $(OBJ_DIR)/matrix
 	@mkdir -p $(OBJ_DIR)/algorithm
+	@mkdir -p $(OBJ_DIR)/projection
 
 # Linking object files
 $(NAME): $(OBJ) $(LIBFT)
@@ -78,6 +81,6 @@ fclean:
 re: fclean all
 
 test: all
-	./$(NAME) "test_maps/pyramide.fdf"
+	./$(NAME) "test_maps/42.fdf"
 
 .PHONY: all clean fclean re test
