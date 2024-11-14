@@ -82,7 +82,9 @@ void	centered_obj(t_mlx *param);
 void	centered_win(t_mlx *param);
 /* Projection */
 void	ortho_matrix(double matrix[4][4]);
+void stereo_matrix(double matrix[4][4]);
 void	orthographic(t_mlx *param);
+void stereographic(t_mlx *param);
 void	do_orthographic(t_mlx *param, int keycode);
 /* Translate matrix */
 void	t_matrix(double matrix[4][4], double x, double y, double z);

@@ -165,11 +165,12 @@ int handle_keypress(int keycode, t_mlx *param)
 	mlx_clear_window(param->mlx_ptr, param->win_ptr);
 	centered_obj(param);
 	scaling(param);
-	rotate_x(param, 45);
-	rotate_y(param, 45);
+	/* rotate_x(param, 45);
+	rotate_y(param, 45); */
 	centered_win(param);
 	apply_transform(param, param->transformation);
-	orthographic(param);
+	/* orthographic(param); */
+	stereographic(param);
 	draw_line(param);
 	map_iter(param->map, reset_xyz);
     return (0);
@@ -185,10 +186,11 @@ int main(int argc, char *argv[])
 		return (0);
 	centered_obj(param);
 	scaling(param);
-	rotate_x(param, 45);
-	rotate_y(param, 45);
+	/* rotate_x(param, 45);
+	rotate_y(param, 45); */
 	centered_win(param);
-	orthographic(param);
+	//orthographic(param);
+	stereographic(param);
 	//do_projection(param, 0);
 	draw_line(param);
 	mlx_key_hook(param->win_ptr, handle_keypress, param);
