@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/quentin/Documents/19/Cercle2/fdf/src",
-      "program": "/home/quentin/Documents/19/Cercle2/fdf/src/build/Debug/outDebug",
+      "cwd": "/home/quentin/Documents/19/Cercle2/fdf/src/algorithm",
+      "program": "/home/quentin/Documents/19/Cercle2/fdf/src/algorithm/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

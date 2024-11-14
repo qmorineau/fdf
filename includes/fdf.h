@@ -85,4 +85,6 @@ void	m_to_point(t_mlx *param, double matrix[4][4]);
 /* Scale matrix */
 void	scale_matrix(double matrix[4][4], double scale);
 void	scaling(t_mlx *param, double adding);
+/* Draw line */
+void	draw_bresenham(t_mlx *param, t_point *p1, t_point *p2);
 #endif

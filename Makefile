@@ -28,6 +28,7 @@ SRC_LIST = main.c\
 			matrix/rotate_mtx.c\
 			matrix/scale_mtx.c\
 			matrix/translate_mtx.c\
+			algorithm/bresenham.c\
 			utils/free.c\
 			utils/map_lst.c\
 			utils/radian.c\
@@ -49,6 +50,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/utils
 	@mkdir -p $(OBJ_DIR)/matrix
+	@mkdir -p $(OBJ_DIR)/algorithm
 
 # Linking object files
 $(NAME): $(OBJ) $(LIBFT)
@@ -76,6 +78,6 @@ fclean:
 re: fclean all
 
 test: all
-	./$(NAME) "test_maps/42.fdf"
+	./$(NAME) "test_maps/pyramide.fdf"
 
 .PHONY: all clean fclean re test

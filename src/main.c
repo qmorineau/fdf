@@ -69,31 +69,31 @@ void ortho_point(t_mlx *param, double x, double y, double z)
 	/* mlx_pixel_put(param->mlx_ptr, param->win_ptr, x * param->scale, y * param->scale, 0xFFFFFF); */
 }
 
-/* void join_point(t_mlx *param)
+void join_point(t_mlx *param)
 {
 	int x;
 	int y;
 
 	x = 0;
 	y = 0;
-	//printf("1\n");
+	printf("1\n");
 	while (param->map[y])
 	{
-		//printf("2\n");
+		printf("2\n");
 		x = 0;
 		while (param->map[y][x])
 		{
-			//printf("3\n");
+			printf("3\n");
 			if (param->map[y + 1])
-				draw_line(param, param->map[y][x], param->map[y + 1][x]);
+				draw_bresenham(param, param->map[y][x], param->map[y + 1][x]);
 			if (param->map[y][x + 1])
-				draw_line(param, param->map[y][x], param->map[y][x + 1]);
+				draw_bresenham(param, param->map[y][x], param->map[y][x + 1]);
 			x++;
 		}
 		y++;
 	}
-
-} */
+	printf("end join\n");
+}
 
 void	test2(t_point ***map, void (*f)(t_point *, double x, double y, double z))
 {
@@ -234,6 +234,7 @@ int handle_keypress(int keycode, t_mlx *param)
 	centered_win(param);
 	apply_transform(param, param->transformation);
 	orthographic(param);
+	join_point(param);
 	map_iter(param->map, reset);
     return (0);
 }
@@ -278,6 +279,7 @@ int main(int argc, char *argv[])
 	rotate_y(all, 45);
 	centered_win(all);
 	orthographic(all);
+	join_point(all);
 	printf("oui\n");
 	mlx_key_hook(all->win_ptr, handle_keypress, all);
 	mlx_loop(all->mlx_ptr);
