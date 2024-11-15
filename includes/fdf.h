@@ -10,12 +10,14 @@
 # include "libft.h"
 # include "key.h"
 
-# define HEIGHT 720
-# define WIDTH 1280
+/* # define HEIGHT 720
+# define WIDTH 1280 */
 # define DEEP 10000
 # define ORTHOGRAPHIC 0
-/* # define HEIGHT 1080
-# define WIDTH 1920 */
+# define ISOMETRIC 1
+# define STEREOGRAPHIC 2
+# define HEIGHT 720
+# define WIDTH 720
 
 #ifndef M_PI
 # define M_PI 3.14159265358979323846
@@ -45,8 +47,8 @@ typedef struct s_mlx
 	t_point	***map;
 	t_transform *transformation;
 	double	scale;
-	double	center_x;
-	double	center_y;
+	double	x_max;
+	double	y_max;
 	int		key_press;
 	int		projection;
 }	t_mlx;
@@ -67,35 +69,34 @@ double	convert_angle(double angle);
 
 
 /* Init */
-t_mlx *init_window(char *argv[]);
+t_mlx	*init_window(char *argv[]);
 /* Rotate matrix */
 void 	rx_matrix(double matrix[4][4], double angle);
 void	ry_matrix(double matrix[4][4], double angle);
 void	rz_matrix(double matrix[4][4], double angle);
-void	rotate_x(t_mlx *param, double angle);
-void	rotate_y(t_mlx *param, double angle);
-void	rotate_z(t_mlx *param, double angle);
+void	rotate_x(t_mlx *param, int repeat);
+void	rotate_y(t_mlx *param, int repeat);
+void	rotate_z(t_mlx *param, int repeat);
 /* Center matrix */
 void	center_obj_matrix(t_mlx *param, double matrix[4][4]);
 void	center_win_matrix(double matrix[4][4]);
 void	centered_obj(t_mlx *param);
 void	centered_win(t_mlx *param);
 /* Projection */
-void	ortho_matrix(double matrix[4][4]);
-void stereo_matrix(double matrix[4][4]);
+void	do_projection(t_mlx *param);
 void	orthographic(t_mlx *param);
-void stereographic(t_mlx *param);
-void	do_orthographic(t_mlx *param, int keycode);
+void	isometric(t_mlx *param);
+void	stereographic(t_mlx *param);
 /* Translate matrix */
-void	t_matrix(double matrix[4][4], double x, double y, double z);
 void	translation_matrix(double matrix[4][4]);
+void	t_matrix(double matrix[4][4], double x, double y, double z);
 /* Utils matrix */
 void	multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4]);
 void	m_to_point(t_mlx *param, double matrix[4][4]);
 /* Scale matrix */
-void	scale_matrix(double matrix[4][4], double scale);
+void	scale_matrix(t_mlx *param, double matrix[4][4]);
+void	init_scaling(t_mlx *param);
 void	scaling_percent(t_mlx *param, double percent);
-void	scaling(t_mlx *param);
 /* Draw line */
 void	draw_bresenham(t_mlx *param, t_point *p1, t_point *p2);
 #endif

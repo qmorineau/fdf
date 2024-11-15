@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-void	ortho_matrix(double matrix[4][4])
+static void	ortho_matrix(double matrix[4][4])
 {
 	double z_near;
 	double right;
@@ -27,22 +27,30 @@ void	ortho_matrix(double matrix[4][4])
 	matrix[3][3] = 1;
 }
 
-void stereo_matrix(double matrix[4][4])
+void orthographic(t_mlx *param)
 {
-	matrix[0][0] = 1;
-	matrix[0][1] = 0;
-	matrix[0][2] = 0;
-	matrix[0][3] = 0;
-	matrix[1][0] = 0;
-	matrix[1][1] = 1;
-	matrix[1][2] = 0;
-	matrix[1][3] = 0;
-	matrix[2][0] = 0;
-	matrix[2][1] = 0;
-	matrix[2][2] = 1;
-	matrix[2][3] = -1;
-	matrix[3][0] = 0;
-	matrix[3][1] = 0;
-	matrix[3][2] = 0;
-	matrix[3][3] = 1;
+	double matrix[4][4];
+	double ortho[4][4];
+	double scaling[4][4];
+
+	t_point ***map;
+	int		i;
+	int		j;
+
+	i = -1;
+	j = 0;
+	map = param->map;
+	ortho_matrix(ortho);
+	scale_matrix(param, scaling);
+	multiply_matrix(ortho, scaling, matrix);
+	m_to_point(param, matrix);
+	while (map[++i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			mlx_pixel_put(param->mlx_ptr, param->win_ptr, map[i][j]->x, map[i][j]->y, 0xFFFFFF);
+			j++;
+		}
+	}
 }

@@ -30,7 +30,7 @@ static int add_line(t_mlx *param, char *line, int y)
 		row[x] = tmp;
 		x++;
 	}
-	param->center_x = (double) ((x - 1) / 2.0);
+	param->x_max = (double) (x - 1);
 	param->map[y] = row;
 	free_tab(tab);
 	free(tab);
@@ -48,7 +48,7 @@ t_point ***init_map(t_point ***new, t_point ****old, int rows)
 	if (!old)
 		return (new);
 	tmp = *old;
-	while (i + 1 < rows)
+	while (i < rows)
 	{
 		new[i] = tmp[i];
 		i++;
@@ -68,18 +68,18 @@ int parsing(char *argv[], t_mlx *all)
 	if (fd < 0)
 		return (0);
 	line = get_next_line(fd);
-	y = 1;
+	y = 0;
 	while (line)
 	{
-		tmp = ft_calloc(y + 1, sizeof(t_point **));
+		tmp = ft_calloc(y + 2, sizeof(t_point **));
 		if (!tmp)
 			return (0);
 		all->map = init_map(tmp, &all->map, y);
-		if (!add_line(all, line, y - 1))
+		if (!add_line(all, line, y))
 			return (0);
 		line = get_next_line(fd);
 		y++;
 	}
-	all->center_y = (double) ((y - 2) / 2.0);
+	all->y_max = (double) (y - 1);
 	return (1);
 }

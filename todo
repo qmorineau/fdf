@@ -2,3 +2,5 @@ valid map (3x3 or 5x3 etc..., not line/column shorter than other)
 if wring file leak
 draw everything outside the window ? or just what is visible ?
 loading screen ?
+don't draw each point first ?
+orthographic always square ? (need to adjust width and height to be square, or adapt it)

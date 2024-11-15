@@ -23,9 +23,6 @@ t_mlx *init_window(char *argv[])
 	param->win_ptr = mlx_new_window(param->mlx_ptr, WIDTH, HEIGHT, "fdf");
 	if (!param->win_ptr)
 		return (free(param), NULL);
-	param->scale = 100;
-	param->center_x = 0;
-	param->center_y = 0;
 	param->projection = ORTHOGRAPHIC;
 	if (!parsing(argv, param))
 	{

@@ -1,10 +1,17 @@
 #include "fdf.h"
 
+void set_point(t_point *point, double xyz[3])
+{
+	point->x = xyz[0];
+	point->y = xyz[1];
+	point->z = xyz[2];
+}
 void m_to_point(t_mlx *param, double matrix[4][4])
 {
 	t_point ***map;
 	int		i;
 	int		j;
+	double	xyz[3];
 
 	i = 0;
 	j = 0;
@@ -14,12 +21,13 @@ void m_to_point(t_mlx *param, double matrix[4][4])
 		j = 0;
 		while (map[i][j])
 		{
-			map[i][j]->x = (matrix[0][0] * map[i][j]->x) + (matrix[0][1]
+			xyz[0] = (matrix[0][0] * map[i][j]->x) + (matrix[0][1]
 				* map[i][j]->y) + (matrix[0][2] * map[i][j]->z) + matrix[0][3];
-			map[i][j]->y = (matrix[1][0] * map[i][j]->x) + (matrix[1][1]
+			xyz[1] = (matrix[1][0] * map[i][j]->x) + (matrix[1][1]
 				* map[i][j]->y) + (matrix[1][2] * map[i][j]->z) + matrix[1][3];
-			map[i][j]->z = (matrix[2][0] * map[i][j]->x) + (matrix[2][1]
+			xyz[2] = (matrix[2][0] * map[i][j]->x) + (matrix[2][1]
 				* map[i][j]->y) + (matrix[2][2] * map[i][j]->z) + matrix[2][3];
+			set_point(map[i][j], xyz);
 			j++;
 		}
 		i++;
@@ -50,3 +58,12 @@ void multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4])
 		i++;
 	}
 }
+
+double convert_angle(double angle)
+{
+	double radian;
+
+	radian = (M_PI / 180) * angle;
+	return (radian);
+}
+

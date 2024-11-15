@@ -22,17 +22,17 @@ MLX_INC = /usr/local/include
 SRC_LIST = main.c\
 			matrix/center_mtx.c\
 			matrix/utils_mtx.c\
-			matrix/projection_ft.c\
-			matrix/projection_mtx.c\
+			matrix/projection.c\
+			matrix/proj_orthographic.c\
+			matrix/proj_isometric.c\
+			matrix/proj_stereographic.c\
 			matrix/rotate_ft.c\
 			matrix/rotate_mtx.c\
 			matrix/scale_mtx.c\
 			matrix/translate_mtx.c\
 			algorithm/bresenham.c\
-			projection/orthographic.c\
 			utils/free.c\
 			utils/map_lst.c\
-			utils/radian.c\
 			parsing.c\
 			init.c
 
@@ -81,6 +81,6 @@ fclean:
 re: fclean all
 
 test: all
-	./$(NAME) "test_maps/42.fdf"
+	./$(NAME) "map.txt"
 
 .PHONY: all clean fclean re test
