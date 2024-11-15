@@ -30,9 +30,6 @@ static void	ortho_matrix(double matrix[4][4])
 void orthographic(t_mlx *param)
 {
 	double matrix[4][4];
-	double ortho[4][4];
-	double scaling[4][4];
-
 	t_point ***map;
 	int		i;
 	int		j;
@@ -40,9 +37,7 @@ void orthographic(t_mlx *param)
 	i = -1;
 	j = 0;
 	map = param->map;
-	ortho_matrix(ortho);
-	scale_matrix(param, scaling);
-	multiply_matrix(ortho, scaling, matrix);
+	ortho_matrix(matrix);
 	m_to_point(param, matrix);
 	while (map[++i])
 	{

@@ -8,6 +8,9 @@ static int init_param_transform(t_mlx *param)
 	param->transformation->rx = 0;
 	param->transformation->ry = 0;
 	param->transformation->rz = 0;
+	param->transformation->tx = 0;
+	param->transformation->ty = 0;
+	param->transformation->tz = 0;
 	return (1);
 }
 

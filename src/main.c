@@ -78,26 +78,16 @@ void reset_xyz(t_point *node)
 
 void apply_transform(t_mlx *param, t_transform *data)
 {
-	int i;
-
-	i = 0;
 	if (data->rx == 36)
 		data->rx = 0;
-	while (i < data->rx)
-		i++;
-	rotate_x(param, i);
-	i = 0;
+	rotate_x(param, data->rx);
 	if (data->ry == 36)
 		data->ry = 0;
-	while (i < data->ry)
-		i++;
-	rotate_y(param, i);
-	i = 0;
+	rotate_y(param, data->ry);
 	if (data->ry == 36)
 		data->ry = 0;
-	while (i < data->rz)
-		i++;
-	rotate_z(param, i);
+	rotate_z(param, data->ry);
+	translate(param, param->scale * data->tx, param->scale * data->ty, 0);
 }
 
 
@@ -135,6 +125,13 @@ void apply_transform(t_mlx *param, t_transform *data)
 
 
 
+void centering(t_mlx *param)
+{
+	param->transformation->tx = 0;
+	param->transformation->ty = 0;
+	param->transformation->tz = 0;
+}
+
 int handle_keypress(int keycode, t_mlx *param)
 {
     printf("Key pressed: %d\n", keycode);
@@ -146,9 +143,9 @@ int handle_keypress(int keycode, t_mlx *param)
 		free(param);
 		exit(0);
 	}
-	else if (keycode == UP)
+	else if (keycode == I)
 		scaling_percent(param, 110);
-	else if (keycode == DOWN)
+	else if (keycode == O)
 		scaling_percent(param, 90);
 	else if (keycode == X)
 		param->transformation->rx++;
@@ -157,9 +154,17 @@ int handle_keypress(int keycode, t_mlx *param)
 	else if (keycode == Z)
 		param->transformation->rx++;
 	else if (keycode == C)
-		centered_obj(param);
+		centering(param);
 	else if (keycode == P)
 		param->projection++;
+	else if (keycode == UP)
+		param->transformation->ty--;
+	else if (keycode == DOWN)
+		param->transformation->ty++;
+	else if (keycode == LEFT)
+		param->transformation->tx--;
+	else if (keycode == RIGHT)
+		param->transformation->tx++;
 	else
 		return (0);
 	mlx_clear_window(param->mlx_ptr, param->win_ptr);

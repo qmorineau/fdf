@@ -37,7 +37,7 @@ void stereographic(t_mlx *param)
 	while (map[++i])
 	{
 		j = 0;
-		while (map[i][j])rotate_y(param, 1);
+		while (map[i][j])
 		{
 			longitude = (map[i][j]->x_origin / param->x_max) * convert_angle(360) - convert_angle(180);
 			latitude = convert_angle(90) - (map[i][j]->y_origin / param->y_max) * convert_angle(180);

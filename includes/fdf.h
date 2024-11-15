@@ -38,6 +38,9 @@ typedef struct s_transform
 	int rx;
 	int ry;
 	int rz;
+	int tx;
+	int ty;
+	int tz;
 } t_transform;
 
 typedef struct s_mlx
@@ -88,8 +91,8 @@ void	orthographic(t_mlx *param);
 void	isometric(t_mlx *param);
 void	stereographic(t_mlx *param);
 /* Translate matrix */
-void	translation_matrix(double matrix[4][4]);
-void	t_matrix(double matrix[4][4], double x, double y, double z);
+void	translate_matrix(double matrix[4][4], double x, double y, double z);
+void	translate(t_mlx *param, double x, double y, double z);
 /* Utils matrix */
 void	multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4]);
 void	m_to_point(t_mlx *param, double matrix[4][4]);
