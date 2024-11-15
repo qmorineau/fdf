@@ -12,12 +12,13 @@
 
 /* # define HEIGHT 720
 # define WIDTH 1280 */
-# define DEEP 10000
+# define DEEP 1000
+# define HEIGHT 720
+# define WIDTH 1080
+
 # define ORTHOGRAPHIC 0
 # define ISOMETRIC 1
 # define STEREOGRAPHIC 2
-# define HEIGHT 720
-# define WIDTH 720
 
 #ifndef M_PI
 # define M_PI 3.14159265358979323846
@@ -50,8 +51,8 @@ typedef struct s_mlx
 	t_point	***map;
 	t_transform *transformation;
 	double	scale;
-	double	x_max;
-	double	y_max;
+	int		x_max;
+	int		y_max;
 	int		key_press;
 	int		projection;
 }	t_mlx;
@@ -66,6 +67,9 @@ void	free_ptr(char **ptr);
 void	free_tab(char **tab);
 
 void draw_line(t_mlx *param);
+
+
+int color(t_point p1, t_point p2);
 
 
 double	convert_angle(double angle);
@@ -91,8 +95,8 @@ void	orthographic(t_mlx *param);
 void	isometric(t_mlx *param);
 void	stereographic(t_mlx *param);
 /* Translate matrix */
-void	translate_matrix(double matrix[4][4], double x, double y, double z);
 void	translate(t_mlx *param, double x, double y, double z);
+void	reset_translate(t_mlx *param);
 /* Utils matrix */
 void	multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4]);
 void	m_to_point(t_mlx *param, double matrix[4][4]);

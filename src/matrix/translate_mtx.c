@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-void	translate_matrix(double matrix[4][4], double x, double y, double z)
+static void	translate_matrix(double matrix[4][4], double x, double y, double z)
 {
 	matrix[0][0] = 1;
 	matrix[0][1] = 0;
@@ -26,4 +26,11 @@ void translate(t_mlx *param, double x, double y, double z)
 
 	translate_matrix(matrix, x, y, z);
 	m_to_point(param, matrix);
+}
+
+void reset_translate(t_mlx *param)
+{
+	param->transformation->tx = 0;
+	param->transformation->ty = 0;
+	param->transformation->tz = 0;
 }

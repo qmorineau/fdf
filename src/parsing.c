@@ -81,5 +81,6 @@ int parsing(char *argv[], t_mlx *all)
 		y++;
 	}
 	all->y_max = (double) (y - 1);
+	//printf("ymax = %d\n", all->y_max);
 	return (1);
 }

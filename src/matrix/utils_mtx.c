@@ -13,13 +13,13 @@ void m_to_point(t_mlx *param, double matrix[4][4])
 	int		j;
 	double	xyz[3];
 
-	i = 0;
-	j = 0;
+	i = -1;
+	j = -1;
 	map = param->map;
-	while (map[i])
+	while (map[++i])
 	{
-		j = 0;
-		while (map[i][j])
+		j = -1;
+		while (map[i][++j])
 		{
 			xyz[0] = (matrix[0][0] * map[i][j]->x) + (matrix[0][1]
 				* map[i][j]->y) + (matrix[0][2] * map[i][j]->z) + matrix[0][3];
@@ -28,9 +28,8 @@ void m_to_point(t_mlx *param, double matrix[4][4])
 			xyz[2] = (matrix[2][0] * map[i][j]->x) + (matrix[2][1]
 				* map[i][j]->y) + (matrix[2][2] * map[i][j]->z) + matrix[2][3];
 			set_point(map[i][j], xyz);
-			j++;
+			//printf("x = %f, y = %f, z = %f\n", map[i][j]->x_origin, map[i][j]->y_origin, map[i][j]->z_origin);
 		}
-		i++;
 	}
 }
 

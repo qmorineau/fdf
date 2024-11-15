@@ -87,7 +87,7 @@ void apply_transform(t_mlx *param, t_transform *data)
 	if (data->ry == 36)
 		data->ry = 0;
 	rotate_z(param, data->ry);
-	translate(param, param->scale * data->tx, param->scale * data->ty, 0);
+	translate(param, param->scale * data->tx, param->scale * data->ty, param->scale * data->tz);
 }
 
 
@@ -123,15 +123,6 @@ void apply_transform(t_mlx *param, t_transform *data)
     return (0);
 } */
 
-
-
-void centering(t_mlx *param)
-{
-	param->transformation->tx = 0;
-	param->transformation->ty = 0;
-	param->transformation->tz = 0;
-}
-
 int handle_keypress(int keycode, t_mlx *param)
 {
     printf("Key pressed: %d\n", keycode);
@@ -154,7 +145,7 @@ int handle_keypress(int keycode, t_mlx *param)
 	else if (keycode == Z)
 		param->transformation->rx++;
 	else if (keycode == C)
-		centering(param);
+		reset_translate(param);
 	else if (keycode == P)
 		param->projection++;
 	else if (keycode == UP)
@@ -175,7 +166,6 @@ int handle_keypress(int keycode, t_mlx *param)
 	apply_transform(param, param->transformation);
 	do_projection(param);
 	draw_line(param);
-	map_iter(param->map, reset_xyz);
     return (0);
 }
 
@@ -186,7 +176,10 @@ int main(int argc, char *argv[])
 	(void) argc;
 	param = init_window(argv);
 	if (!param)
+	{
+		mlx_destroy_window(param->mlx_ptr, param->win_ptr);
 		return (0);
+	}
 	centered_obj(param);
 	init_scaling(param);
 	centered_win(param);

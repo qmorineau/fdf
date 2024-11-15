@@ -30,22 +30,7 @@ static void	ortho_matrix(double matrix[4][4])
 void orthographic(t_mlx *param)
 {
 	double matrix[4][4];
-	t_point ***map;
-	int		i;
-	int		j;
 
-	i = -1;
-	j = 0;
-	map = param->map;
 	ortho_matrix(matrix);
 	m_to_point(param, matrix);
-	while (map[++i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, map[i][j]->x, map[i][j]->y, 0xFFFFFF);
-			j++;
-		}
-	}
 }

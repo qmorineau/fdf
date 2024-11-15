@@ -28,10 +28,7 @@ t_mlx *init_window(char *argv[])
 		return (free(param), NULL);
 	param->projection = ORTHOGRAPHIC;
 	if (!parsing(argv, param))
-	{
-		mlx_destroy_window(param->mlx_ptr, param->win_ptr);
 		return(free(param), NULL);
-	}
 	if (!init_param_transform(param))
 		return (free(param), NULL);
 	return (param);

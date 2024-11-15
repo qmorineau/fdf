@@ -31,6 +31,7 @@ SRC_LIST = main.c\
 			matrix/scale_mtx.c\
 			matrix/translate_mtx.c\
 			algorithm/bresenham.c\
+			colors/colors.c\
 			utils/free.c\
 			utils/map_lst.c\
 			parsing.c\
@@ -53,7 +54,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)/utils
 	@mkdir -p $(OBJ_DIR)/matrix
 	@mkdir -p $(OBJ_DIR)/algorithm
-	@mkdir -p $(OBJ_DIR)/projection
+	@mkdir -p $(OBJ_DIR)/colors
 
 # Linking object files
 $(NAME): $(OBJ) $(LIBFT)
