@@ -27,8 +27,8 @@ void init_scaling(t_mlx *param)
 	double scale_y;
 
 	printf("x = %f, y = %f\n", param->map[param->x_max][0]->x_origin, param->map[0][param->y_max]->y_origin);
-	scale_x = WIDTH / (param->map[param->x_max][0]->x);
-	scale_y = HEIGHT / (param->map[0][param->y_max]->y);
+	scale_x = WIDTH / (param->map[0][param->x_max]->x);
+	scale_y = HEIGHT / (param->map[param->y_max][0]->y);
 	//scale_x = WIDTH / (param->x_max + 1); 
 	//scale_y = HEIGHT / (param->y_max + 1);
 
