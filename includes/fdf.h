@@ -78,9 +78,9 @@ double	convert_angle(double angle);
 /* Init */
 t_mlx	*init_window(char *argv[]);
 /* Rotate matrix */
-void 	rx_matrix(double matrix[4][4], double angle);
-void	ry_matrix(double matrix[4][4], double angle);
-void	rz_matrix(double matrix[4][4], double angle);
+void 	rx_matrix(double matrix[4][4], double radian);
+void	ry_matrix(double matrix[4][4], double radian);
+void	rz_matrix(double matrix[4][4], double radian);
 void	rotate_x(t_mlx *param, int repeat);
 void	rotate_y(t_mlx *param, int repeat);
 void	rotate_z(t_mlx *param, int repeat);
@@ -91,6 +91,7 @@ void	centered_obj(t_mlx *param);
 void	centered_win(t_mlx *param);
 /* Projection */
 void	do_projection(t_mlx *param);
+void	ortho_matrix(double matrix[4][4]);
 void	orthographic(t_mlx *param);
 void	isometric(t_mlx *param);
 void	stereographic(t_mlx *param);

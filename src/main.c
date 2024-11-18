@@ -166,7 +166,6 @@ int handle_keypress(int keycode, t_mlx *param)
 		map_iter(param->map, reset_xyz);
 		centered_obj(param);
 		init_scaling(param);
-		centered_win(param);
 		apply_transform(param, param->transformation);
 		do_projection(param);
 		draw_line(param);
@@ -187,10 +186,11 @@ int handle_keypress(int keycode, t_mlx *param)
 	map_iter(param->map, reset_xyz);
 	centered_obj(param);
 	scaling_percent(param, 100);
-	centered_win(param);
 	apply_transform(param, param->transformation);
 	do_projection(param);
 	draw_line(param);
+	map_iter(param->map, print);
+	printf("\n");
     return (0);
 }
 
@@ -205,13 +205,9 @@ int main(int argc, char *argv[])
 		mlx_destroy_window(param->mlx_ptr, param->win_ptr);
 		return (0);
 	}
-	//map_iter(param->map, print);
 	centered_obj(param);
-	//map_iter(param->map, print);
 	init_scaling(param);
-	//map_iter(param->map, print);
-	centered_win(param);
-	//map_iter(param->map, print);
+	//centered_win(param);
 	do_projection(param);
 	draw_line(param);
 	printf("scale = %f\n", param->scale);

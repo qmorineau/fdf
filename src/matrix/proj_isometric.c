@@ -1,29 +1,30 @@
 #include "fdf.h"
 
-static void	iso_matrix(double matrix[4][4])
+static void isometric_rotate(t_mlx *param)
 {
-	matrix[0][0] = 1 / sqrt(2);
-	matrix[0][1] = 1 / sqrt(2);
-	matrix[0][2] = 0;
-	matrix[0][3] = 0;
-	matrix[1][0] = 1 / sqrt(6);
-	matrix[1][1] = 1 / sqrt(6);
-	matrix[1][2] = -sqrt(2 / 3);
-	matrix[1][3] = 0;
-	matrix[2][0] = -sqrt(1 / 3);
-	matrix[2][1] = 1 / sqrt(3);
-	matrix[2][2] = 1 / sqrt(3);
-	matrix[2][3] = 0;
-	matrix[3][0] = 0;
-	matrix[3][1] = 0;
-	matrix[3][2] = 0;
-	matrix[3][3] = 1;
+	double rx[4][4];
+	double rz[4][4];
+	double tmp[4][4];
+	double ry[4][4];
+	double matrix[4][4];
+
+	rz_matrix(rz, convert_angle(60));
+	rx_matrix(rx, convert_angle(35.26));
+	multiply_matrix(rz, rx, tmp);
+	ry_matrix(ry, convert_angle(-45));
+	multiply_matrix(tmp, ry, matrix);
+	m_to_point(param, matrix);
 }
 
 void isometric(t_mlx *param)
 {
+	double center[4][4];
+	double isometric[4][4];
 	double matrix[4][4];
 
-	iso_matrix(matrix);
+	isometric_rotate(param);
+	center_win_matrix(center);
+	ortho_matrix(isometric);
+	multiply_matrix(center, isometric, matrix);
 	m_to_point(param, matrix);
 }

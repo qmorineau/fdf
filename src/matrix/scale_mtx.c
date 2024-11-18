@@ -35,8 +35,8 @@ void init_scaling(t_mlx *param)
 		param->scale = scale_y;
 	if (param->projection == ORTHOGRAPHIC)
 		param->scale *= 100;
-	/* else if (param->projection == ISOMETRIC)
-		param->projection /= 100 */
+	else if (param->projection == ISOMETRIC)
+		param->scale *= 100;
 	scale_matrix(param, matrix);
 	m_to_point(param, matrix);
 }
