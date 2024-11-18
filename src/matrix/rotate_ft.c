@@ -7,7 +7,7 @@ void rotate_x(t_mlx *param, int repeat)
 	double	angle;
 
 	if (param->projection == ORTHOGRAPHIC)
-		angle = 10;
+		angle = 90;
 	else if (param->projection == ISOMETRIC)
 		angle = 10;
 	radian = convert_angle(angle * repeat);
@@ -22,7 +22,7 @@ void rotate_y(t_mlx *param, int repeat)
 	double	angle;
 
 	if (param->projection == ORTHOGRAPHIC)
-		angle = 10;
+		angle = 90;
 	else if (param->projection == ISOMETRIC)
 		angle = 10;
 	radian = convert_angle(angle * repeat);
@@ -37,7 +37,7 @@ void rotate_z(t_mlx *param, int repeat)
 	double	angle;
 
 	if (param->projection == ORTHOGRAPHIC)
-		angle = 10;
+		angle = 90;
 	else if (param->projection == ISOMETRIC)
 		angle = 10;
 	radian = convert_angle(angle * repeat);

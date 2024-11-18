@@ -7,11 +7,12 @@
 # define DOWN 65364
 # define LEFT 65361
 # define RIGHT 65363
+# define C 99
 # define I 105
 # define O 111
+# define P 112
+# define V 118
 # define X 120
 # define Y 121
 # define Z 122
-# define C 99
-# define P 112
 #endif

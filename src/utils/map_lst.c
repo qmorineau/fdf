@@ -23,15 +23,22 @@ void	map_clear(t_point ****map)
 	int		j;
 
 	if (!(*map))
-		return ;
-	tmp = *map;
-	i = 0;
-	while (tmp[i])
 	{
-		j = 0;
-		while (tmp[i][j])
-			free(tmp[i][j++]);
-		free(tmp[i++]);
+		printf("\nno map\n");
+		return ;
+	}
+	tmp = *map;
+	i = -1;
+	while (tmp[++i])
+	{
+		j = -1;
+		while (tmp[i][++j])
+		{
+			free(tmp[i][j]);
+			tmp[i][j] = NULL;
+		}
+		free(tmp[i]);
+		tmp[i] = NULL;
 	}
 	free(*map);
 	*map = NULL;

@@ -28,7 +28,6 @@ void m_to_point(t_mlx *param, double matrix[4][4])
 			xyz[2] = (matrix[2][0] * map[i][j]->x) + (matrix[2][1]
 				* map[i][j]->y) + (matrix[2][2] * map[i][j]->z) + matrix[2][3];
 			set_point(map[i][j], xyz);
-			//printf("x = %f, y = %f, z = %f\n", map[i][j]->x_origin, map[i][j]->y_origin, map[i][j]->z_origin);
 		}
 	}
 }

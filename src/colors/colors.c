@@ -1,16 +1,27 @@
 #include "fdf.h"
 
-int color(t_point p1, t_point p2)
+static int do_map(t_point p1, t_point p2)
 {
-	(void) p2;
 	if (p1.z_origin != p2.z_origin)
 	{
-		return (0x00FF00);
+		return (GREEN);
 	}
 	else if (p1.z_origin == 0)
 	{
-		return (0x0000FF);
+		return (BLUE);
 	}
 	else
-		return (0xFFFFFF);
+		return (WHITE);
+}
+
+int color(t_mlx *param, t_point p1, t_point p2)
+{
+	if (param->color > RAINBOW)
+		param->color = STANDARD;
+	if (param->color == MAP)
+		return (do_map(p1, p2));
+	else if (param->color == RAINBOW)
+		return (RED);
+	else
+		return (WHITE);
 }

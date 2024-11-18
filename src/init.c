@@ -16,20 +16,27 @@ static int init_param_transform(t_mlx *param)
 
 t_mlx *init_window(char *argv[])
 {
-	t_mlx *param;
+	t_mlx	*param;
+	int		fd;
 
 	param = malloc(sizeof(t_mlx));
 	if (!param)
-		return (NULL);
+		exit(0);
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		free(param);
+		exit(0);
+	}
 	param->map = NULL;
 	param->mlx_ptr = mlx_init();
 	param->win_ptr = mlx_new_window(param->mlx_ptr, WIDTH, HEIGHT, "fdf");
-	if (!param->win_ptr)
-		return (free(param), NULL);
 	param->projection = ORTHOGRAPHIC;
+	param->color = STANDARD;
+	param->transformation = NULL;
 	if (!parsing(argv, param))
-		return(free(param), NULL);
+		free_window(&param);
 	if (!init_param_transform(param))
-		return (free(param), NULL);
+		free_window(&param);
 	return (param);
 }

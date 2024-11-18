@@ -9,12 +9,13 @@
 #include <fcntl.h>
 # include "libft.h"
 # include "key.h"
+# include "color.h"
 
-/* # define HEIGHT 720
-# define WIDTH 1280 */
+# define HEIGHT 1280
+# define WIDTH 1280
 # define DEEP 1000
-# define HEIGHT 720
-# define WIDTH 1080
+/* # define HEIGHT 720
+# define WIDTH 1080 */
 
 # define ORTHOGRAPHIC 0
 # define ISOMETRIC 1
@@ -55,6 +56,7 @@ typedef struct s_mlx
 	int		y_max;
 	int		key_press;
 	int		projection;
+	int		color;
 }	t_mlx;
 
 t_point	*map_newpoint(double x, double y, double z);
@@ -65,11 +67,12 @@ int		parsing(char *argv[], t_mlx *all);
 
 void	free_ptr(char **ptr);
 void	free_tab(char **tab);
+void	free_window(t_mlx **param);
 
 void draw_line(t_mlx *param);
 
 
-int color(t_point p1, t_point p2);
+int color(t_mlx *param, t_point p1, t_point p2);
 
 
 double	convert_angle(double angle);

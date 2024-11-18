@@ -66,7 +66,10 @@ int parsing(char *argv[], t_mlx *all)
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
+	{
+		printf("\n no file\n");
 		return (0);
+	}
 	line = get_next_line(fd);
 	y = 0;
 	while (line)
@@ -81,6 +84,6 @@ int parsing(char *argv[], t_mlx *all)
 		y++;
 	}
 	all->y_max = (double) (y - 1);
-	//printf("ymax = %d\n", all->y_max);
+	close(fd);
 	return (1);
 }

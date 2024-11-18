@@ -24,6 +24,8 @@ void stereographic(t_mlx *param)
 {
 	double longitude;
 	double latitude;
+	double center[4][4];
+	double projection[4][4];
 	double matrix[4][4];
 	t_point ***map;
 	int		i;
@@ -32,7 +34,6 @@ void stereographic(t_mlx *param)
 	map = param->map;
 	i = -1;
 	map = param->map;
-	stereo_matrix(matrix);
 	while (map[++i])
 	{
 		j = -1;
@@ -45,5 +46,8 @@ void stereographic(t_mlx *param)
 			map[i][j]->z *= sin(latitude);
 		}
 	}
+	center_win_matrix(center);
+	stereo_matrix(projection);
+	multiply_matrix(center, projection, matrix);
 	m_to_point(param, matrix);
 }
