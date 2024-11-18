@@ -26,19 +26,18 @@ void init_scaling(t_mlx *param)
 	double scale_x;
 	double scale_y;
 
-	printf("x = %f, y = %f\n", param->map[param->x_max][0]->x_origin, param->map[0][param->y_max]->y_origin);
+	//printf("x = %f, y = %f\n", param->map[0][param->x_max]->x, param->map[param->y_max][0]->y);
 	scale_x = WIDTH / (param->map[0][param->x_max]->x);
 	scale_y = HEIGHT / (param->map[param->y_max][0]->y);
-	//scale_x = WIDTH / (param->x_max + 1); 
-	//scale_y = HEIGHT / (param->y_max + 1);
-
 	if (scale_x < scale_y)
 		param->scale = scale_x;
 	else
 		param->scale = scale_y;
-	//param->scale *= 100;
+	if (param->projection == ORTHOGRAPHIC)
+		param->scale *= 100;
+	/* else if (param->projection == ISOMETRIC)
+		param->projection /= 100 */
 	scale_matrix(param, matrix);
-
 	m_to_point(param, matrix);
 }
 
@@ -47,7 +46,6 @@ void scaling_percent(t_mlx *param, double percent)
 	double matrix[4][4];
 
 	param->scale *= percent/100;
-	//printf("scale = %f", param->scale);
 	scale_matrix(param, matrix);
 	m_to_point(param, matrix);
 }

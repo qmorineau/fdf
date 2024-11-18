@@ -76,6 +76,11 @@ void reset_xyz(t_point *node)
 	node->z = node->z_origin;
 }
 
+void print(t_point *node)
+{
+	printf("x=%f, y=%f, z=%f\n", node->x, node->y, node->z);
+}
+
 void apply_transform(t_mlx *param, t_transform *data)
 {
 	if (data->rx == 36)
@@ -123,6 +128,13 @@ void apply_transform(t_mlx *param, t_transform *data)
     return (0);
 } */
 
+void change_projection(t_mlx *param)
+{
+	param->projection++;
+	if (param->projection > STEREOGRAPHIC)
+		param->projection = ORTHOGRAPHIC;
+}
+
 int handle_keypress(int keycode, t_mlx *param)
 {
     printf("Key pressed: %d\n", keycode);
@@ -147,7 +159,20 @@ int handle_keypress(int keycode, t_mlx *param)
 	else if (keycode == C)
 		reset_translate(param);
 	else if (keycode == P)
-		param->projection++;
+	{
+		change_projection(param);
+		map_iter(param->map, reset_xyz);
+		mlx_clear_window(param->mlx_ptr, param->win_ptr);
+		map_iter(param->map, reset_xyz);
+		centered_obj(param);
+		init_scaling(param);
+		centered_win(param);
+		apply_transform(param, param->transformation);
+		do_projection(param);
+		draw_line(param);
+		printf("scale = %f\n", param->scale);
+		return (0);
+	}
 	else if (keycode == UP)
 		param->transformation->ty--;
 	else if (keycode == DOWN)
@@ -180,11 +205,16 @@ int main(int argc, char *argv[])
 		mlx_destroy_window(param->mlx_ptr, param->win_ptr);
 		return (0);
 	}
+	//map_iter(param->map, print);
 	centered_obj(param);
+	//map_iter(param->map, print);
 	init_scaling(param);
+	//map_iter(param->map, print);
 	centered_win(param);
+	//map_iter(param->map, print);
 	do_projection(param);
 	draw_line(param);
+	printf("scale = %f\n", param->scale);
 	mlx_key_hook(param->win_ptr, handle_keypress, param);
 	mlx_loop(param->mlx_ptr);
 }
