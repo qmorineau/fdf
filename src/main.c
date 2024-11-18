@@ -128,6 +128,22 @@ void apply_transform(t_mlx *param, t_transform *data)
     return (0);
 } */
 
+void reset_transform(t_mlx *param)
+{
+	map_iter(param->map, reset_xyz);
+	mlx_clear_window(param->mlx_ptr, param->win_ptr);
+	centered_obj(param);
+	init_scaling(param);
+	param->transformation->rx = 0;
+	param->transformation->ry = 0;
+	param->transformation->rz = 0;
+	param->transformation->tx = 0;
+	param->transformation->ty = 0;
+	param->transformation->tz = 0;
+	do_projection(param);
+	draw_line(param);
+}
+
 void change_projection(t_mlx *param)
 {
 	param->projection++;
@@ -145,7 +161,10 @@ int handle_keypress(int keycode, t_mlx *param)
 		exit(0);
 	}
 	else if (keycode == I)
-		scaling_percent(param, 110);
+	{
+		if (!scaling_percent(param, 110))
+			return (0);
+	}
 	else if (keycode == O)
 		scaling_percent(param, 90);
 	else if (keycode == X)
@@ -170,6 +189,12 @@ int handle_keypress(int keycode, t_mlx *param)
 		draw_line(param);
 		return (0);
 	}
+	else if (keycode == R)
+	{
+		reset_transform(param);
+		printf("scale = %f\n", param->scale);
+		return (0);
+	}
 	else if (keycode == UP)
 		param->transformation->ty--;
 	else if (keycode == DOWN)
@@ -187,6 +212,7 @@ int handle_keypress(int keycode, t_mlx *param)
 	apply_transform(param, param->transformation);
 	do_projection(param);
 	draw_line(param);
+	printf("scale = %f\n", param->scale);
     return (0);
 }
 

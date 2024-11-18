@@ -42,7 +42,7 @@ void init_scaling(t_mlx *param)
 
 void scaling_percent(t_mlx *param, double percent)
 {
-	double matrix[4][4];
+	double	matrix[4][4];
 
 	param->scale *= percent/100;
 	scale_matrix(param, matrix);
