@@ -1,5 +1,14 @@
 #include "fdf.h"
 
+void put_pixel_in_img(t_mlx *param, t_point p, int color)
+{
+	char *dst;
+
+	(void) color;
+ 	dst = param->address + (int) p.y * param->size_line + (int) p.x * 4;
+	*(unsigned int* )dst = color;
+}
+
 void draw_line(t_mlx *param)
 {
 	int x;
@@ -12,11 +21,11 @@ void draw_line(t_mlx *param)
 		x = 0;
 		while (param->map[y][x])
 		{
-			/* if (param->map[y + 1])
+			if (param->map[y + 1])
 				draw_bresenham(param, param->map[y][x], param->map[y + 1][x]);
 			if (param->map[y][x + 1])
-				draw_bresenham(param, param->map[y][x], param->map[y][x + 1]); */
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, param->map[y][x]->x, param->map[y][x]->y, 0xFFFFFF);
+				draw_bresenham(param, param->map[y][x], param->map[y][x + 1]);
+			//put_pixel_in_img(param, *param->map[y][x], WHITE);
 			x++;
 		}
 		y++;
@@ -82,19 +91,34 @@ void print(t_point *node)
 
 } */
 
+
 int main(int argc, char *argv[])
 {
 	t_mlx *param;
 
 	(void) argc;
 	param = init_window(argv);
+	param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
+	param->address = mlx_get_data_addr(param->img, &param->bits_per_pixel, &param->size_line, &param->endians);
+
+	printf("%d\n", param->endians);
 	centered_obj(param);
 	init_scaling(param);
 	do_projection(param);
 	draw_line(param);
+	mlx_put_image_to_window(param->mlx_ptr, param->win_ptr, param->img, 0, 0);
 	mlx_key_hook(param->win_ptr, handle_keypress, param);
 	mlx_mouse_hook(param->win_ptr, handle_mouse, param);
-	//mlx_loop_hook(param->mlx_ptr, test, param);
 	mlx_hook(param->win_ptr, 17, 0, destroy_window, &param);
 	mlx_loop(param->mlx_ptr);
+
+
+
+	//mlx_loop_hook(param->mlx_ptr, test, param);
+	//mlx_loop(param->mlx_ptr);
+
+
+	mlx_destroy_image(param->mlx_ptr, param->img);
+	mlx_destroy_window(param->mlx_ptr, param->win_ptr);
+	return (0);
 }

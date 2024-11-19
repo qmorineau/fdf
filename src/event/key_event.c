@@ -16,6 +16,9 @@ void change_projection(t_mlx *param)
 
 void reset_transform(t_mlx *param)
 {
+	mlx_destroy_image(param->mlx_ptr, param->img);
+	param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
+	param->address = mlx_get_data_addr(param->img, &param->bits_per_pixel, &param->size_line, &param->endians);
 	map_iter(param->map, reset_xyz);
 	mlx_clear_window(param->mlx_ptr, param->win_ptr);
 	centered_obj(param);
@@ -28,6 +31,7 @@ void reset_transform(t_mlx *param)
 	param->transformation->tz = 0;
 	do_projection(param);
 	draw_line(param);
+	mlx_put_image_to_window(param->mlx_ptr, param->win_ptr, param->img, 0, 0);
 }
 
 void apply_transform(t_mlx *param, t_transform *data)
@@ -68,14 +72,17 @@ int handle_keypress(int keycode, t_mlx *param)
 		param->color++;
 	else if (keycode == P)
 	{
+		mlx_destroy_image(param->mlx_ptr, param->img);
+		param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
+		param->address = mlx_get_data_addr(param->img, &param->bits_per_pixel, &param->size_line, &param->endians);
 		change_projection(param);
 		map_iter(param->map, reset_xyz);
-		mlx_clear_window(param->mlx_ptr, param->win_ptr);
 		centered_obj(param);
 		init_scaling(param);
 		apply_transform(param, param->transformation);
 		do_projection(param);
 		draw_line(param);
+		mlx_put_image_to_window(param->mlx_ptr, param->win_ptr, param->img, 0, 0);
 		return (0);
 	}
 	else if (keycode == R)
@@ -94,12 +101,15 @@ int handle_keypress(int keycode, t_mlx *param)
 		param->transformation->tx++;
 	else
 		return (0);
-	mlx_clear_window(param->mlx_ptr, param->win_ptr);
+	mlx_destroy_image(param->mlx_ptr, param->img);
+	param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
+	param->address = mlx_get_data_addr(param->img, &param->bits_per_pixel, &param->size_line, &param->endians);
 	map_iter(param->map, reset_xyz);
 	centered_obj(param);
 	scaling_percent(param, 100);
 	apply_transform(param, param->transformation);
 	do_projection(param);
 	draw_line(param);
+	mlx_put_image_to_window(param->mlx_ptr, param->win_ptr, param->img, 0, 0);
     return (0);
 }

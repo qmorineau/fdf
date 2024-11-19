@@ -54,6 +54,11 @@ typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	void	*img;
+	void	*address;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endians;
 	t_point	***map;
 	t_transform *transformation;
 	double	scale;
@@ -75,6 +80,7 @@ void	free_tab(char **tab);
 
 
 
+void	put_pixel_in_img(t_mlx *param, t_point p, int color);
 void draw_line(t_mlx *param);
 
 

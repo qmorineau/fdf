@@ -23,7 +23,8 @@ static void	x_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 		param1 += 2 * d_s_xyz[0][1];
 		param2 += 2 * d_s_xyz[0][2];
 		if (p1.x >= 0 && p1.x <= WIDTH && p1.y >= 0 && p1.y <= HEIGHT)
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, p1.x, p1.y, color(param, p1, p2, X_AXE));
+			put_pixel_in_img(param, p1, color(param, p1, p2, X_AXE));	
+		//mlx_pixel_put(param->mlx_ptr, param->win_ptr, p1.x, p1.y, color(param, p1, p2, X_AXE));
 	}
 }
 
@@ -50,7 +51,8 @@ static void	y_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 		param1 += 2 * d_s_xyz[0][0];
 		param2 += 2 * d_s_xyz[0][2];
 		if (p1.x >= 0 && p1.x <= WIDTH && p1.y >= 0 && p1.y <= HEIGHT)
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, p1.x, p1.y, color(param, p1, p2, Y_AXE));
+			put_pixel_in_img(param, p1, color(param, p1, p2, Y_AXE));
+		//mlx_pixel_put(param->mlx_ptr, param->win_ptr, p1.x, p1.y, color(param, p1, p2, Y_AXE));
 	}
 }
 
@@ -77,7 +79,8 @@ static void	z_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 		param1 += 2 * d_s_xyz[0][0];
 		param2 += 2 * d_s_xyz[0][1];
 		if (p1.x >= 0 && p1.x <= WIDTH && p1.y >= 0 && p1.y <= HEIGHT)
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, p1.x, p1.y, color(param, p1, p2, Z_AXE));
+			put_pixel_in_img(param, p1, color(param, p1, p2, Z_AXE));
+			//mlx_pixel_put(param->mlx_ptr, param->win_ptr, p1.x, p1.y, color(param, p1, p2, Z_AXE));
 	}
 }
 
