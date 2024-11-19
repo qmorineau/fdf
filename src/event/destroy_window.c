@@ -1,35 +1,17 @@
 #include "fdf.h"
 
-void test_free(t_transform **transform)
-{
-	if (transform && *transform)
-	{
-		free(*transform);
-		*transform = NULL;
-	}
-	*transform = NULL;
-}
-
-void free_special(t_mlx **param)
-{
-	if (param && *param)
-	{
-		free(*param);
-		*param = NULL;
-	}
-	*param = NULL;
-}
-
 int	destroy_window(t_mlx **param)
 {
-	t_mlx *test;
+	t_mlx *ptr;
 
-	test = *param;
-	map_clear(&test->map);
-	mlx_destroy_window(test->mlx_ptr, test->win_ptr);
-	if (test->transformation)
-		test_free(&test->transformation);
-	free_special(param);
+	ptr = *param;
+	mlx_destroy_image(ptr->mlx_ptr, ptr->img);
+	map_clear(&ptr->map);
+	mlx_destroy_window(ptr->mlx_ptr, ptr->win_ptr);
+	if (ptr->transformation)
+		free(ptr->transformation);
+	ptr->transformation = NULL;
+	free(param);
 	param = NULL;
 	exit(0);
 	return (0);
