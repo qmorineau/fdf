@@ -12,6 +12,3 @@ zoomed lagged idea to optimize ?
 gradient color -> calculate color of p1 && p2, calculate the difference between p1 && p2 (number of point), increment color every times it's needed ex : (yellow to red -> 5 points -> yellow, yellow-orange, orange, orange-red, red) 
 
 reduce or not the amplification of point (0 -> 170 could be lisible if reduce), automatic calculation from lower to highest one ?
-
-
-use image to store pixel draw

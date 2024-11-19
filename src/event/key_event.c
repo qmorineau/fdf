@@ -88,8 +88,13 @@ int handle_keypress(int keycode, t_mlx *param)
 	else if (keycode == R)
 	{
 		reset_transform(param);
-		printf("scale = %f\n", param->scale);
 		return (0);
+	}
+	else if (keycode == S)
+	{
+		printf("scale = %f, z_scale = %f\n", param->scale, param->z_scale);
+		param->z_scale -= (param->scale / 20);
+		printf("scale = %f, z_scale = %f\n", param->scale, param->z_scale);
 	}
 	else if (keycode == UP)
 		param->transformation->ty--;
@@ -111,5 +116,6 @@ int handle_keypress(int keycode, t_mlx *param)
 	do_projection(param);
 	draw_line(param);
 	mlx_put_image_to_window(param->mlx_ptr, param->win_ptr, param->img, 0, 0);
+	printf("scale = %f, z_scale = %f\n", param->scale, param->z_scale);
     return (0);
 }

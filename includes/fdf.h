@@ -62,6 +62,7 @@ typedef struct s_mlx
 	t_point	***map;
 	t_transform *transformation;
 	double	scale;
+	double	z_scale;
 	int		x_max;
 	int		y_max;
 	int		key_press;

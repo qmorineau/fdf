@@ -12,6 +12,7 @@
 # define O 111
 # define P 112
 # define R 114
+# define S 115
 # define V 118
 # define X 120
 # define Y 121

@@ -12,7 +12,7 @@ void	scale_matrix(t_mlx *param, double matrix[4][4])
 	matrix[1][3] = 0;
 	matrix[2][0] = 0;
 	matrix[2][1] = 0;
-	matrix[2][2] = param->scale;
+	matrix[2][2] = param->z_scale;
 	matrix[2][3] = 0;
 	matrix[3][0] = 0;
 	matrix[3][1] = 0;
@@ -32,10 +32,17 @@ void init_scaling(t_mlx *param)
 		param->scale = scale_x;
 	else
 		param->scale = scale_y;
-	if (param->projection == ORTHOGRAPHIC)
+	param->z_scale = param->scale / 14;
+	if (param->projection == ISOMETRIC)
+	{
 		param->scale *= 100;
-	else if (param->projection == ISOMETRIC)
+		param->z_scale *= 100;
+	}
+	else if (param->projection == ORTHOGRAPHIC)
+	{
 		param->scale *= 100;
+		param->z_scale *= 100;
+	}
 	scale_matrix(param, matrix);
 	m_to_point(param, matrix);
 }
@@ -45,6 +52,7 @@ void scaling_percent(t_mlx *param, double percent)
 	double	matrix[4][4];
 
 	param->scale *= percent/100;
+	param->z_scale *= percent/100;
 	scale_matrix(param, matrix);
 	m_to_point(param, matrix);
 }

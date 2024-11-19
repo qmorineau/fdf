@@ -86,7 +86,7 @@ fclean:
 re: fclean all
 
 test: all
-	./$(NAME) "test_maps/42.fdf"
+	./$(NAME) "maps.txt"
 
 leak: all
 	valgrind --leak-check=full ./$(NAME) "map.txt"

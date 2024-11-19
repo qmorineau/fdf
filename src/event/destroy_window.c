@@ -11,7 +11,7 @@ int	destroy_window(t_mlx **param)
 	if (ptr->transformation)
 		free(ptr->transformation);
 	ptr->transformation = NULL;
-	free(param);
+	free(*param);
 	param = NULL;
 	exit(0);
 	return (0);
