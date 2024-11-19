@@ -31,6 +31,9 @@ SRC_LIST = main.c\
 			matrix/scale_mtx.c\
 			matrix/translate_mtx.c\
 			algorithm/bresenham.c\
+			event/destroy_window.c\
+			event/key_event.c\
+			event/mouse_event.c\
 			colors/colors.c\
 			utils/free.c\
 			utils/map_lst.c\
@@ -55,6 +58,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)/matrix
 	@mkdir -p $(OBJ_DIR)/algorithm
 	@mkdir -p $(OBJ_DIR)/colors
+	@mkdir -p $(OBJ_DIR)/event
 
 # Linking object files
 $(NAME): $(OBJ) $(LIBFT)

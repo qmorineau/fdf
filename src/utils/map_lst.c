@@ -23,10 +23,7 @@ void	map_clear(t_point ****map)
 	int		j;
 
 	if (!(*map))
-	{
-		printf("\nno map\n");
 		return ;
-	}
 	tmp = *map;
 	i = -1;
 	while (tmp[++i])

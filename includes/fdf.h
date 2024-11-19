@@ -9,6 +9,7 @@
 #include <fcntl.h>
 # include "libft.h"
 # include "key.h"
+# include "mouse.h"
 # include "color.h"
 
 # define HEIGHT 720
@@ -17,8 +18,8 @@
 /* # define HEIGHT 720
 # define WIDTH 1080 */
 
-# define ORTHOGRAPHIC 0
-# define ISOMETRIC 1
+# define ISOMETRIC 0
+# define ORTHOGRAPHIC 1
 # define STEREOGRAPHIC 2
 
 # define X_AXE 0
@@ -71,7 +72,8 @@ int		parsing(char *argv[], t_mlx *all);
 
 void	free_ptr(char **ptr);
 void	free_tab(char **tab);
-void	free_window(t_mlx **param);
+
+
 
 void draw_line(t_mlx *param);
 
@@ -84,6 +86,12 @@ double	convert_angle(double angle);
 
 /* Init */
 t_mlx	*init_window(char *argv[]);
+/* Key Event */
+int handle_keypress(int keycode, t_mlx *param);
+/* Mouse Event */
+int handle_mouse(int button, int x, int y, t_mlx *param);
+/* Events */
+int	destroy_window(t_mlx **param);
 /* Rotate matrix */
 void 	rx_matrix(double matrix[4][4], double radian);
 void	ry_matrix(double matrix[4][4], double radian);

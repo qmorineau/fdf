@@ -31,12 +31,12 @@ t_mlx *init_window(char *argv[])
 	param->map = NULL;
 	param->mlx_ptr = mlx_init();
 	param->win_ptr = mlx_new_window(param->mlx_ptr, WIDTH, HEIGHT, "fdf");
-	param->projection = ORTHOGRAPHIC;
+	param->projection = ISOMETRIC;
 	param->color = STANDARD;
 	param->transformation = NULL;
 	if (!parsing(argv, param))
-		free_window(&param);
+		destroy_window(&param);
 	if (!init_param_transform(param))
-		free_window(&param);
+		destroy_window(&param);
 	return (param);
 }

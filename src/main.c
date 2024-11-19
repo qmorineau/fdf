@@ -12,10 +12,11 @@ void draw_line(t_mlx *param)
 		x = 0;
 		while (param->map[y][x])
 		{
-			if (param->map[y + 1])
+			/* if (param->map[y + 1])
 				draw_bresenham(param, param->map[y][x], param->map[y + 1][x]);
 			if (param->map[y][x + 1])
-				draw_bresenham(param, param->map[y][x], param->map[y][x + 1]);
+				draw_bresenham(param, param->map[y][x], param->map[y][x + 1]); */
+			mlx_pixel_put(param->mlx_ptr, param->win_ptr, param->map[y][x]->x, param->map[y][x]->y, 0xFFFFFF);
 			x++;
 		}
 		y++;
@@ -69,152 +70,17 @@ int	key_release(int keycode, t_mlx *param)
 	return (0);
 } */
 
-void reset_xyz(t_point *node)
-{
-	node->x = node->x_origin;
-	node->y = node->y_origin;
-	node->z = node->z_origin;
-}
+
 
 void print(t_point *node)
 {
 	printf("x=%f, y=%f, z=%f\n", node->x, node->y, node->z);
 }
 
-void apply_transform(t_mlx *param, t_transform *data)
+/* int mlx_hook(void *win_ptr, int event, int mask, int (*f)(), void *param);
 {
-	if (data->rx == 36)
-		data->rx = 0;
-	rotate_x(param, data->rx);
-	if (data->ry == 36)
-		data->ry = 0;
-	rotate_y(param, data->ry);
-	if (data->ry == 36)
-		data->ry = 0;
-	rotate_z(param, data->ry);
-	translate(param, param->scale * data->tx, param->scale * data->ty, param->scale * data->tz);
-}
 
-
-
-/* int handle_keypress(int keycode, t_mlx *param)
-{
-    printf("Key pressed: %d\n", keycode);
-	if (keycode == ESC)
-	{
-		map_clear(&param->map);
-		mlx_destroy_window(param->mlx_ptr, param->win_ptr);
-		free(param->transformation);
-		free(param);
-		exit(0);
-	}
-	else if (keycode == UP)
-		scaling_percent(param, 110);
-	else if (keycode == DOWN)
-		scaling_percent(param, 90);
-
-	else if (keycode == C)
-		centered_obj(param);
-	map_iter(param->map, reset_xyz);
-	mlx_clear_window(param->mlx_ptr, param->win_ptr);
-	centered_obj(param);
-	scaling(param);
-	centered_win(param);
-	apply_transform(param, param->transformation);
-	do_projection(param, keycode);
-	orthographic(param);
-	draw_line(param);
-	map_iter(param->map, reset_xyz);
-    return (0);
 } */
-
-void reset_transform(t_mlx *param)
-{
-	map_iter(param->map, reset_xyz);
-	mlx_clear_window(param->mlx_ptr, param->win_ptr);
-	centered_obj(param);
-	init_scaling(param);
-	param->transformation->rx = 0;
-	param->transformation->ry = 0;
-	param->transformation->rz = 0;
-	param->transformation->tx = 0;
-	param->transformation->ty = 0;
-	param->transformation->tz = 0;
-	do_projection(param);
-	draw_line(param);
-}
-
-void change_projection(t_mlx *param)
-{
-	param->projection++;
-	if (param->projection > STEREOGRAPHIC)
-		param->projection = ORTHOGRAPHIC;
-}
-
-int handle_keypress(int keycode, t_mlx *param)
-{
-    printf("Key pressed: %d\n", keycode);
-	if (keycode == ESC)
-	{
-		mlx_loop_end(param->mlx_ptr);
-		free_window(&param);
-		exit(0);
-	}
-	else if (keycode == I)
-	{
-		if (!scaling_percent(param, 110))
-			return (0);
-	}
-	else if (keycode == O)
-		scaling_percent(param, 90);
-	else if (keycode == X)
-		param->transformation->rx++;
-	else if (keycode == Y)
-		param->transformation->ry++;
-	else if (keycode == Z)
-		param->transformation->rx++;
-	else if (keycode == C)
-		reset_translate(param);
-	else if (keycode == V)
-		param->color++;
-	else if (keycode == P)
-	{
-		change_projection(param);
-		map_iter(param->map, reset_xyz);
-		mlx_clear_window(param->mlx_ptr, param->win_ptr);
-		centered_obj(param);
-		init_scaling(param);
-		apply_transform(param, param->transformation);
-		do_projection(param);
-		draw_line(param);
-		return (0);
-	}
-	else if (keycode == R)
-	{
-		reset_transform(param);
-		printf("scale = %f\n", param->scale);
-		return (0);
-	}
-	else if (keycode == UP)
-		param->transformation->ty--;
-	else if (keycode == DOWN)
-		param->transformation->ty++;
-	else if (keycode == LEFT)
-		param->transformation->tx--;
-	else if (keycode == RIGHT)
-		param->transformation->tx++;
-	else
-		return (0);
-	mlx_clear_window(param->mlx_ptr, param->win_ptr);
-	map_iter(param->map, reset_xyz);
-	centered_obj(param);
-	scaling_percent(param, 100);
-	apply_transform(param, param->transformation);
-	do_projection(param);
-	draw_line(param);
-	printf("scale = %f\n", param->scale);
-    return (0);
-}
 
 int main(int argc, char *argv[])
 {
@@ -227,58 +93,8 @@ int main(int argc, char *argv[])
 	do_projection(param);
 	draw_line(param);
 	mlx_key_hook(param->win_ptr, handle_keypress, param);
+	mlx_mouse_hook(param->win_ptr, handle_mouse, param);
+	//mlx_loop_hook(param->mlx_ptr, test, param);
+	mlx_hook(param->win_ptr, 17, 0, destroy_window, &param);
 	mlx_loop(param->mlx_ptr);
 }
-/* int main(void)
-{
-	t_mlx *param;
-
-	param = malloc(sizeof(t_mlx));
-	param->mlx_ptr = mlx_init();
-	param->win_ptr = mlx_new_window(param->mlx_ptr, WIDTH, HEIGHT, "fdf");
-	mlx_destroy_window(param->mlx_ptr, param->win_ptr);
-	free(param);
-	param = NULL;
-	return (0);
-} */
-
-/* int main(int argc, char *argv[])
-{
-	t_mlx *all;
-
-	(void) argc;
-	all = malloc(sizeof(t_mlx));
-	if (!all)
-		return (0);
-	all->map = NULL;
-	all->mlx_ptr = mlx_init();
-	all->win_ptr = mlx_new_window(all->mlx_ptr, WIDTH, HEIGHT, "fdf");
-	if (!all->win_ptr)
-		return (free(all), 0);
-	all->scale = 10000;
-	all->center_x = 0;
-	all->center_y = 0;
-	all->key_press = 0;
-	if (!parsing(argv, all))
-	{
-		mlx_destroy_window(all->mlx_ptr, all->win_ptr);
-		return(free(all), 0);
-	}
-	centered_obj(all);
-	scaling(all, 0);
-	rotate_x(all, 30);
-	rotate_y(all, 30);
-	centered_win(all);
-	orthographic(all);
-
-	printf("1\n");
-	mlx_hook(all->win_ptr, KEY_PRESS, 0, key_press, all);
-	printf("2\n"); */
-	//mlx_hook(all->win_ptr, KEY_RELEASE, 0, key_release, all);
-	/* printf("3\n"); */
-	/* printf("4\n");
-	mlx_loop_hook(all->mlx_ptr, loop_hook, all); 
-	mlx_key_hook(all->win_ptr, handle_key, all);
-	mlx_loop(all->mlx_ptr);
-}
- */

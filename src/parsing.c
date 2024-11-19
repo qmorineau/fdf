@@ -66,10 +66,7 @@ int parsing(char *argv[], t_mlx *all)
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-	{
-		printf("\n no file\n");
 		return (0);
-	}
 	line = get_next_line(fd);
 	y = 0;
 	while (line)
