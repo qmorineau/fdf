@@ -75,13 +75,13 @@ $(LIBFT):
 clean:
 	@rm -rf $(OBJ_DIR)
 	@make clean -C $(LIBFT_DIR) --no-print-directory
-	@echo "$(RED)Push_swap: Cleaned object files$(RESET)"
+	@echo "$(RED)Fdf: Cleaned object files$(RESET)"
 
 fclean:
 	@rm -f $(NAME)
 	@rm -rf $(OBJ_DIR)
 	@make fclean -C $(LIBFT_DIR) --no-print-directory
-	@echo "$(RED)Push_swap: Removed binary files$(RESET)"
+	@echo "$(RED)Fdf: Removed binary files$(RESET)"
 
 re: fclean all
 

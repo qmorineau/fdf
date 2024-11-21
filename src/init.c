@@ -35,8 +35,24 @@ t_mlx *init_window(char *argv[])
 	param->color = STANDARD;
 	param->transformation = NULL;
 	if (!parsing(argv, param))
-		destroy_window(&param);
+		destroy_window(param);
 	if (!init_param_transform(param))
-		destroy_window(&param);
+		destroy_window(param);
+
+	int i = -1;
+	int j = -1;
+	param->z_min = param->map[0][0]->z_origin;
+	param->z_max = param->map[0][0]->z_origin;
+	while (param->map[++i])
+	{
+		j = -1;
+		while (param->map[i][++j])
+		{
+			if (param->z_min > param->map[i][j]->z_origin)
+				param->z_min = param->map[i][j]->z_origin;
+			if (param->z_max < param->map[i][j]->z_origin)
+				param->z_max = param->map[i][j]->z_origin;
+		}
+	}
 	return (param);
 }

@@ -42,9 +42,9 @@ void apply_transform(t_mlx *param, t_transform *data)
 	if (data->ry == 120)
 		data->ry = 0;
 	rotate_y(param, data->ry);
-	if (data->ry == 120)
-		data->ry = 0;
-	rotate_z(param, data->ry);
+	if (data->rz == 120)
+		data->rz = 0;
+	rotate_z(param, data->rz);
 	translate(param, param->scale * data->tx, param->scale * data->ty, param->scale * data->tz);
 }
 
@@ -56,7 +56,7 @@ int handle_keypress(int keycode, t_mlx *param)
 	else if (keycode == Y)
 		param->transformation->ry++;
 	else if (keycode == Z)
-		param->transformation->rx++;
+		param->transformation->rz++;
 	return (0);
 }
 

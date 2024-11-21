@@ -65,6 +65,8 @@ typedef struct s_mlx
 	double	z_scale;
 	int		x_max;
 	int		y_max;
+	int		z_min;
+	int		z_max;
 	int		key_press;
 	int		projection;
 	int		color;
@@ -86,7 +88,9 @@ void	put_pixel_in_img(t_mlx *param, t_point p, int color);
 void draw_line(t_mlx *param);
 
 
-int color(t_mlx *param, t_point p1, t_point p2, int axe);
+int color_x(t_mlx *param, t_point p1, t_point p2, int dif);
+int color_y(t_mlx *param, t_point p1, t_point p2, int dif);
+int color_z(t_mlx *param, t_point p1, t_point p2, int dif);
 
 
 double	convert_angle(double angle);
