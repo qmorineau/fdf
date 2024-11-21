@@ -1,17 +1,14 @@
 #include "fdf.h"
 
-int	destroy_window(t_mlx **param)
+int	destroy_window(t_mlx *param)
 {
-	t_mlx *ptr;
-
-	ptr = *param;
-	mlx_destroy_image(ptr->mlx_ptr, ptr->img);
-	map_clear(&ptr->map);
-	mlx_destroy_window(ptr->mlx_ptr, ptr->win_ptr);
-	if (ptr->transformation)
-		free(ptr->transformation);
-	ptr->transformation = NULL;
-	free(*param);
+	mlx_destroy_image(param->mlx_ptr, param->img);
+	map_clear(&param->map);
+	mlx_destroy_window(param->mlx_ptr, param->win_ptr);
+	if (param->transformation)
+		free(param->transformation);
+	param->transformation = NULL;
+	free(param);
 	param = NULL;
 	exit(0);
 	return (0);

@@ -79,7 +79,8 @@ int		parsing(char *argv[], t_mlx *all);
 void	free_ptr(char **ptr);
 void	free_tab(char **tab);
 
-
+void reset_xyz(t_point *node);
+void apply_transform(t_mlx *param, t_transform *data);
 
 void	put_pixel_in_img(t_mlx *param, t_point p, int color);
 void draw_line(t_mlx *param);
@@ -94,11 +95,12 @@ double	convert_angle(double angle);
 /* Init */
 t_mlx	*init_window(char *argv[]);
 /* Key Event */
+int handle_keyrelease(int keycode, t_mlx *param);
 int handle_keypress(int keycode, t_mlx *param);
 /* Mouse Event */
 int handle_mouse(int button, int x, int y, t_mlx *param);
-/* Events */
-int	destroy_window(t_mlx **param);
+/* Close Window */
+int	destroy_window(t_mlx *param);
 /* Rotate matrix */
 void 	rx_matrix(double matrix[4][4], double radian);
 void	ry_matrix(double matrix[4][4], double radian);

@@ -8,6 +8,7 @@
 # define LEFT 65361
 # define RIGHT 65363
 # define C 99
+# define D 100
 # define I 105
 # define O 111
 # define P 112
