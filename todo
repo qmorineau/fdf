@@ -1,18 +1,9 @@
 valid map (every row have same size, else stop program)
-loading screen ?
-
 
 orthographic always square ? (need to adjust width and height to be square, or adapt it)
 4th row of the matrix usage ? to add to the m_to_point calculation (and so to the drawing one ?)
 stereographic line drawing and point linking to other different than orthographic / isometric
 
-if zoomed, optimisation (draw line only for the line in the screen ?)
-zoomed lagged idea to optimize ?
-
-gradient color -> calculate color of p1 && p2, calculate the difference between p1 && p2 (number of point), increment color every times it's needed ex : (yellow to red -> 5 points -> yellow, yellow-orange, orange, orange-red, red) 
-
 z_scale automatic calculation ?
-
-file w/ .fdf
 
 handle one press vs pressing with no release
