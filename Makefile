@@ -89,7 +89,7 @@ fclean:
 re: fclean all
 
 test: all
-	./$(NAME) "test_maps/julia.fdf"
+	./$(NAME) "test_maps/pyramide.fdf"
 
 leak: all
 	-valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "map.fdf"

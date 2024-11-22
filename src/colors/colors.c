@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:40:22 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:42:05 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/22 15:53:41 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,7 @@ int	calculate_color(t_mlx *param, int z_origin)
 	if (param->color == MAP)
 		return (do_map(param, z_origin));
 	else if (param->color == RAINBOW)
-		return (z_origin);
-	/* 	return (do_rainbow(param, z_origin)); */
+		return (do_rainbow(param, z_origin));
 	else
 		return (WHITE);
 }
