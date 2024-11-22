@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
 	param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
 	param->address = mlx_get_data_addr(param->img, &param->bits_per_pixel, &param->size_line, &param->endians);
 
-	printf("%d\n", param->endians);
+	printf("%d min, %d max\n", param->z_min, param->z_max);
 	centered_obj(param);
 	init_scaling(param);
 	do_projection(param);

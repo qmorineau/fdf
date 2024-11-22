@@ -1,6 +1,6 @@
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(LIBFT_INC) $(MLX_FLAGS) -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -I $(LIBFT_INC) $(MLX_FLAGS)
 MLX_FLAGS = -lX11 -lXext -lXrandr -lXrender -lXfixes -lm -lbsd
 
 # Directories
@@ -86,9 +86,9 @@ fclean:
 re: fclean all
 
 test: all
-	./$(NAME) "test_maps/42.fdf"
+	./$(NAME) "test_maps/pyramide.fdf"
 
 leak: all
-	valgrind --leak-check=full ./$(NAME) "map.txt"
+	-valgrind --leak-check=full --track-origins=yes ./$(NAME) "test_maps/pyramide.fdf"
 
 .PHONY: all clean fclean re test
