@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:40:22 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 18:02:56 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/22 18:36:41 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,15 +107,21 @@ int	do_map(t_mlx *param, int z_origin)
 
 int	do_temp(t_mlx *param, int z_origin)
 {
-	int rgb[3];
-	int rgb_bottom[3];
-	int rgb_top[3];
-	int diff_rgb[3];
+	int		rgb[3];
+	int		rgb_bottom[3];
+	int		rgb_top[3];
+	double	diff_rgb[3];
+	int		z_high;	
 
-	
 	retrieve_rgb(RED, rgb_top);
 	retrieve_rgb(BLUE, rgb_bottom);
-
+	diff_rgb[0] = (double) ((rgb_top[0] - rgb_bottom[0]) / (param->z_max + adjust_range(param)));
+	diff_rgb[1] = (double) ((rgb_top[1] - rgb_bottom[1]) / (param->z_max + adjust_range(param)));
+	diff_rgb[2] = (double) ((rgb_top[2] - rgb_bottom[2]) / (param->z_max + adjust_range(param)));
+	z_high = z_origin + adjust_range(param);
+	rgb[0] = ((int) z_high * diff_rgb[0]) + rgb_bottom[0];
+	rgb[1] = ((int) z_high * diff_rgb[1]) + rgb_bottom[1];
+	rgb[2] = ((int) z_high * diff_rgb[2]) + rgb_bottom[2];
 	return (create_rgb(rgb[0], rgb[1], rgb[2]));
 }
 
