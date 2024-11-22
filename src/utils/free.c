@@ -9,14 +9,18 @@ void	free_ptr(char **ptr)
 	}
 }
 
-void	free_tab(char **tab)
+void	free_tab(char ***tab)
 {
-	int i;
+	int		i;
+	char	**tmp;
 
 	i = 0;
-	while (tab[i])
+	tmp = *tab;
+	while (tmp[i])
 	{
-		free_ptr(&tab[i++]);
+		free_ptr(&tmp[i++]);
 	}
+	free(*tab);
+	*tab = NULL;
 }
 

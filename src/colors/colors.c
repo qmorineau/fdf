@@ -1,67 +1,5 @@
 #include "fdf.h"
 
-/* static int test(t_point p1, int axe)
-{
-	if (axe == X_AXE)
-	{
-		if ((int) p1.x % 3 == 0)
-			return (RED);
-		else if ((int) p1.x % 3 == 1)
-			return (GREEN);
-		else
-			return (BLUE);
-	}
-	else if (axe == Y_AXE)
-	{
-		if ((int) p1.y % 3 == 0)
-			return (RED);
-		else if ((int) p1.y % 3 == 1)
-			return (GREEN);
-		else
-			return (BLUE);
-	}
-	else
-	{
-		if ((int) p1.z % 3 == 0)
-			return (RED);
-		else if ((int) p1.z % 3 == 1)
-			return (GREEN);
-		else
-			return (BLUE);
-	}
-} */
-
-/* static int do_map(t_point p1, t_point p2)
-{
-	if (p1.z_origin != p2.z_origin)
-		return (GREEN);
-	else if (p1.z_origin == 0)
-		return (BLUE);
-	else if (p1.z_origin <= 10)
-		return (RED);
-	else if (p1.z_origin > 10)
-		return (RED);
-	else
-		return (WHITE);
-} */
-
-/* static int do_rainbow(int color1, int color2, int nbr_step, int actual_step)
-{
-
-} */
-/* 
-int color(t_mlx *param, t_point p1, t_point p2, int dif)
-{
-	if (param->color > RAINBOW)
-		param->color = STANDARD;
-	if (param->color == MAP)
-		return (do_map(p1, p2));
-	else if (param->color == RAINBOW)
-		return ();
-	else
-		return (WHITE);
-} */
-
 int adjust_range(t_mlx *param)
 {
 	int i;
@@ -99,26 +37,6 @@ void retrieve_rgb(int color, int rgb[3])
 	rgb[1] = color / 256;
 	color -= rgb[1] * 256;
 	rgb[2] = color;
-}
-
-int find_lowest_color(t_mlx *param)
-{
-	if (param->color == MAP)
-		return (BLUE);
-	else if (param->color == RAINBOW)
-		return (PURPLE);
-	else
-		return (WHITE);
-}
-
-int find_highest_color(t_mlx *param)
-{
-	if (param->color == MAP)
-		return (WHITE);
-	else if (param->color == RAINBOW)
-		return (RED);
-	else
-		return (WHITE);
 }
 
 int do_rainbow(t_mlx *param, int z_origin)
@@ -184,14 +102,10 @@ int calculate_color(t_mlx *param, int z_origin)
 	if (param->color == MAP)
 		return (do_map(param, z_origin));
 	else if (param->color == RAINBOW)
-		return (do_rainbow(param, z_origin));
+		return (z_origin);
+	/* 	return (do_rainbow(param, z_origin)); */
 	else
 		return (WHITE);
-	/* if (z_origin == param->z_min)
-		return (find_lowest_color(param));
-	else if (z_origin == param->z_max)
-		return (find_highest_color(param));
-	return (find_color_from_heigh(param, z_origin)); */
 }
 
 int next_color(int rgb1, int rgb2, double gradient_value)
@@ -268,7 +182,3 @@ int color_z(t_mlx *param, t_point p2, t_point p1, int dif)
 	tmp = (double) pxl_to_draw / (double) dif;
 	return (find_color(color1, color2, tmp));
 }
-
-/* 	
-	add - remove to correspond to the next point ex : p1 = 50.0.25 p2 = 60.0. 15, middle point will be 55.0.20
- */

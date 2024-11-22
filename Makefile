@@ -38,6 +38,7 @@ SRC_LIST = main.c\
 			utils/free.c\
 			utils/map_lst.c\
 			parsing.c\
+			error.c\
 			init.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_LIST))
@@ -86,7 +87,7 @@ fclean:
 re: fclean all
 
 test: all
-	./$(NAME) "test_maps/pyramide.fdf"
+	./$(NAME) "test_maps/42.fdf" 1
 
 leak: all
 	-valgrind --leak-check=full --track-origins=yes ./$(NAME) "test_maps/pyramide.fdf"

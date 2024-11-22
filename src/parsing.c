@@ -11,6 +11,7 @@ static int add_line(t_mlx *param, char *line, int y)
 	tab = ft_split(line, ' ');
 	if (!tab)
 	{
+		malloc_error();
 		free_ptr(&line);
 		return (0);
 	}
@@ -18,13 +19,21 @@ static int add_line(t_mlx *param, char *line, int y)
 	while (tab[tab_len])
 		tab_len++;
 	row = ft_calloc(tab_len + 1, sizeof(t_point *));
+	if (!row)
+	{
+		malloc_error();
+		free_ptr(&line);
+		return (0);
+	}
 	x = 0;
 	while (tab[x])
 	{
 		tmp = map_newpoint((double) x, (double)y, (double) ft_atoi(tab[x]));
 		if (!tmp)
 		{
+			malloc_error();
 			free_ptr(&line);
+			free_tab(&tab);
 			return (0);
 		}
 		row[x] = tmp;
@@ -32,9 +41,7 @@ static int add_line(t_mlx *param, char *line, int y)
 	}
 	param->x_max = (double) (x - 1);
 	param->map[y] = row;
-	free_tab(tab);
-	free(tab);
-	tab = NULL;
+	free_tab(&tab);
 	free_ptr(&line);
 	return (1);
 }
@@ -54,6 +61,7 @@ t_point ***init_map(t_point ***new, t_point ****old, int rows)
 		i++;
 	}
 	free(*old);
+	*old = NULL;
 	return (new);
 }
 

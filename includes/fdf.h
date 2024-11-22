@@ -79,7 +79,7 @@ void	map_iter(t_point ***map, void (*f)(t_point *));
 int		parsing(char *argv[], t_mlx *all);
 
 void	free_ptr(char **ptr);
-void	free_tab(char **tab);
+void	free_tab(char ***tab);
 
 void reset_xyz(t_point *node);
 void apply_transform(t_mlx *param, t_transform *data);
@@ -94,7 +94,9 @@ int color_z(t_mlx *param, t_point p1, t_point p2, int dif);
 
 
 double	convert_angle(double angle);
-
+/* Errors */
+void malloc_error(void);
+void wrong_fd_error(void);
 
 /* Init */
 t_mlx	*init_window(char *argv[]);

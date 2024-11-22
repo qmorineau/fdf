@@ -32,7 +32,7 @@ void init_scaling(t_mlx *param)
 		param->scale = scale_x;
 	else
 		param->scale = scale_y;
-	param->z_scale = param->scale / 14;
+	param->z_scale = (param->scale / (param->z_max - param->z_min)) * 10;
 	if (param->projection == ISOMETRIC)
 	{
 		param->scale *= 100;
