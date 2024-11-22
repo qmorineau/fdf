@@ -59,14 +59,27 @@ t_point ***init_map(t_point ***new, t_point ****old, int rows)
 	return (new);
 }
 
-/* void create_row(t_mlx *param, int y)
+int create_row(t_mlx *param, char *line, int y)
 {
+	t_point	***tmp;
 
-} */
+	tmp = ft_calloc(y + 2, sizeof(t_point **));
+	if (!tmp)
+	{
+		malloc_error();
+		return (0);
+	}
+	param->map = init_map(tmp, &param->map, y);
+	if (!add_line(param, line, y))
+	{
+		malloc_error();
+		return (0);
+	}
+	return (1);
+}
 
 int parsing(char *argv[], t_mlx *param)
 {
-	t_point	***tmp;
 	int		fd;
 	char	*line;
 	int		y;
@@ -78,20 +91,7 @@ int parsing(char *argv[], t_mlx *param)
 	y = 0;
 	while (line)
 	{
-		tmp = ft_calloc(y + 2, sizeof(t_point **));
-		if (!tmp)
-		{
-			while (line)
-			{
-				free_ptr(&line);
-				line = get_next_line(fd);
-			}
-			malloc_error();
-			close(fd);
-			return (0);
-		}
-		param->map = init_map(tmp, &param->map, y);
-		if (!add_line(param, line, y))
+		if (!create_row(param, line, y))
 		{
 			map_clear(&param->map);
 			while (line)
@@ -99,7 +99,6 @@ int parsing(char *argv[], t_mlx *param)
 				free_ptr(&line);
 				line = get_next_line(fd);
 			}
-			malloc_error();
 			close(fd);
 			return (0);
 		}
