@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 15:50:41 by qmorinea          #+#    #+#             */
+/*   Updated: 2024/11/22 15:51:27 by qmorinea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-static int add_line(t_mlx *param, char *line, int y)
+static int	add_line(t_mlx *param, char *line, int y)
 {
 	char	**tab;
 	int		x;
-	t_point **row;
-	t_point *tmp;
+	t_point	**row;
+	t_point	*tmp;
 	int		tab_len;
 
 	tab = ft_split(line, 32);
@@ -33,17 +45,17 @@ static int add_line(t_mlx *param, char *line, int y)
 		row[x] = tmp;
 		x++;
 	}
-	param->x_max = (double) (x - 1);
+	param->x_max = (double) x - 1;
 	param->map[y] = row;
 	free_tab(&tab);
 	free_ptr(&line);
 	return (1);
 }
 
-t_point ***init_map(t_point ***new, t_point ****old, int rows)
+t_point	***init_map(t_point ***new, t_point ****old, int rows)
 {
-	int i;
-	t_point ***tmp;
+	int		i;
+	t_point	***tmp;
 
 	i = 0;
 	if (!old)
@@ -78,7 +90,7 @@ int create_row(t_mlx *param, char *line, int y)
 	return (1);
 }
 
-int parsing(char *argv[], t_mlx *param)
+int	parsing(char *argv[], t_mlx *param)
 {
 	int		fd;
 	char	*line;
@@ -105,7 +117,7 @@ int parsing(char *argv[], t_mlx *param)
 		line = get_next_line(fd);
 		y++;
 	}
-	param->y_max = (double) (y - 1);
+	param->y_max = (double) y - 1;
 	close(fd);
 	return (1);
 }

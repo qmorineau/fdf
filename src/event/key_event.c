@@ -1,20 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_event.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 15:42:11 by qmorinea          #+#    #+#             */
+/*   Updated: 2024/11/22 15:43:59 by qmorinea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-void reset_xyz(t_point *node)
+void	reset_xyz(t_point *node)
 {
 	node->x = node->x_origin;
 	node->y = node->y_origin;
 	node->z = node->z_origin;
 }
 
-void change_projection(t_mlx *param)
+void	change_projection(t_mlx *param)
 {
 	param->projection++;
 	if (param->projection > STEREOGRAPHIC)
 		param->projection = ISOMETRIC;
 }
 
-void reset_transform(t_mlx *param)
+void	reset_transform(t_mlx *param)
 {
 	mlx_destroy_image(param->mlx_ptr, param->img);
 	param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
@@ -48,7 +60,7 @@ void apply_transform(t_mlx *param, t_transform *data)
 	translate(param, param->scale * data->tx, param->scale * data->ty, param->scale * data->tz);
 }
 
-int handle_keypress(int keycode, t_mlx *param)
+int	handle_keypress(int keycode, t_mlx *param)
 {
 	printf("key = %d\n", keycode);
 	if (keycode == X)
@@ -60,9 +72,9 @@ int handle_keypress(int keycode, t_mlx *param)
 	return (0);
 }
 
-int handle_keyrelease(int keycode, t_mlx *param)
+int	handle_keyrelease(int keycode, t_mlx *param)
 {
-    printf("Key pressed: %d\n", keycode);
+	printf("Key pressed: %d\n", keycode);
 	if (keycode == ESC)
 	{
 		mlx_loop_end(param->mlx_ptr);
@@ -103,5 +115,5 @@ int handle_keyrelease(int keycode, t_mlx *param)
 		param->transformation->tx--;
 	else if (keycode == RIGHT)
 		param->transformation->tx++;
-    return (0);
+	return (0);
 }

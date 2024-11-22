@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_lst.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 15:48:50 by qmorinea          #+#    #+#             */
+/*   Updated: 2024/11/22 15:48:54 by qmorinea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 t_point	*map_newpoint(double x, double y, double z)
@@ -43,7 +55,7 @@ void	map_clear(t_point ****map)
 
 void	map_iter(t_point ***map, void (*f)(t_point *))
 {
-	t_point **row;
+	t_point	**row;
 	int		i;
 	int		j;
 

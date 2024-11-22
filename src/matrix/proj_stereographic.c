@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   proj_stereographic.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 15:45:35 by qmorinea          #+#    #+#             */
+/*   Updated: 2024/11/22 15:45:55 by qmorinea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-static void stereo_matrix(double matrix[4][4])
+static void	stereo_matrix(double matrix[4][4])
 {
 	matrix[0][0] = 1;
 	matrix[0][1] = 0;
@@ -20,14 +32,14 @@ static void stereo_matrix(double matrix[4][4])
 	matrix[3][3] = 1;
 }
 
-void stereographic(t_mlx *param)
+void	stereographic(t_mlx *param)
 {
-	double longitude;
-	double latitude;
-	double center[4][4];
-	double projection[4][4];
-	double matrix[4][4];
-	t_point ***map;
+	double	longitude;
+	double	latitude;
+	double	center[4][4];
+	double	projection[4][4];
+	double	matrix[4][4];
+	t_point	***map;
 	int		i;
 	int		j;
 

@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   proj_orthographic.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 15:45:15 by qmorinea          #+#    #+#             */
+/*   Updated: 2024/11/22 15:45:28 by qmorinea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 void	ortho_matrix(double matrix[4][4])
 {
-	double z_near;
-	double right;
-	double bottom;
+	double	z_near;
+	double	right;
+	double	bottom;
 
 	right = WIDTH / 2;
 	bottom = HEIGHT / 2;
@@ -27,11 +39,11 @@ void	ortho_matrix(double matrix[4][4])
 	matrix[3][3] = 1;
 }
 
-void orthographic(t_mlx *param)
+void	orthographic(t_mlx *param)
 {
-	double center[4][4];
-	double projection[4][4];
-	double matrix[4][4];
+	double	center[4][4];
+	double	projection[4][4];
+	double	matrix[4][4];
 
 	center_win_matrix(center);
 	ortho_matrix(projection);

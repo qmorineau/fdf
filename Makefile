@@ -11,12 +11,14 @@ LIBFT_DIR = libft
 # Name
 NAME = fdf
 LIBFT = $(LIBFT_DIR)/libft.a
-MLX_LIB = /usr/local/lib/libmlx.a
+MLX_LIB = ./libmlx.a
+# MLX_LIB = /usr/local/lib/libmlx.a
 
 # Header
 INC = includes
 LIBFT_INC = libft/includes
-MLX_INC = /usr/local/include
+MLX_INC = .
+#MLX_INC = /usr/local/include
 
 # Source and Object files
 SRC_LIST = main.c\
@@ -87,7 +89,7 @@ fclean:
 re: fclean all
 
 test: all
-	./$(NAME) "test_maps/42.fdf"
+	./$(NAME) "test_maps/julia.fdf"
 
 leak: all
 	-valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "map.fdf"

@@ -1,14 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_mtx.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 15:47:26 by qmorinea          #+#    #+#             */
+/*   Updated: 2024/11/22 15:48:39 by qmorinea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-void set_point(t_point *point, double xyz[3])
+void	set_point(t_point *point, double xyz[3])
 {
 	point->x = xyz[0];
 	point->y = xyz[1];
 	point->z = xyz[2];
 }
-void m_to_point(t_mlx *param, double matrix[4][4])
+
+void	m_to_point(t_mlx *param, double matrix[4][4])
 {
-	t_point ***map;
+	t_point	***map;
 	int		i;
 	int		j;
 	double	xyz[3];
@@ -32,11 +45,11 @@ void m_to_point(t_mlx *param, double matrix[4][4])
 	}
 }
 
-void multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4])
+void	multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4])
 {
-	int i;
-	int j;
-	int k;
+	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
 	while (i < 4)
@@ -57,9 +70,9 @@ void multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4])
 	}
 }
 
-double convert_angle(double angle)
+double	convert_angle(double angle)
 {
-	double radian;
+	double	radian;
 
 	radian = (M_PI / 180) * angle;
 	return (radian);

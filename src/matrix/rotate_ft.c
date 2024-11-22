@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate_ft.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 15:46:15 by qmorinea          #+#    #+#             */
+/*   Updated: 2024/11/22 15:46:33 by qmorinea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-void rotate_x(t_mlx *param, int repeat)
+void	rotate_x(t_mlx *param, int repeat)
 {
 	double	rotate[4][4];
 	double	radian;
@@ -15,7 +27,7 @@ void rotate_x(t_mlx *param, int repeat)
 	m_to_point(param, rotate);
 }
 
-void rotate_y(t_mlx *param, int repeat)
+void	rotate_y(t_mlx *param, int repeat)
 {
 	double	rotate[4][4];
 	double	radian;
@@ -30,7 +42,7 @@ void rotate_y(t_mlx *param, int repeat)
 	m_to_point(param, rotate);
 }
 
-void rotate_z(t_mlx *param, int repeat)
+void	rotate_z(t_mlx *param, int repeat)
 {
 	double	rotate[4][4];
 	double	radian;

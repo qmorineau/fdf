@@ -1,22 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
+/*   Updated: 2024/11/22 15:52:43 by qmorinea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_H
-#define FDF_H
+# define FDF_H
 # include <stdlib.h>
 # include <math.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <string.h>
 # include <mlx.h>
-#include <fcntl.h>
+# include <fcntl.h>
 # include "libft.h"
 # include "key.h"
 # include "mouse.h"
 # include "color.h"
 
-# define HEIGHT 720
-# define WIDTH 720
+//# define HEIGHT 720
+//# define WIDTH 720
 # define DEEP 1000
-/* # define HEIGHT 720
-# define WIDTH 1080 */
+# define HEIGHT 1200
+# define WIDTH 1200
 
 # define ISOMETRIC 0
 # define ORTHOGRAPHIC 1
@@ -38,38 +50,38 @@ typedef struct s_point
 	double		x_origin;
 	double		y_origin;
 	double		z_origin;
-} t_point;
+}	t_point;
 
 typedef struct s_transform
 {
-	int rx;
-	int ry;
-	int rz;
-	int tx;
-	int ty;
-	int tz;
-} t_transform;
+	int	rx;
+	int	ry;
+	int	rz;
+	int	tx;
+	int	ty;
+	int	tz;
+}	t_transform;
 
 typedef struct s_mlx
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img;
-	void	*address;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endians;
-	t_point	***map;
-	t_transform *transformation;
-	double	scale;
-	double	z_scale;
-	int		x_max;
-	int		y_max;
-	int		z_min;
-	int		z_max;
-	int		key_press;
-	int		projection;
-	int		color;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	void		*img;
+	void		*address;
+	int			bits_per_pixel;
+	int			size_line;
+	int			endians;
+	t_point		***map;
+	t_transform	*transformation;
+	double		scale;
+	double		z_scale;
+	int			x_max;
+	int			y_max;
+	int			z_min;
+	int			z_max;
+	int			key_press;
+	int			projection;
+	int			color;
 }	t_mlx;
 
 t_point	*map_newpoint(double x, double y, double z);
@@ -81,34 +93,33 @@ int		parsing(char *argv[], t_mlx *all);
 void	free_ptr(char **ptr);
 void	free_tab(char ***tab);
 
-void reset_xyz(t_point *node);
-void apply_transform(t_mlx *param, t_transform *data);
+void	reset_xyz(t_point *node);
+void	apply_transform(t_mlx *param, t_transform *data);
 
 void	put_pixel_in_img(t_mlx *param, t_point p, int color);
-void draw_line(t_mlx *param);
+void	draw_line(t_mlx *param);
 
 
-int color_x(t_mlx *param, t_point p1, t_point p2, int dif);
-int color_y(t_mlx *param, t_point p1, t_point p2, int dif);
-int color_z(t_mlx *param, t_point p1, t_point p2, int dif);
-
+int		color_x(t_mlx *param, t_point p1, t_point p2, int dif);
+int		color_y(t_mlx *param, t_point p1, t_point p2, int dif);
+int		color_z(t_mlx *param, t_point p1, t_point p2, int dif);
 
 double	convert_angle(double angle);
 /* Errors */
-void malloc_error(void);
-void wrong_fd_error(void);
+void	malloc_error(void);
+void	wrong_fd_error(void);
 
 /* Init */
 t_mlx	*init_window(char *argv[]);
 /* Key Event */
-int handle_keyrelease(int keycode, t_mlx *param);
-int handle_keypress(int keycode, t_mlx *param);
+int		handle_keyrelease(int keycode, t_mlx *param);
+int		handle_keypress(int keycode, t_mlx *param);
 /* Mouse Event */
-int handle_mouse(int button, int x, int y, t_mlx *param);
+int		handle_mouse(int button, int x, int y, t_mlx *param);
 /* Close Window */
-int	destroy_window(t_mlx *param);
+int		destroy_window(t_mlx *param);
 /* Rotate matrix */
-void 	rx_matrix(double matrix[4][4], double radian);
+void	rx_matrix(double matrix[4][4], double radian);
 void	ry_matrix(double matrix[4][4], double radian);
 void	rz_matrix(double matrix[4][4], double radian);
 void	rotate_x(t_mlx *param, int repeat);

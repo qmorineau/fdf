@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 15:49:07 by qmorinea          #+#    #+#             */
+/*   Updated: 2024/11/22 15:49:45 by qmorinea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-static int init_param_transform(t_mlx *param)
+static int	init_param_transform(t_mlx *param)
 {
 	param->transformation = malloc(sizeof(t_transform));
 	if (!param->transformation)
@@ -29,11 +41,13 @@ void	destroying(t_mlx *param)
 	exit(0);
 }
 
-void init_z_min_max(t_mlx *param)
+void	init_z_min_max(t_mlx *param)
 {
-	int i = -1;
-	int j = -1;
+	int	i;
+	int	j;
 
+	i = -1;
+	j = -1;
 	param->z_min = param->map[0][0]->z_origin;
 	param->z_max = param->map[0][0]->z_origin;
 	while (param->map[++i])
@@ -49,7 +63,7 @@ void init_z_min_max(t_mlx *param)
 	}
 }
 
-t_mlx *init_window(char *argv[])
+t_mlx	*init_window(char *argv[])
 {
 	t_mlx	*param;
 

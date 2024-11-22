@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   colors.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 15:40:22 by qmorinea          #+#    #+#             */
+/*   Updated: 2024/11/22 15:42:05 by qmorinea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-int adjust_range(t_mlx *param)
+int	adjust_range(t_mlx *param)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (param->z_min - i > 0)
@@ -12,9 +24,9 @@ int adjust_range(t_mlx *param)
 	return (i);
 }
 
-int create_rgb(int red, int green, int blue)
+int	create_rgb(int red, int green, int blue)
 {
-	int color ;
+	int	color ;
 
 	color = 0;
 	color += (red * 65536);
@@ -23,7 +35,7 @@ int create_rgb(int red, int green, int blue)
 	return (color);
 }
 
-void retrieve_rgb(int color, int rgb[3])
+void	retrieve_rgb(int color, int rgb[3])
 {
 	if (color > 16777215 || color < 0)
 	{
@@ -39,12 +51,12 @@ void retrieve_rgb(int color, int rgb[3])
 	rgb[2] = color;
 }
 
-int do_rainbow(t_mlx *param, int z_origin)
+int	do_rainbow(t_mlx *param, int z_origin)
 {
-	int range[7];
-	double color;
-	double tmp;
-	int i;
+	int		range[7];
+	double	color;
+	double	tmp;
+	int		i;
 
 	range[0] = PURPLE;
 	range[1] = BLUE;
@@ -66,12 +78,12 @@ int do_rainbow(t_mlx *param, int z_origin)
 	return (range[i]);
 }
 
-int do_map(t_mlx *param, int z_origin)
+int	do_map(t_mlx *param, int z_origin)
 {
-	int range[4];
-	double color;
-	double tmp;
-	int i;
+	int		range[4];
+	double	color;
+	double	tmp;
+	int		i;
 
 	range[0] = GREEN;
 	range[1] = YELLOW;
@@ -82,7 +94,7 @@ int do_map(t_mlx *param, int z_origin)
 		return (BLUE);
 	else if (z_origin == param->z_max)
 		return (WHITE);
-	color = (double) param->z_max  / 4;
+	color = (double) param->z_max / 4;
 	i = 0;
 	tmp = color;
 	while (z_origin > tmp)
@@ -95,7 +107,7 @@ int do_map(t_mlx *param, int z_origin)
 
 
 
-int calculate_color(t_mlx *param, int z_origin)
+int	calculate_color(t_mlx *param, int z_origin)
 {
 	if (param->color > RAINBOW)
 		param->color = STANDARD;
@@ -108,9 +120,9 @@ int calculate_color(t_mlx *param, int z_origin)
 		return (WHITE);
 }
 
-int next_color(int rgb1, int rgb2, double gradient_value)
+int	next_color(int rgb1, int rgb2, double gradient_value)
 {
-	double tmp;
+	double	tmp;
 
 	tmp = abs(rgb1 - rgb2);
 	tmp *= gradient_value;
@@ -123,9 +135,9 @@ int next_color(int rgb1, int rgb2, double gradient_value)
 
 int find_color(int color1, int color2, double gradient_value)
 {
-	int rgb1[3];
-	int rgb2[3];
-	int new_color[3];
+	int	rgb1[3];
+	int	rgb2[3];
+	int	new_color[3];
 
 	retrieve_rgb(color1, rgb1);
 	retrieve_rgb(color2, rgb2);
@@ -137,11 +149,11 @@ int find_color(int color1, int color2, double gradient_value)
 
 int color_x(t_mlx *param, t_point p2, t_point p1, int dif)
 {
-	int		color1; 
+	int		color1;
 	int		color2;
 	int		pxl_to_draw;
 	double	tmp;
-		
+
 	color1 = calculate_color(param, p1.z_origin);
 	color2 = calculate_color(param, p2.z_origin);
 	if (p1.z_origin == p2.z_origin)
@@ -153,11 +165,11 @@ int color_x(t_mlx *param, t_point p2, t_point p1, int dif)
 
 int color_y(t_mlx *param, t_point p2, t_point p1, int dif)
 {
-	int		color1; 
+	int		color1;
 	int		color2;
 	int		pxl_to_draw;
 	double	tmp;
-		
+
 	color1 = calculate_color(param, p1.z_origin);
 	color2 = calculate_color(param, p2.z_origin);
 	if (p1.z_origin == p2.z_origin)
@@ -169,11 +181,11 @@ int color_y(t_mlx *param, t_point p2, t_point p1, int dif)
 
 int color_z(t_mlx *param, t_point p2, t_point p1, int dif)
 {
-	int		color1; 
+	int		color1;
 	int		color2;
 	int		pxl_to_draw;
 	double	tmp;
-		
+
 	color1 = calculate_color(param, p1.z_origin);
 	color2 = calculate_color(param, p2.z_origin);
 	if (p1.z_origin == p2.z_origin)

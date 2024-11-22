@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 15:49:51 by qmorinea          #+#    #+#             */
+/*   Updated: 2024/11/22 15:50:36 by qmorinea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-void put_pixel_in_img(t_mlx *param, t_point p, int color)
+void	put_pixel_in_img(t_mlx *param, t_point p, int color)
 {
-	char *dst;
+	char	*dst;
 
 	(void) color;
- 	dst = param->address + (int) p.y * param->size_line + (int) p.x * 4;
-	*(unsigned int* )dst = color;
+	dst = param->address + (int) p.y * param->size_line + (int) p.x * 4;
+		*(unsigned int* )dst = color;
 }
 
-void draw_line(t_mlx *param)
+void	draw_line(t_mlx *param)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
@@ -32,12 +44,12 @@ void draw_line(t_mlx *param)
 	}
 }
 
-void print(t_point *node)
+void	print(t_point *node)
 {
 	printf("x=%f, y=%f, z=%f\n", node->x, node->y, node->z);
 }
 
-int render_frame(t_mlx *param)
+int	render_frame(t_mlx *param)
 {
 	mlx_destroy_image(param->mlx_ptr, param->img);
 	param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
@@ -52,7 +64,7 @@ int render_frame(t_mlx *param)
 	return (0);
 }
 
-int is_fdf_file(char *argv)
+int	is_fdf_file(char *argv)
 {
 	size_t	len;
 
@@ -67,9 +79,9 @@ int is_fdf_file(char *argv)
 	}
 }
 
-void test_error(void)
+void	test_error(void)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < 100)
@@ -81,7 +93,7 @@ void test_error(void)
 
 int main(int argc, char *argv[])
 {
-	t_mlx *param;
+	t_mlx	*param;
 
 	//test_error();
 	if (argc != 2)
@@ -107,7 +119,7 @@ int main(int argc, char *argv[])
 	mlx_mouse_hook(param->win_ptr, handle_mouse, param);
 	mlx_hook(param->win_ptr, 3, 2, handle_keyrelease, param);
 	mlx_hook(param->win_ptr, 2, 1, handle_keypress, param);
-		
+
 	mlx_hook(param->win_ptr, 17, 0, destroy_window, param);
 	mlx_loop_hook(param->mlx_ptr, render_frame, param);
 	mlx_loop(param->mlx_ptr);
