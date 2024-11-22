@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:50:41 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:51:27 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:43:22 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int	is_fdf_file(char *argv)
+{
+	size_t	len;
+
+	len = ft_strlen(argv);
+	if (!ft_strncmp(&argv[len - 4], ".fdf", 4))
+		return (1);
+	else
+	{
+		ft_putstr_fd(strerror(9), 2);
+		ft_putchar_fd('\n', 2);
+		return (0);
+	}
+}
 
 static int	add_line(t_mlx *param, char *line, int y)
 {
@@ -52,7 +67,7 @@ static int	add_line(t_mlx *param, char *line, int y)
 	return (1);
 }
 
-t_point	***init_map(t_point ***new, t_point ****old, int rows)
+static t_point	***init_map(t_point ***new, t_point ****old, int rows)
 {
 	int		i;
 	t_point	***tmp;
@@ -71,7 +86,7 @@ t_point	***init_map(t_point ***new, t_point ****old, int rows)
 	return (new);
 }
 
-int create_row(t_mlx *param, char *line, int y)
+static int create_row(t_mlx *param, char *line, int y)
 {
 	t_point	***tmp;
 

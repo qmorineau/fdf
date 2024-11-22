@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:48:44 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:48:48 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:36:19 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,16 @@ void	free_tab(char ***tab)
 	}
 	free(*tab);
 	*tab = NULL;
+}
+
+void	free_wrong_parsing(t_mlx *param)
+{
+	map_clear(&param->map);
+	if (param->transformation)
+		free(param->transformation);
+	param->transformation = NULL;
+	free(param->mlx_ptr);
+	free(param);
+	param = NULL;
+	exit(0);
 }

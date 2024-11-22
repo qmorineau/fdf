@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:40:22 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:53:41 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/22 18:02:56 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,19 @@ int	do_map(t_mlx *param, int z_origin)
 	return (range[i]);
 }
 
+int	do_temp(t_mlx *param, int z_origin)
+{
+	int rgb[3];
+	int rgb_bottom[3];
+	int rgb_top[3];
+	int diff_rgb[3];
 
+	
+	retrieve_rgb(RED, rgb_top);
+	retrieve_rgb(BLUE, rgb_bottom);
+
+	return (create_rgb(rgb[0], rgb[1], rgb[2]));
+}
 
 int	calculate_color(t_mlx *param, int z_origin)
 {
@@ -113,6 +125,8 @@ int	calculate_color(t_mlx *param, int z_origin)
 		param->color = STANDARD;
 	if (param->color == MAP)
 		return (do_map(param, z_origin));
+	else if (param->color == TEMP)
+		return (do_temp(param, z_origin));
 	else if (param->color == RAINBOW)
 		return (do_rainbow(param, z_origin));
 	else

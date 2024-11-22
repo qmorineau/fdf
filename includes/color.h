@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:07 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:37:17 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:48:33 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define COLOR_H
 # define STANDARD 0
 # define MAP 1
-# define RAINBOW 2
+# define TEMP 2
+# define RAINBOW 3
 # define RED 0xFF0000
 # define ORANGE 0xFFA500
 # define YELLOW 0xFFFF00

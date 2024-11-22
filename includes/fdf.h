@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:52:43 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:45:50 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,22 +84,27 @@ typedef struct s_mlx
 	int			color;
 }	t_mlx;
 
+void	reset_xyz(t_point *node);
+void	apply_transform(t_mlx *param, t_transform *data);
+
+/* Bresenham */
+void	put_pixel_in_img(t_mlx *param, t_point p, int color);
+void	draw_line(t_mlx *param);
+/* Map List */
 t_point	*map_newpoint(double x, double y, double z);
 void	map_clear(t_point ****map);
 void	map_iter(t_point ***map, void (*f)(t_point *));
 
-int		parsing(char *argv[], t_mlx *all);
-
+/* Free */
 void	free_ptr(char **ptr);
 void	free_tab(char ***tab);
-
-void	reset_xyz(t_point *node);
-void	apply_transform(t_mlx *param, t_transform *data);
-
-void	put_pixel_in_img(t_mlx *param, t_point p, int color);
-void	draw_line(t_mlx *param);
+void	free_wrong_parsing(t_mlx *param);
 
 
+/* Parsing */
+int		is_fdf_file(char *argv);
+int		parsing(char *argv[], t_mlx *all);
+/* Colors */
 int		color_x(t_mlx *param, t_point p1, t_point p2, int dif);
 int		color_y(t_mlx *param, t_point p1, t_point p2, int dif);
 int		color_z(t_mlx *param, t_point p1, t_point p2, int dif);
@@ -108,7 +113,10 @@ double	convert_angle(double angle);
 /* Errors */
 void	malloc_error(void);
 void	wrong_fd_error(void);
-
+/* Rendering */
+void	draw_line(t_mlx *param);
+void	put_pixel_in_img(t_mlx *param, t_point p, int color);
+int	render_frame(t_mlx *param);
 /* Init */
 t_mlx	*init_window(char *argv[]);
 /* Key Event */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:49:07 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:49:45 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/22 17:36:41 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,6 @@ static int	init_param_transform(t_mlx *param)
 	param->transformation->ty = 0;
 	param->transformation->tz = 0;
 	return (1);
-}
-
-void	destroying(t_mlx *param)
-{
-	map_clear(&param->map);
-	if (param->transformation)
-		free(param->transformation);
-	param->transformation = NULL;
-	free(param->mlx_ptr);
-	free(param);
-	param = NULL;
-	exit(0);
 }
 
 void	init_z_min_max(t_mlx *param)
@@ -78,9 +66,9 @@ t_mlx	*init_window(char *argv[])
 	param->color = STANDARD;
 	param->transformation = NULL;
 	if (!parsing(argv, param))
-		destroying(param);
+		free_wrong_parsing(param);
 	if (!init_param_transform(param))
-		destroying(param);
+		free_wrong_parsing(param);
 	init_z_min_max(param);
 	param->mlx_ptr = mlx_init();
 	param->win_ptr = mlx_new_window(param->mlx_ptr, WIDTH, HEIGHT, "fdf");
