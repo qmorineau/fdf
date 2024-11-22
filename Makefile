@@ -87,9 +87,9 @@ fclean:
 re: fclean all
 
 test: all
-	./$(NAME) "test_maps/42.fdf" 1
+	./$(NAME) "test_maps/42.fdf"
 
 leak: all
-	-valgrind --leak-check=full --track-origins=yes ./$(NAME) "test_maps/pyramide.fdf"
+	-valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "map.fdf"
 
 .PHONY: all clean fclean re test

@@ -83,7 +83,7 @@ int main(int argc, char *argv[])
 {
 	t_mlx *param;
 
-	test_error();
+	//test_error();
 	if (argc != 2)
 	{
 		ft_putstr_fd(strerror(7), 2);
@@ -93,6 +93,8 @@ int main(int argc, char *argv[])
 	if (!is_fdf_file(argv[1]))
 		return (0);
 	param = init_window(argv);
+	if (!param)
+		return (0);
 	param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
 	param->address = mlx_get_data_addr(param->img, &param->bits_per_pixel, &param->size_line, &param->endians);
 

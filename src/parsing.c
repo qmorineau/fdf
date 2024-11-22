@@ -8,21 +8,16 @@ static int add_line(t_mlx *param, char *line, int y)
 	t_point *tmp;
 	int		tab_len;
 
-	tab = ft_split(line, ' ');
+	tab = ft_split(line, 32);
 	if (!tab)
-	{
-		malloc_error();
-		free_ptr(&line);
 		return (0);
-	}
 	tab_len = 0;
 	while (tab[tab_len])
 		tab_len++;
 	row = ft_calloc(tab_len + 1, sizeof(t_point *));
 	if (!row)
 	{
-		malloc_error();
-		free_ptr(&line);
+		free_tab(&tab);
 		return (0);
 	}
 	x = 0;
@@ -31,8 +26,7 @@ static int add_line(t_mlx *param, char *line, int y)
 		tmp = map_newpoint((double) x, (double)y, (double) ft_atoi(tab[x]));
 		if (!tmp)
 		{
-			malloc_error();
-			free_ptr(&line);
+			free(row);
 			free_tab(&tab);
 			return (0);
 		}
@@ -65,7 +59,12 @@ t_point ***init_map(t_point ***new, t_point ****old, int rows)
 	return (new);
 }
 
-int parsing(char *argv[], t_mlx *all)
+/* void create_row(t_mlx *param, int y)
+{
+
+} */
+
+int parsing(char *argv[], t_mlx *param)
 {
 	t_point	***tmp;
 	int		fd;
@@ -81,14 +80,33 @@ int parsing(char *argv[], t_mlx *all)
 	{
 		tmp = ft_calloc(y + 2, sizeof(t_point **));
 		if (!tmp)
+		{
+			while (line)
+			{
+				free_ptr(&line);
+				line = get_next_line(fd);
+			}
+			malloc_error();
+			close(fd);
 			return (0);
-		all->map = init_map(tmp, &all->map, y);
-		if (!add_line(all, line, y))
+		}
+		param->map = init_map(tmp, &param->map, y);
+		if (!add_line(param, line, y))
+		{
+			map_clear(&param->map);
+			while (line)
+			{
+				free_ptr(&line);
+				line = get_next_line(fd);
+			}
+			malloc_error();
+			close(fd);
 			return (0);
+		}
 		line = get_next_line(fd);
 		y++;
 	}
-	all->y_max = (double) (y - 1);
+	param->y_max = (double) (y - 1);
 	close(fd);
 	return (1);
 }
