@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:42:11 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:43:59 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/23 12:17:16 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,72 +48,118 @@ void	reset_transform(t_mlx *param)
 
 void apply_transform(t_mlx *param, t_transform *data)
 {
-	if (data->rx == 120)
-		data->rx = 0;
-	rotate_x(param, data->rx);
-	if (data->ry == 120)
-		data->ry = 0;
-	rotate_y(param, data->ry);
-	if (data->rz == 120)
-		data->rz = 0;
-	rotate_z(param, data->rz);
+		if (data->rx == 360)
+			data->rx = 0;
+		rotate_x(param, data->rx);
+		if (data->ry == 360)
+			data->ry = 0;
+		rotate_y(param, data->ry);
+		if (data->rz == 360)
+			data->rz = 0;
+		rotate_z(param, data->rz);
 	translate(param, param->scale * data->tx, param->scale * data->ty, param->scale * data->tz);
 }
 
 int	handle_keypress(int keycode, t_mlx *param)
 {
-	printf("key = %d\n", keycode);
-	if (keycode == X)
-		param->transformation->rx++;
-	else if (keycode == Y)
-		param->transformation->ry++;
-	else if (keycode == Z)
-		param->transformation->rz++;
+	if (keycode == X || keycode == Y || keycode == Z)
+	{
+		if (param->projection != ORTHOGRAPHIC)
+		{
+			param->key_press = keycode;
+			return (0);
+		}
+	}
+	else if (keycode == UP || keycode == DOWN || keycode == LEFT || keycode == RIGHT || keycode == S || keycode == D)
+	{
+		param->key_press = keycode;
+		return (0);
+	}
 	return (0);
 }
 
 int	handle_keyrelease(int keycode, t_mlx *param)
 {
-	printf("Key pressed: %d\n", keycode);
-	if (keycode == ESC)
+	if (keycode == X || keycode == Y || keycode == Z)
 	{
-		mlx_loop_end(param->mlx_ptr);
-		destroy_window(param);
+		if (param->projection != ORTHOGRAPHIC)
+		{
+			param->key_press = 0;
+			return (0);
+		}
 	}
-	else if (keycode == I)
-		scaling_percent(param, 110);
-	else if (keycode == O)
-		scaling_percent(param, 90);
-	else if (keycode == C)
-		reset_translate(param);
-	else if (keycode == V)
-		param->color++;
-	else if (keycode == P)
+	else if (keycode == UP || keycode == DOWN || keycode == LEFT || keycode == RIGHT || keycode == S || keycode == D)
 	{
-		change_projection(param);
-		map_iter(param->map, reset_xyz);
-		centered_obj(param);
-		init_scaling(param);
-		apply_transform(param, param->transformation);
-		do_projection(param);
-		draw_line(param);
-	}
-	else if (keycode == R)
-	{
-		reset_transform(param);
+		param->key_press = 0;
 		return (0);
 	}
-	else if (keycode == S)
-		param->z_scale += param->scale / 20;
-	else if (keycode == D)
-		param->z_scale -= param->scale / 20;
-	else if (keycode == UP)
-		param->transformation->ty--;
-	else if (keycode == DOWN)
-		param->transformation->ty++;
-	else if (keycode == LEFT)
-		param->transformation->tx--;
-	else if (keycode == RIGHT)
-		param->transformation->tx++;
+	if (param->key_press == 0)
+	{
+		if (keycode == ESC)
+		{
+			mlx_loop_end(param->mlx_ptr);
+			destroy_window(param);
+		}
+		if (keycode == X)
+			param->transformation->rx++;
+		else if (keycode == Y)
+			param->transformation->ry++;
+		else if (keycode == Z)
+			param->transformation->rz++;
+		else if (keycode == I)
+			scaling_percent(param, 110);
+		else if (keycode == O)
+			scaling_percent(param, 90);
+		else if (keycode == C)
+			reset_translate(param);
+		else if (keycode == V)
+			param->color++;
+		else if (keycode == P)
+		{
+			change_projection(param);
+			map_iter(param->map, reset_xyz);
+			centered_obj(param);
+			init_scaling(param);
+			apply_transform(param, param->transformation);
+			do_projection(param);
+			draw_line(param);
+		}
+		else if (keycode == R)
+		{
+			reset_transform(param);
+			return (0);
+		}
+		else
+			return (0);
+		render_frame(param);
+	}
+	return (0);
+}
+
+
+int handle_hook(t_mlx *param)
+{
+	if (param->key_press > 0)
+	{
+		if (param->key_press == X)
+			param->transformation->rx++;
+		else if (param->key_press == Y)
+			param->transformation->ry++;
+		else if (param->key_press == Z)
+			param->transformation->rz++;
+		else if (param->key_press == UP)
+			param->transformation->ty--;
+		else if (param->key_press == DOWN)
+			param->transformation->ty++;
+		else if (param->key_press == LEFT)
+			param->transformation->tx--;
+		else if (param->key_press == RIGHT)
+			param->transformation->tx++;
+		else if (param->key_press == S)
+			param->z_scale += param->scale / 20;
+		else if (param->key_press == D)
+			param->z_scale -= param->scale / 20;
+		render_frame(param);
+	}
 	return (0);
 }

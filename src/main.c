@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:49:51 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 17:47:07 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/23 11:43:29 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,20 @@ int main(int argc, char *argv[])
 	param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
 	param->address = mlx_get_data_addr(param->img, &param->bits_per_pixel, &param->size_line, &param->endians);
 
+
+	param->key_press = 0;
+
+
 	centered_obj(param);
 	init_scaling(param);
 	do_projection(param);
 	draw_line(param);
 	mlx_put_image_to_window(param->mlx_ptr, param->win_ptr, param->img, 0, 0);
-
 	mlx_mouse_hook(param->win_ptr, handle_mouse, param);
-	mlx_hook(param->win_ptr, 3, 2, handle_keyrelease, param);
-	mlx_hook(param->win_ptr, 2, 1, handle_keypress, param);
-
+	mlx_hook(param->win_ptr, 3, 1L<<1, handle_keyrelease, param);
+	mlx_hook(param->win_ptr, 2, 1L<<0, handle_keypress, param);
 	mlx_hook(param->win_ptr, 17, 0, destroy_window, param);
-	mlx_loop_hook(param->mlx_ptr, render_frame, param);
+	mlx_loop_hook(param->mlx_ptr, handle_hook, param);
 	mlx_loop(param->mlx_ptr);
 
 	mlx_destroy_image(param->mlx_ptr, param->img);

@@ -6,15 +6,15 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:07 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 17:48:33 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/23 12:12:49 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
 # define COLOR_H
 # define STANDARD 0
-# define MAP 1
-# define TEMP 2
+# define TEMP 1
+# define MAP 2
 # define RAINBOW 3
 # define RED 0xFF0000
 # define ORANGE 0xFFA500

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_ft.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:15 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:46:33 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/23 12:11:19 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	rotate_x(t_mlx *param, int repeat)
 	double	angle;
 
 	if (param->projection == ISOMETRIC)
-		angle = 3;
+		angle = 1;
 	else if (param->projection == ORTHOGRAPHIC)
 		angle = 90;
 	radian = convert_angle(angle * repeat);
@@ -34,7 +34,7 @@ void	rotate_y(t_mlx *param, int repeat)
 	double	angle;
 
 	if (param->projection == ISOMETRIC)
-		angle = 3;
+		angle = 1;
 	else if (param->projection == ORTHOGRAPHIC)
 		angle = 90;
 	radian = convert_angle(angle * repeat);
@@ -49,7 +49,7 @@ void	rotate_z(t_mlx *param, int repeat)
 	double	angle;
 
 	if (param->projection == ISOMETRIC)
-		angle = 3;
+		angle = 1;
 	else if (param->projection == ORTHOGRAPHIC)
 		angle = 90;
 	radian = convert_angle(angle * repeat);

@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 17:45:50 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/23 11:16:12 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 # include "mouse.h"
 # include "color.h"
 
-//# define HEIGHT 720
-//# define WIDTH 720
+# define HEIGHT 720
+# define WIDTH 720
 # define DEEP 1000
-# define HEIGHT 1200
-# define WIDTH 1200
+//# define HEIGHT 1200
+//# define WIDTH 1200
 
 # define ISOMETRIC 0
 # define ORTHOGRAPHIC 1
@@ -122,6 +122,7 @@ t_mlx	*init_window(char *argv[]);
 /* Key Event */
 int		handle_keyrelease(int keycode, t_mlx *param);
 int		handle_keypress(int keycode, t_mlx *param);
+int		handle_hook(t_mlx *param);
 /* Mouse Event */
 int		handle_mouse(int button, int x, int y, t_mlx *param);
 /* Close Window */

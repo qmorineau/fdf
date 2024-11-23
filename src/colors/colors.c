@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:40:22 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 18:36:41 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/22 23:46:36 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,10 @@
 
 int	adjust_range(t_mlx *param)
 {
-	int	i;
-
-	i = 0;
-	while (param->z_min - i > 0)
-		i--;
-	while (param->z_min + i < 0)
-		i++;
-	return (i);
+	if (param->z_min > 0)
+		return (-param->z_min);
+	else
+		return (param->z_min);
 }
 
 int	create_rgb(int red, int green, int blue)
@@ -110,17 +106,28 @@ int	do_temp(t_mlx *param, int z_origin)
 	int		rgb[3];
 	int		rgb_bottom[3];
 	int		rgb_top[3];
-	double	diff_rgb[3];
+	int	diff_rgb[3];
 	int		z_high;	
-
+	
+	(void) param;
+	//printf("oui\n");
 	retrieve_rgb(RED, rgb_top);
+	//printf("top\n");
 	retrieve_rgb(BLUE, rgb_bottom);
-	diff_rgb[0] = (double) ((rgb_top[0] - rgb_bottom[0]) / (param->z_max + adjust_range(param)));
-	diff_rgb[1] = (double) ((rgb_top[1] - rgb_bottom[1]) / (param->z_max + adjust_range(param)));
-	diff_rgb[2] = (double) ((rgb_top[2] - rgb_bottom[2]) / (param->z_max + adjust_range(param)));
+	//printf("bottom\n");
+	//printf("test : %f\n", (float) (rgb_top[0] - rgb_bottom[0]));
+	diff_rgb[0] = ((rgb_top[0] - rgb_bottom[0]) / (param->z_max + adjust_range(param)));
+	//printf("%d\n", diff_rgb[0]);
+	diff_rgb[1] = ((rgb_top[1] - rgb_bottom[1]) / (param->z_max + adjust_range(param)));
+	//printf("%d\n", diff_rgb[1]);
+	diff_rgb[2] = ((rgb_top[2] - rgb_bottom[2]) / (param->z_max + adjust_range(param)));
+	//printf("%d\n", diff_rgb[2]);
 	z_high = z_origin + adjust_range(param);
+	//printf("1\n");
 	rgb[0] = ((int) z_high * diff_rgb[0]) + rgb_bottom[0];
+	//printf("2\n");
 	rgb[1] = ((int) z_high * diff_rgb[1]) + rgb_bottom[1];
+	//printf("3\n");
 	rgb[2] = ((int) z_high * diff_rgb[2]) + rgb_bottom[2];
 	return (create_rgb(rgb[0], rgb[1], rgb[2]));
 }
