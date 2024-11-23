@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:07 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:46:13 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/24 00:42:35 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,17 @@ void	do_projection(t_mlx *param)
 		isometric(param);
 	else if (param->projection == STEREOGRAPHIC)
 		stereographic(param);
+}
+
+void	change_projection(t_mlx *param)
+{
+	param->projection++;
+	if (param->projection > STEREOGRAPHIC)
+		param->projection = ISOMETRIC;
+	map_iter(param->map, reset_xyz);
+	centered_obj(param);
+	init_scaling(param);
+	apply_transform(param, param->transformation);
+	do_projection(param);
+	draw_line(param);
 }

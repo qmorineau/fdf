@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:42:11 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/23 12:17:16 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/24 00:57:30 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,6 @@ void	reset_xyz(t_point *node)
 	node->x = node->x_origin;
 	node->y = node->y_origin;
 	node->z = node->z_origin;
-}
-
-void	change_projection(t_mlx *param)
-{
-	param->projection++;
-	if (param->projection > STEREOGRAPHIC)
-		param->projection = ISOMETRIC;
 }
 
 void	reset_transform(t_mlx *param)
@@ -78,6 +71,12 @@ int	handle_keypress(int keycode, t_mlx *param)
 	return (0);
 }
 
+
+/* int test(int keycode, t_mlx *param)
+{
+
+} */
+
 int	handle_keyrelease(int keycode, t_mlx *param)
 {
 	if (keycode == X || keycode == Y || keycode == Z)
@@ -96,10 +95,7 @@ int	handle_keyrelease(int keycode, t_mlx *param)
 	if (param->key_press == 0)
 	{
 		if (keycode == ESC)
-		{
-			mlx_loop_end(param->mlx_ptr);
 			destroy_window(param);
-		}
 		if (keycode == X)
 			param->transformation->rx++;
 		else if (keycode == Y)
@@ -115,15 +111,7 @@ int	handle_keyrelease(int keycode, t_mlx *param)
 		else if (keycode == V)
 			param->color++;
 		else if (keycode == P)
-		{
 			change_projection(param);
-			map_iter(param->map, reset_xyz);
-			centered_obj(param);
-			init_scaling(param);
-			apply_transform(param, param->transformation);
-			do_projection(param);
-			draw_line(param);
-		}
 		else if (keycode == R)
 		{
 			reset_transform(param);

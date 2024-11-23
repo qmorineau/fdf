@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_window.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:36:03 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:36:03 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/24 00:40:33 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	destroy_window(t_mlx *param)
 {
+	mlx_loop_end(param->mlx_ptr);
 	mlx_destroy_image(param->mlx_ptr, param->img);
 	map_clear(&param->map);
 	mlx_destroy_window(param->mlx_ptr, param->win_ptr);

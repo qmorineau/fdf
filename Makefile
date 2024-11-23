@@ -22,16 +22,16 @@ MLX_INC = .
 
 # Source and Object files
 SRC_LIST = main.c\
-			matrix/center_mtx.c\
 			matrix/utils_mtx.c\
-			matrix/projection.c\
-			matrix/proj_orthographic.c\
-			matrix/proj_isometric.c\
-			matrix/proj_stereographic.c\
+			matrix/projection/projection.c\
+			matrix/projection/orthographic.c\
+			matrix/projection/isometric.c\
+			matrix/projection/stereographic.c\
 			matrix/rotate_ft.c\
 			matrix/rotate_mtx.c\
-			matrix/scale_mtx.c\
-			matrix/translate_mtx.c\
+			matrix/centering.c\
+			matrix/scaling.c\
+			matrix/translating.c\
 			algorithm/bresenham.c\
 			event/destroy_window.c\
 			event/key_event.c\
@@ -60,6 +60,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/utils
 	@mkdir -p $(OBJ_DIR)/matrix
+	@mkdir -p $(OBJ_DIR)/matrix/projection
 	@mkdir -p $(OBJ_DIR)/algorithm
 	@mkdir -p $(OBJ_DIR)/colors
 	@mkdir -p $(OBJ_DIR)/event
@@ -90,7 +91,7 @@ fclean:
 re: fclean all
 
 test: all
-	./$(NAME) "test_maps/pyramide.fdf"
+	./$(NAME) "test_maps/42.fdf"
 
 leak: all
 	-valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "map.fdf"
