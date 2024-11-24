@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scale_mtx.c                                        :+:      :+:    :+:   */
+/*   scaling.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:47 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:47:09 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/24 11:19:53 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,26 @@ void	scale_matrix(t_mlx *param, double matrix[4][4])
 	matrix[2][0] = 0;
 	matrix[2][1] = 0;
 	matrix[2][2] = param->z_scale;
+	matrix[2][3] = 0;
+	matrix[3][0] = 0;
+	matrix[3][1] = 0;
+	matrix[3][2] = 0;
+	matrix[3][3] = 1;
+}
+
+void	stereo_scale_matrix(t_mlx *param, double matrix[4][4])
+{
+	matrix[0][0] = param->scale;
+	matrix[0][1] = 0;
+	matrix[0][2] = 0;
+	matrix[0][3] = 0;
+	matrix[1][0] = 0;
+	matrix[1][1] = param->scale;
+	matrix[1][2] = 0;
+	matrix[1][3] = 0;
+	matrix[2][0] = 0;
+	matrix[2][1] = 0;
+	matrix[2][2] = 1;
 	matrix[2][3] = 0;
 	matrix[3][0] = 0;
 	matrix[3][1] = 0;

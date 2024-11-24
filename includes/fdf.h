@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 01:08:15 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/24 11:24:07 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ void	reset_xyz(t_point *node);
 double	convert_angle(double angle);
 /* Scale matrix */
 void	scale_matrix(t_mlx *param, double matrix[4][4]);
+void	stereo_scale_matrix(t_mlx *param, double matrix[4][4]);
 void	init_scaling(t_mlx *param);
 void	scaling_percent(t_mlx *param, double percent);
 #endif
