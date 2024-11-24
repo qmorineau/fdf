@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   translate_mtx.c                                    :+:      :+:    :+:   */
+/*   translating.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:47:14 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:47:23 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/24 13:46:07 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	translate_matrix(double matrix[4][4], double x, double y, double z)
+void	translate_matrix(double matrix[4][4], double x, double y, double z)
 {
 	matrix[0][0] = 1;
 	matrix[0][1] = 0;

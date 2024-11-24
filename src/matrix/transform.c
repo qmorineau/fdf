@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:04:16 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/24 01:10:45 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/24 13:15:01 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ void	reset_transform(t_mlx *param)
 
 void apply_transform(t_mlx *param, t_transform *data)
 {
-		if (data->rx == 360)
-			data->rx = 0;
-		rotate_x(param, data->rx);
-		if (data->ry == 360)
-			data->ry = 0;
-		rotate_y(param, data->ry);
-		if (data->rz == 360)
-			data->rz = 0;
-		rotate_z(param, data->rz);
+	if (data->rx == 360)
+		data->rx = 0;
+	rotate_x(param, data->rx);
+	if (data->ry == 360)
+		data->ry = 0;
+	rotate_y(param, data->ry);
+	if (data->rz == 360)
+		data->rz = 0;
+	rotate_z(param, data->rz);
 	translate(param, param->scale * data->tx, param->scale * data->ty, param->scale * data->tz);
 }

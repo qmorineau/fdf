@@ -11,3 +11,5 @@ set no repeat key => xset -r
 set repeat key => xset r
 
 protect win and mlx ptr
+
+bug rotate w/ stere (problem in the y driving, can't print p1 / p2);

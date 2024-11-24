@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 11:24:07 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/24 13:56:21 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	wrong_fd_error(void);
 /* Rendering */
 void	draw_line(t_mlx *param);
 void	put_pixel_in_img(t_mlx *param, t_point p, int color);
-int	render_frame(t_mlx *param);
+int		render_frame(t_mlx *param);
 /* Init */
 t_mlx	*init_window(char *argv[]);
 /* Key Event */
@@ -144,6 +144,7 @@ void	orthographic(t_mlx *param);
 void	isometric(t_mlx *param);
 void	stereographic(t_mlx *param);
 /* Translate matrix */
+void	translate_matrix(double matrix[4][4], double x, double y, double z);
 void	translate(t_mlx *param, double x, double y, double z);
 void	reset_translate(t_mlx *param);
 /* Utils matrix */
@@ -153,7 +154,6 @@ void	reset_xyz(t_point *node);
 double	convert_angle(double angle);
 /* Scale matrix */
 void	scale_matrix(t_mlx *param, double matrix[4][4]);
-void	stereo_scale_matrix(t_mlx *param, double matrix[4][4]);
 void	init_scaling(t_mlx *param);
 void	scaling_percent(t_mlx *param, double percent);
 #endif

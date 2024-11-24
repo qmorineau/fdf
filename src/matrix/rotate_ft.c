@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:15 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 11:46:35 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/24 13:44:40 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ void	rotate_x(t_mlx *param, int repeat)
 	double	radian;
 	double	angle;
 
+	angle = 1;
 	if (param->projection == ISOMETRIC)
 		angle = 1;
 	else if (param->projection == ORTHOGRAPHIC)
 		angle = 90;
-	else
+	else if (param->projection == STEREOGRAPHIC)
 		angle = 1;
 	radian = convert_angle(angle * repeat);
 	rx_matrix(rotate, radian);
