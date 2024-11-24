@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:42:11 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 11:41:14 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/24 14:26:22 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,17 @@ int	handle_keypress(int keycode, t_mlx *param)
 	return (0);
 }
 
+void add_to_scaling_z(t_mlx *param, int sign)
+{
+	int tmp;
+
+	if (param->projection != STEREOGRAPHIC)
+	{
+		tmp = param->scale / 20;
+		param->z_scale += (tmp * sign);
+	}
+}
+
 int handle_hook(t_mlx *param)
 {
 	if (param->key_press > 0)
@@ -99,9 +110,9 @@ int handle_hook(t_mlx *param)
 		else if (param->key_press == RIGHT)
 			param->transformation->tx++;
 		else if (param->key_press == S)
-			param->z_scale += param->scale / 20;
+			add_to_scaling_z(param, 1);
 		else if (param->key_press == D)
-			param->z_scale -= param->scale / 20;
+			add_to_scaling_z(param, -1);
 		render_frame(param);
 	}
 	return (0);
