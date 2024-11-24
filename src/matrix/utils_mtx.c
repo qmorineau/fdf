@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:47:26 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 01:05:37 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/24 01:50:51 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,23 @@ void	m_to_point(t_mlx *param, double matrix[4][4])
 	int		i;
 	int		j;
 	double	xyz[3];
+	double	w;
 
 	i = -1;
-	j = -1;
 	map = param->map;
 	while (map[++i])
 	{
 		j = -1;
 		while (map[i][++j])
 		{
-			xyz[0] = (matrix[0][0] * map[i][j]->x) + (matrix[0][1]
-				* map[i][j]->y) + (matrix[0][2] * map[i][j]->z) + matrix[0][3];
-			xyz[1] = (matrix[1][0] * map[i][j]->x) + (matrix[1][1]
-				* map[i][j]->y) + (matrix[1][2] * map[i][j]->z) + matrix[1][3];
-			xyz[2] = (matrix[2][0] * map[i][j]->x) + (matrix[2][1]
-				* map[i][j]->y) + (matrix[2][2] * map[i][j]->z) + matrix[2][3];
+			w  = matrix[3][0] * map[i][j]->x + matrix[3][1]
+				* map[i][j]->y + matrix[3][2] * map[i][j]->z + matrix[3][3];
+			xyz[0] = matrix[0][0] * map[i][j]->x + matrix[0][1] * map[i][j]->y
+				+ matrix[0][2] * map[i][j]->z + matrix[0][3] / w;
+			xyz[1] = matrix[1][0] * map[i][j]->x + matrix[1][1] * map[i][j]->y
+				+ matrix[1][2] * map[i][j]->z + matrix[1][3] / w;
+			xyz[2] = matrix[2][0] * map[i][j]->x + matrix[2][1] * map[i][j]->y
+				+ matrix[2][2] * map[i][j]->z + matrix[2][3] / w;
 			set_point(map[i][j], xyz);
 		}
 	}

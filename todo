@@ -10,3 +10,5 @@ handle one press vs pressing with no release
 
 set no repeat key => xset -r
 set repeat key => xset r
+
+protect win and mlx ptr

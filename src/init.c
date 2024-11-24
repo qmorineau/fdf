@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:49:07 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 17:36:41 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/24 01:18:33 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ t_mlx	*init_window(char *argv[])
 	param->projection = ISOMETRIC;
 	param->color = STANDARD;
 	param->transformation = NULL;
+	param->key_press = 0;
 	if (!parsing(argv, param))
 		free_wrong_parsing(param);
 	if (!init_param_transform(param))
