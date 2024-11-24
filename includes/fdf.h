@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 00:39:46 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/24 01:08:15 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,23 +84,21 @@ typedef struct s_mlx
 	int			color;
 }	t_mlx;
 
-void	reset_xyz(t_point *node);
+/* Transform */
 void	apply_transform(t_mlx *param, t_transform *data);
-
+void	reset_transform(t_mlx *param);
 /* Bresenham */
 void	put_pixel_in_img(t_mlx *param, t_point p, int color);
+void	draw_bresenham(t_mlx *param, t_point *p1, t_point *p2);
 void	draw_line(t_mlx *param);
 /* Map List */
 t_point	*map_newpoint(double x, double y, double z);
 void	map_clear(t_point ****map);
 void	map_iter(t_point ***map, void (*f)(t_point *));
-
 /* Free */
 void	free_ptr(char **ptr);
 void	free_tab(char ***tab);
 void	free_wrong_parsing(t_mlx *param);
-
-
 /* Parsing */
 int		is_fdf_file(char *argv);
 int		parsing(char *argv[], t_mlx *all);
@@ -108,8 +106,6 @@ int		parsing(char *argv[], t_mlx *all);
 int		color_x(t_mlx *param, t_point p1, t_point p2, int dif);
 int		color_y(t_mlx *param, t_point p1, t_point p2, int dif);
 int		color_z(t_mlx *param, t_point p1, t_point p2, int dif);
-
-double	convert_angle(double angle);
 /* Errors */
 void	malloc_error(void);
 void	wrong_fd_error(void);
@@ -153,10 +149,10 @@ void	reset_translate(t_mlx *param);
 /* Utils matrix */
 void	multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4]);
 void	m_to_point(t_mlx *param, double matrix[4][4]);
+void	reset_xyz(t_point *node);
+double	convert_angle(double angle);
 /* Scale matrix */
 void	scale_matrix(t_mlx *param, double matrix[4][4]);
 void	init_scaling(t_mlx *param);
 void	scaling_percent(t_mlx *param, double percent);
-/* Draw line */
-void	draw_bresenham(t_mlx *param, t_point *p1, t_point *p2);
 #endif

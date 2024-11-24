@@ -27,6 +27,7 @@ SRC_LIST = main.c\
 			matrix/projection/orthographic.c\
 			matrix/projection/isometric.c\
 			matrix/projection/stereographic.c\
+			matrix/transform.c\
 			matrix/rotate_ft.c\
 			matrix/rotate_mtx.c\
 			matrix/centering.c\
@@ -94,6 +95,6 @@ test: all
 	./$(NAME) "test_maps/42.fdf"
 
 leak: all
-	-valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "map.fdf"
+	-valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "test_maps/42.fdf"
 
 .PHONY: all clean fclean re test

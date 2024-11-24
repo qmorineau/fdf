@@ -8,7 +8,5 @@ z_scale automatic calculation ?
 
 handle one press vs pressing with no release
 
-rainbow not working julia
-
 set no repeat key => xset -r
 set repeat key => xset r

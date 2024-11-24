@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   utils_mtx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:47:26 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:48:39 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/24 01:05:37 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+double	convert_angle(double angle)
+{
+	double	radian;
+
+	radian = (M_PI / 180) * angle;
+	return (radian);
+}
+
+void	reset_xyz(t_point *node)
+{
+	node->x = node->x_origin;
+	node->y = node->y_origin;
+	node->z = node->z_origin;
+}
 
 void	set_point(t_point *point, double xyz[3])
 {
@@ -68,13 +83,5 @@ void	multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4])
 		}
 		i++;
 	}
-}
-
-double	convert_angle(double angle)
-{
-	double	radian;
-
-	radian = (M_PI / 180) * angle;
-	return (radian);
 }
 
