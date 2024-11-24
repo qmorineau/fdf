@@ -6,32 +6,13 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:42:11 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 01:05:18 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/24 01:15:11 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	handle_keypress(int keycode, t_mlx *param)
-{
-	if (keycode == X || keycode == Y || keycode == Z)
-	{
-		if (param->projection != ORTHOGRAPHIC)
-		{
-			param->key_press = keycode;
-			return (0);
-		}
-	}
-	else if (keycode == UP || keycode == DOWN || keycode == LEFT || keycode == RIGHT || keycode == S || keycode == D)
-	{
-		param->key_press = keycode;
-		return (0);
-	}
-	return (0);
-}
-
-
-int is_key_pressed(int keycode, t_mlx *param)
+static int is_key_pressed(int keycode, t_mlx *param)
 {
 	if (param->key_press > 0)
 	{
@@ -81,6 +62,23 @@ int	handle_keyrelease(int keycode, t_mlx *param)
 	return (0);
 }
 
+int	handle_keypress(int keycode, t_mlx *param)
+{
+	if (keycode == X || keycode == Y || keycode == Z)
+	{
+		if (param->projection != ORTHOGRAPHIC)
+		{
+			param->key_press = keycode;
+			return (0);
+		}
+	}
+	else if (keycode == UP || keycode == DOWN || keycode == LEFT || keycode == RIGHT || keycode == S || keycode == D)
+	{
+		param->key_press = keycode;
+		return (0);
+	}
+	return (0);
+}
 
 int handle_hook(t_mlx *param)
 {
