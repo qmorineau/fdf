@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:45:35 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 13:55:30 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/25 00:28:11 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,3 +85,4 @@ void	stereographic(t_mlx *param)
 	translate_matrix(translate, WIDTH / 2, HEIGHT / 2, 0);
 	m_to_point(param, translate);
 }
+

@@ -12,4 +12,7 @@ set repeat key => xset r
 
 protect win and mlx ptr
 
-bug rotate w/ stere (problem in the y driving, can't print p1 / p2);
+
+Sterographic :
+bug rotate (problem in the all driving, if axe  is straigtht, need protection, bresenham);
+flattened the sphere automaticly
