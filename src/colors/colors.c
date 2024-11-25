@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:40:22 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/25 15:39:53 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/25 15:58:43 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,13 @@ int	do_rainbow(t_mlx *param, int z_origin)
 	color = (double) (param->z_max + adjust_range(param)) / 7;
 	i = 0;
 	tmp = color;
-	while (z_origin > tmp)
+	while (z_origin >= tmp)
 	{
 		tmp += color;
 		i++;
 	}
+	if (i > 6)
+		i = 6;
 	return (range[i]);
 }
 
