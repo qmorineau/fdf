@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:40:22 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 23:36:26 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/25 15:39:53 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int	do_temp(t_mlx *param, int z_origin)
 
 int	calculate_color(t_mlx *param, int z_origin)
 {
-	if (param->color > RAINBOW)
+	if (param->color > Z_COLOR)
 		param->color = STANDARD;
 	if (param->color == MAP)
 		return (do_map(param, z_origin));
@@ -132,6 +132,8 @@ int	calculate_color(t_mlx *param, int z_origin)
 		return (do_temp(param, z_origin));
 	else if (param->color == RAINBOW)
 		return (do_rainbow(param, z_origin));
+	else if (param->color == Z_COLOR)
+		return (z_origin);
 	else
 		return (WHITE);
 }

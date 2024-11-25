@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:07 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/23 12:12:49 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/25 15:39:23 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define TEMP 1
 # define MAP 2
 # define RAINBOW 3
+# define Z_COLOR 4
 # define RED 0xFF0000
 # define ORANGE 0xFFA500
 # define YELLOW 0xFFFF00
