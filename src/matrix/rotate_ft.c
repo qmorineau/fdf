@@ -6,15 +6,14 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:15 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 13:44:40 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 17:42:46 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	rotate_x(t_mlx *param, int repeat)
+void	rotate_x(t_mlx *param, int repeat, double matrix[4][4])
 {
-	double	rotate[4][4];
 	double	radian;
 	double	angle;
 
@@ -26,13 +25,11 @@ void	rotate_x(t_mlx *param, int repeat)
 	else if (param->projection == STEREOGRAPHIC)
 		angle = 1;
 	radian = convert_angle(angle * repeat);
-	rx_matrix(rotate, radian);
-	m_to_point(param, rotate);
+	rx_matrix(matrix, radian);
 }
 
-void	rotate_y(t_mlx *param, int repeat)
+void	rotate_y(t_mlx *param, int repeat, double matrix[4][4])
 {
-	double	rotate[4][4];
 	double	radian;
 	double	angle;
 
@@ -43,13 +40,11 @@ void	rotate_y(t_mlx *param, int repeat)
 	else
 		angle = 1;
 	radian = convert_angle(angle * repeat);
-	ry_matrix(rotate, radian);
-	m_to_point(param, rotate);
+	ry_matrix(matrix, radian);
 }
 
-void	rotate_z(t_mlx *param, int repeat)
+void	rotate_z(t_mlx *param, int repeat, double matrix[4][4])
 {
-	double	rotate[4][4];
 	double	radian;
 	double	angle;
 
@@ -60,6 +55,5 @@ void	rotate_z(t_mlx *param, int repeat)
 	else
 		angle = 1;
 	radian = convert_angle(angle * repeat);
-	rz_matrix(rotate, radian);
-	m_to_point(param, rotate);
+	rz_matrix(matrix, radian);
 }

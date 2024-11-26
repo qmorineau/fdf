@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:44:20 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/25 16:21:43 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 17:58:24 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,24 @@
 
 int	render_frame(t_mlx *param)
 {
+	double tmp1[4][4];
+	double tmp2[4][4];
+	double tmp3[4][4];
+
 	mlx_destroy_image(param->mlx_ptr, param->img);
 	param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
 	param->address = mlx_get_data_addr(param->img, &param->bits_per_pixel, &param->size_line, &param->endians);
 	map_iter(param->map, reset_xyz);
-	centered_obj(param);
-	scaling_percent(param, 100);
-	apply_transform(param, param->transformation);
+	//centered_obj(param);
+	//scaling_percent(param, 100);
+	center_obj_matrix(param, tmp2);
+	m_to_point(param, tmp2);
+	scale_matrix(param, tmp1);
+	apply_transform(param, param->transformation, tmp2);
+	multiply_matrix(tmp1, tmp2, tmp3);
+	m_to_point(param, tmp3);
+
+
 	do_projection(param);
 	draw_line(param);
 	mlx_put_image_to_window(param->mlx_ptr, param->win_ptr, param->img, 0, 0);
@@ -51,7 +62,7 @@ void	draw_line(t_mlx *param)
 			if (param->map[y + 1])
 				draw_bresenham(param, param->map[y][x], param->map[y + 1][x]);
 			if (param->map[y][x + 1])
-				draw_bresenham(param, param->map[y][x], param->map[y][x + 1]);
+			  	draw_bresenham(param, param->map[y][x], param->map[y][x + 1]);
 			//put_pixel_in_img(param, *param->map[y][x], WHITE);
 			x++;
 		}

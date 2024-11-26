@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 16:16:44 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 17:43:58 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ typedef struct s_mlx
 }	t_mlx;
 
 /* Transform */
-void	apply_transform(t_mlx *param, t_transform *data);
+void	apply_transform(t_mlx *param, t_transform *data, double matrix[4][4]);
 void	reset_transform(t_mlx *param);
 /* Bresenham */
 void	put_pixel_in_img(t_mlx *param, t_point p, int color);
@@ -130,9 +130,9 @@ int		destroy_window(t_mlx *param);
 void	rx_matrix(double matrix[4][4], double radian);
 void	ry_matrix(double matrix[4][4], double radian);
 void	rz_matrix(double matrix[4][4], double radian);
-void	rotate_x(t_mlx *param, int repeat);
-void	rotate_y(t_mlx *param, int repeat);
-void	rotate_z(t_mlx *param, int repeat);
+void	rotate_x(t_mlx *param, int repeat, double matrix[4][4]);
+void	rotate_y(t_mlx *param, int repeat, double matrix[4][4]);
+void	rotate_z(t_mlx *param, int repeat, double matrix[4][4]);
 /* Center matrix */
 void	center_obj_matrix(t_mlx *param, double matrix[4][4]);
 void	center_win_matrix(double matrix[4][4]);

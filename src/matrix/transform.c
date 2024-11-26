@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:04:16 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/24 13:15:01 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 17:52:44 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,22 @@ void	reset_transform(t_mlx *param)
 	mlx_put_image_to_window(param->mlx_ptr, param->win_ptr, param->img, 0, 0);
 }
 
-void apply_transform(t_mlx *param, t_transform *data)
+void apply_transform(t_mlx *param, t_transform *data, double matrix[4][4])
 {
+	double tmp1[4][4];
+	double tmp2[4][4];
+	double tmp3[4][4];
+
 	if (data->rx == 360)
 		data->rx = 0;
-	rotate_x(param, data->rx);
+	rotate_x(param, data->rx, tmp1);
 	if (data->ry == 360)
 		data->ry = 0;
-	rotate_y(param, data->ry);
+	rotate_y(param, data->ry, tmp2);
+	multiply_matrix(tmp1, tmp2, tmp3);
 	if (data->rz == 360)
 		data->rz = 0;
-	rotate_z(param, data->rz);
+	rotate_z(param, data->rz, tmp1);
+	multiply_matrix(tmp3, tmp1, matrix);
 	translate(param, param->scale * data->tx, param->scale * data->ty, param->scale * data->tz);
 }

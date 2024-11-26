@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:45:35 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 10:56:10 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 17:49:04 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,13 @@ void	stereographic(t_mlx *param)
 			map[i][j]->z = sin(latitude);
 		}
 	}
+	double matrix[4][4];
 	scale_matrix(param, scale);
 	m_to_point(param, scale);
 	stereo_matrix(projection);
 	m_to_point(param, projection);
-	apply_transform(param, param->transformation);
+	apply_transform(param, param->transformation, matrix);
+	m_to_point(param, matrix);
 	translate_matrix(translate, WIDTH / 2, HEIGHT / 2, 0);
 	m_to_point(param, translate);
 }
