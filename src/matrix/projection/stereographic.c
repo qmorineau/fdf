@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:45:35 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 22:21:16 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 23:11:17 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ static void apply_stereo_matrices(t_mlx *param)
 	stereo_matrix(tmp1);
 	apply_transform(param, param->transformation, tmp2);
 	multiply_matrix(tmp1, tmp2, tmp3);
-	m_to_point(param, tmp3);
+	rx_matrix(tmp1, convert_angle(90));
+	multiply_matrix(tmp3, tmp1, tmp2);
+	m_to_point(param, tmp2);
 	center_win_matrix(tmp1);
 	m_to_point(param, tmp1);
 }

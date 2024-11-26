@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:47 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 21:53:52 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 23:11:49 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	init_scaling(t_mlx *param)
 	}
 	else if (param->projection == STEREOGRAPHIC)
 	{
-		param->scale *= 50;
-		param->z_scale *= 50;
+		param->scale *= 25;
+		param->z_scale *= 25;
 	}
 	scale_matrix(param, matrix);
 	m_to_point(param, matrix);
