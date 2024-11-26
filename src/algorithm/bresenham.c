@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:39:45 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 13:33:44 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 14:44:51 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	x_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 
 	param1 = 2 * d_s_xyz[0][1] - d_s_xyz[0][0];
 	param2 = 2 * d_s_xyz[0][2] - d_s_xyz[0][0];
-	while ((int) p1.x != (int) p2.x)
+	while (floor(p1.x + 0.00000000000001) != floor(p2.x))
 	{
 		p1.x += d_s_xyz[1][0];
 		if (param1 >= 0)
@@ -46,7 +46,7 @@ static void	y_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 
 	param1 = 2 * d_s_xyz[0][0] - d_s_xyz[0][1];
 	param2 = 2 * d_s_xyz[0][2] - d_s_xyz[0][1];
-	while ((int) p1.y != (int) p2.y)
+	while (floor(p1.y + 0.00000000000001) != floor(p2.y))
 	{
 		p1.y += d_s_xyz[1][1];
 		if (param1 >= 0)
@@ -73,7 +73,7 @@ static void	z_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 
 	param1 = 2 * d_s_xyz[0][0] - d_s_xyz[0][2];
 	param2 = 2 * d_s_xyz[0][1] - d_s_xyz[0][2];
-	while ((int) p1.z != (int) p2.z)
+	while (floor(p1.z + 0.00000000000001) != floor(p2.z))
 	{
 		p1.z += d_s_xyz[1][2];
 		if (param1 >= 0)
