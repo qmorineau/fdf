@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:45:35 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 21:52:57 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 22:21:16 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,24 @@ static void	stereo_matrix(double matrix[4][4])
 	matrix[3][3] = 1;
 }
 
-void	test(double matrix[4][4], t_point *point)
+static void apply_stereo_matrices(t_mlx *param)
 {
-	double	xyz[3];
-	double	w;
+	double tmp1[4][4];
+	double tmp2[4][4];
+	double tmp3[4][4];
 
-	w  = matrix[3][0] * point->x + matrix[3][1]
-		* point->y + matrix[3][2] * point->z + matrix[3][3];
-	xyz[0] = matrix[0][0] * point->x + matrix[0][1] * point->y
-		+ matrix[0][2] * point->z + matrix[0][3] / w;
-	xyz[1] = matrix[1][0] * point->x + matrix[1][1] * point->y
-		+ matrix[1][2] * point->z + matrix[1][3] / w;
-	xyz[2] = matrix[2][0] * point->x + matrix[2][1] * point->y
-		+ matrix[2][2] * point->z + matrix[2][3] / w;
-	point->x = xyz[0];
-	point->y = xyz[1];
-	point->z = xyz[2];
+	stereo_matrix(tmp1);
+	apply_transform(param, param->transformation, tmp2);
+	multiply_matrix(tmp1, tmp2, tmp3);
+	m_to_point(param, tmp3);
+	center_win_matrix(tmp1);
+	m_to_point(param, tmp1);
 }
 
-void	stereographic(t_mlx *param)
+void	stereographic(t_mlx *param, t_point ***map)
 {
 	double	longitude;
 	double	latitude;
-	double	translate[4][4];
-	double	projection[4][4];
-	t_point	***map;
 	int		i;
 	int		j;
 
@@ -75,12 +68,6 @@ void	stereographic(t_mlx *param)
 			map[i][j]->z = param->scale * sin(latitude);
 		}
 	}
-	double matrix[4][4];
-	stereo_matrix(projection);
-	m_to_point(param, projection);
-	apply_transform(param, param->transformation, matrix);
-	m_to_point(param, matrix);
-	translate_matrix(translate, WIDTH / 2, HEIGHT / 2, 0);
-	m_to_point(param, translate);
+	apply_stereo_matrices(param);
 }
 

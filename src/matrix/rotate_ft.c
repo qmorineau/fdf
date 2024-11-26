@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:15 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 17:42:46 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 22:22:31 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	rotate_x(t_mlx *param, int repeat, double matrix[4][4])
 	else if (param->projection == ORTHOGRAPHIC)
 		angle = 90;
 	else if (param->projection == STEREOGRAPHIC)
-		angle = 1;
+		angle = 3;
 	radian = convert_angle(angle * repeat);
 	rx_matrix(matrix, radian);
 }
@@ -37,8 +37,8 @@ void	rotate_y(t_mlx *param, int repeat, double matrix[4][4])
 		angle = 1;
 	else if (param->projection == ORTHOGRAPHIC)
 		angle = 90;
-	else
-		angle = 1;
+	else if (param->projection == STEREOGRAPHIC)
+		angle = 3;
 	radian = convert_angle(angle * repeat);
 	ry_matrix(matrix, radian);
 }
@@ -52,8 +52,8 @@ void	rotate_z(t_mlx *param, int repeat, double matrix[4][4])
 		angle = 1;
 	else if (param->projection == ORTHOGRAPHIC)
 		angle = 90;
-	else
-		angle = 1;
+	else if (param->projection == STEREOGRAPHIC)
+		angle = 3;
 	radian = convert_angle(angle * repeat);
 	rz_matrix(matrix, radian);
 }

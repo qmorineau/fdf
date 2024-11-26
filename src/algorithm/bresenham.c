@@ -6,15 +6,15 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:39:45 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 16:15:34 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 22:51:30 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	calculate_xyz_sign(int p1_xyz, int p2_xyz)
+static int	calculate_xyz_sign(double p1_xyz, double p2_xyz)
 {
-	if (p2_xyz > p1_xyz)
+	if (p1_xyz < p2_xyz)
 		return (1);
 	else
 		return (-1);

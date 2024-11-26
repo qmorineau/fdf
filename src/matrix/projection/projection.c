@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:07 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 17:48:24 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 21:58:22 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	do_projection(t_mlx *param)
 	else if (param->projection == ISOMETRIC)
 		isometric(param);
 	else if (param->projection == STEREOGRAPHIC)
-		stereographic(param);
+		stereographic(param, param->map);
 }
 
 void	change_projection(t_mlx *param)

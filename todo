@@ -14,5 +14,4 @@ protect win and mlx ptr
 
 
 Sterographic :
-bug rotate (problem in the all driving, if axe  is straigtht, need protection, bresenham);
-flattened the sphere automaticly
+bug rotate (z and y);

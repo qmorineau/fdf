@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 17:43:58 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 21:58:04 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ void	change_projection(t_mlx *param);
 void	ortho_matrix(double matrix[4][4]);
 void	orthographic(t_mlx *param);
 void	isometric(t_mlx *param);
-void	stereographic(t_mlx *param);
+void	stereographic(t_mlx *param, t_point ***map);
 /* Translate matrix */
 void	translate_matrix(double matrix[4][4], double x, double y, double z);
 void	translate(t_mlx *param, double x, double y, double z);

@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:09:31 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/26 16:15:14 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 22:30:08 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	y_driving_1(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 		}
 		param1 += 2 * d_s_xyz[0][0];
 		param2 += 2 * d_s_xyz[0][2];
-		if (p1.x >= 0 && p1.x <= WIDTH && p1.y >= 0 && p1.y <= HEIGHT)
+		if (p1.x > 0 && p1.x < WIDTH && p1.y > 0 && p1.y < HEIGHT)
 			put_pixel_in_img(param, p1, color_y(param, p1, p2, d_s_xyz[0][1]));
 	}
 }
@@ -61,7 +61,7 @@ static void	y_driving_2(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 		}
 		param1 += 2 * d_s_xyz[0][0];
 		param2 += 2 * d_s_xyz[0][2];
-		if (p1.x >= 0 && p1.x <= WIDTH && p1.y >= 0 && p1.y <= HEIGHT)
+		if (p1.x > 0 && p1.x < WIDTH && p1.y > 0 && p1.y < HEIGHT)
 			put_pixel_in_img(param, p1, color_y(param, p1, p2, d_s_xyz[0][1]));
 	}
 }
