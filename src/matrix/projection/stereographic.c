@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:45:35 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/25 00:28:11 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 10:56:10 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,15 @@ void	stereographic(t_mlx *param)
 		{
 			longitude = (map[i][j]->x_origin / param->x_max) * convert_angle(360) - convert_angle(180);
 			latitude = convert_angle(90) - (map[i][j]->y_origin / param->y_max) * convert_angle(180);
-			map[i][j]->x = cos(latitude) * cos (longitude);
-			map[i][j]->y = cos (latitude) * sin (longitude);
+			map[i][j]->x = cos(latitude) * cos(longitude);
+			map[i][j]->y = cos(latitude) * sin(longitude);
 			map[i][j]->z = sin(latitude);
-			//map[i][j]->z = fmin(map[i][j]->z, 0.999999);
-			scale_matrix(param, scale);
-			test(scale, map[i][j]);
-			stereo_matrix(projection);
-			test(projection, map[i][j]);
 		}
-	}	
+	}
+	scale_matrix(param, scale);
+	m_to_point(param, scale);
+	stereo_matrix(projection);
+	m_to_point(param, projection);
 	apply_transform(param, param->transformation);
 	translate_matrix(translate, WIDTH / 2, HEIGHT / 2, 0);
 	m_to_point(param, translate);

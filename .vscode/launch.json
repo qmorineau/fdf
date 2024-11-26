@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/quentin/Documents/19/Cercle2/fdf/src/colors",
-      "program": "/home/quentin/Documents/19/Cercle2/fdf/src/colors/build/Debug/outDebug",
+      "cwd": "/home/quentin/Documents/19/Cercle2/fdf/src/matrix/projection",
+      "program": "/home/quentin/Documents/19/Cercle2/fdf/src/matrix/projection/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
