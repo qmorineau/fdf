@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:45:35 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 17:49:04 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 21:52:57 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	stereographic(t_mlx *param)
 {
 	double	longitude;
 	double	latitude;
-	double	scale[4][4];
 	double	translate[4][4];
 	double	projection[4][4];
 	t_point	***map;
@@ -71,14 +70,12 @@ void	stereographic(t_mlx *param)
 		{
 			longitude = (map[i][j]->x_origin / param->x_max) * convert_angle(360) - convert_angle(180);
 			latitude = convert_angle(90) - (map[i][j]->y_origin / param->y_max) * convert_angle(180);
-			map[i][j]->x = cos(latitude) * cos(longitude);
-			map[i][j]->y = cos(latitude) * sin(longitude);
-			map[i][j]->z = sin(latitude);
+			map[i][j]->x = param->scale * cos(latitude) * cos(longitude);
+			map[i][j]->y = param->scale * cos(latitude) * sin(longitude);
+			map[i][j]->z = param->scale * sin(latitude);
 		}
 	}
 	double matrix[4][4];
-	scale_matrix(param, scale);
-	m_to_point(param, scale);
 	stereo_matrix(projection);
 	m_to_point(param, projection);
 	apply_transform(param, param->transformation, matrix);
