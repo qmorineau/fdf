@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:47 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 13:55:24 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 16:19:15 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,15 @@ void	init_scaling(t_mlx *param)
 	else
 		param->scale = scale_y;
 	param->z_scale = (param->scale / (param->z_max - param->z_min)) * 10;
-	if (param->projection == ISOMETRIC)
+	if (param->projection == ISOMETRIC || param->projection == ORTHOGRAPHIC)
 	{
 		param->scale *= 100;
 		param->z_scale *= 100;
 	}
-	else if (param->projection == ORTHOGRAPHIC)
+	else if (param->projection == STEREOGRAPHIC)
 	{
-		param->scale *= 100;
-		param->z_scale *= 100;
+		param->scale *= 5;
+		param->z_scale *= 5;
 	}
 	scale_matrix(param, matrix);
 	m_to_point(param, matrix);

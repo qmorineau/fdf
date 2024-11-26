@@ -6,92 +6,11 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:39:45 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 14:44:51 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 16:15:34 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-static void	x_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
-{
-	int	param1;
-	int	param2;
-
-	param1 = 2 * d_s_xyz[0][1] - d_s_xyz[0][0];
-	param2 = 2 * d_s_xyz[0][2] - d_s_xyz[0][0];
-	while (floor(p1.x + 0.00000000000001) != floor(p2.x))
-	{
-		p1.x += d_s_xyz[1][0];
-		if (param1 >= 0)
-		{
-			p1.y += d_s_xyz[1][1];
-			param1 -= 2 * d_s_xyz[0][0];
-		}
-		if (param2 >= 0)
-		{
-			p1.z += d_s_xyz[1][2];
-			param2 -= 2 * d_s_xyz[0][0];
-		}
-		param1 += 2 * d_s_xyz[0][1];
-		param2 += 2 * d_s_xyz[0][2];
-		if (p1.x >= 0 && p1.x <= WIDTH && p1.y >= 0 && p1.y <= HEIGHT)
-			put_pixel_in_img(param, p1, color_x(param, p1, p2, d_s_xyz[0][0]));
-	}
-}
-
-static void	y_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
-{
-	int	param1;
-	int	param2;
-
-	param1 = 2 * d_s_xyz[0][0] - d_s_xyz[0][1];
-	param2 = 2 * d_s_xyz[0][2] - d_s_xyz[0][1];
-	while (floor(p1.y + 0.00000000000001) != floor(p2.y))
-	{
-		p1.y += d_s_xyz[1][1];
-		if (param1 >= 0)
-		{
-			p1.x += d_s_xyz[1][0];
-			param1 -= 2 * d_s_xyz[0][1];
-		}
-		if (param2 >= 0)
-		{
-			p1.z += d_s_xyz[1][2];
-			param2 -= 2 * d_s_xyz[0][1];
-		}
-		param1 += 2 * d_s_xyz[0][0];
-		param2 += 2 * d_s_xyz[0][2];
-		if (p1.x >= 0 && p1.x <= WIDTH && p1.y >= 0 && p1.y <= HEIGHT)
-			put_pixel_in_img(param, p1, color_y(param, p1, p2, d_s_xyz[0][1]));
-	}
-}
-
-static void	z_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
-{
-	int	param1;
-	int	param2;
-
-	param1 = 2 * d_s_xyz[0][0] - d_s_xyz[0][2];
-	param2 = 2 * d_s_xyz[0][1] - d_s_xyz[0][2];
-	while (floor(p1.z + 0.00000000000001) != floor(p2.z))
-	{
-		p1.z += d_s_xyz[1][2];
-		if (param1 >= 0)
-		{
-			p1.x += d_s_xyz[1][0];
-			param1 -= 2 * d_s_xyz[0][2];
-		}
-		if (param2 >= 0)
-		{
-			p1.y += d_s_xyz[1][1];
-			param2 -= 2 * d_s_xyz[0][2];
-		}
-		param1 += 2 * d_s_xyz[0][0];
-		param2 += 2 * d_s_xyz[0][1];
-		if (p1.x >= 0 && p1.x <= WIDTH && p1.y >= 0 && p1.y <= HEIGHT)
-			put_pixel_in_img(param, p1, color_z(param, p1, p2, d_s_xyz[0][2]));
-	}
-}
 
 static int	calculate_xyz_sign(int p1_xyz, int p2_xyz)
 {

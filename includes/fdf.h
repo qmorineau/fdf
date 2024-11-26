@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 13:56:21 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/26 16:16:44 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,9 @@ void	reset_transform(t_mlx *param);
 void	put_pixel_in_img(t_mlx *param, t_point p, int color);
 void	draw_bresenham(t_mlx *param, t_point *p1, t_point *p2);
 void	draw_line(t_mlx *param);
+void	x_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2);
+void	y_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2);
+void	z_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2);
 /* Map List */
 t_point	*map_newpoint(double x, double y, double z);
 void	map_clear(t_point ****map);

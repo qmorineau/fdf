@@ -34,6 +34,9 @@ SRC_LIST = main.c\
 			matrix/scaling.c\
 			matrix/translating.c\
 			algorithm/bresenham.c\
+			algorithm/x_driving.c\
+			algorithm/y_driving.c\
+			algorithm/z_driving.c\
 			event/destroy_window.c\
 			event/key_event.c\
 			event/mouse_event.c\
