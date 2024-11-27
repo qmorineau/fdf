@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:44:05 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:44:38 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:56:46 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ int	handle_mouse(int button, int x, int y, t_mlx *param)
 		scaling_percent(param, 110);
 	else if (button == SCROLL_D)
 		scaling_percent(param, 90);
+	render_frame(param);
 	return (0);
 }

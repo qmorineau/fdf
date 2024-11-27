@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:47 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 16:17:36 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:54:22 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	init_scaling(t_mlx *param)
 	{
 		param->scale *= 200;
 		param->z_scale *= 200;
-		printf("%f\n", param->z_scale);
 	}
 	else if (param->projection == STEREOGRAPHIC)
 	{

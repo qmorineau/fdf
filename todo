@@ -1,7 +1,6 @@
 valid map (every row have same size, else stop program)
 
 orthographic always square ? (need to adjust width and height to be square, or adapt it)
-stereographic line drawing and point linking to other different than orthographic / isometric
 
 z_scale automatic calculation ?
 
