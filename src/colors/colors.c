@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:40:22 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 09:57:40 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 11:45:36 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	adjust_range(t_mlx *param)
 	if (param->z_min < 0)
 		return (-param->z_min);
 	else
-		return (-param->z_min);
+		return (param->z_min);
 }
 
 int	create_rgb(int red, int green, int blue)
@@ -31,7 +31,7 @@ int	create_rgb(int red, int green, int blue)
 	return (color);
 }
 
-void	retrieve_rgb(int color, int rgb[3])
+void	retrieve_rgb(int color, double rgb[3])
 {
 	if (color > 16777215 || color < 0)
 	{
@@ -112,9 +112,9 @@ int	do_map(t_mlx *param, int z_origin)
 int	do_temp(t_mlx *param, int z_origin)
 {
 	int		rgb[3];
-	int		rgb_bottom[3];
-	int		rgb_top[3];
-	int	diff_rgb[3];
+	double	rgb_bottom[3];
+	double	rgb_top[3];
+	double	diff_rgb[3];
 	int		z_high;	
 	
 	(void) param;
@@ -161,8 +161,8 @@ int	next_color(int rgb1, int rgb2, double gradient_value)
 
 int find_color(int color1, int color2, double gradient_value)
 {
-	int	rgb1[3];
-	int	rgb2[3];
+	double	rgb1[3];
+	double	rgb2[3];
 	int	new_color[3];
 
 	retrieve_rgb(color1, rgb1);
