@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:40:22 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 16:49:17 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:17:47 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,13 @@ int	do_map(t_mlx *param, int z_origin)
 	range[0] = DARK_GREEN;
 	range[1] = YELLOW;
 	range[2] = BROWN;
-	range[3] = WHITE;
+	range[3] = RED;
 	if (z_origin <= -300)
 		return (DARKER_BLUE);
-	if (z_origin <= -200)
+	else if (z_origin <= -200)
 		return (DARK_BLUE);
-	if (z_origin <= 0)
+	else if (z_origin <= 0)
 		return (BLUE);
-	else if (z_origin == param->z_max)
-		return (WHITE);
 	color = (double) param->z_max / 8;
 	i = 0;
 	tmp = color;
