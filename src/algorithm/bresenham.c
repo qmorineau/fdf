@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:39:45 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 22:51:30 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:29:59 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static int	calculate_xyz_sign(double p1_xyz, double p2_xyz)
 		return (-1);
 }
 
-void draw_bresenham(t_mlx *param, t_point *p1, t_point *p2)
+void	draw_bresenham(t_mlx *param, t_point *p1, t_point *p2)
 {
-	int dif_sign_xyz[2][3];
+	int	dif_sign_xyz[2][3];
 
 	dif_sign_xyz[0][0] = abs((int) p2->x - (int) p1->x);
 	dif_sign_xyz[0][1] = abs((int) p2->y - (int) p1->y);

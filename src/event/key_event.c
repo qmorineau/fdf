@@ -6,13 +6,13 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:42:11 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 16:11:19 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:51:00 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int is_key_pressed(int keycode, t_mlx *param)
+static int	is_key_pressed(int keycode, t_mlx *param)
 {
 	if (param->key_press > 0)
 	{
@@ -24,7 +24,8 @@ static int is_key_pressed(int keycode, t_mlx *param)
 				return (0);
 			}
 		}
-		else if (keycode == UP || keycode == DOWN || keycode == LEFT || keycode == RIGHT || keycode == S || keycode == D)
+		else if (keycode == UP || keycode == DOWN || keycode == LEFT
+			|| keycode == RIGHT || keycode == S || keycode == D)
 		{
 			param->key_press = 0;
 			return (0);
@@ -72,7 +73,8 @@ int	handle_keypress(int keycode, t_mlx *param)
 			return (0);
 		}
 	}
-	else if (keycode == UP || keycode == DOWN || keycode == LEFT || keycode == RIGHT || keycode == S || keycode == D)
+	else if (keycode == UP || keycode == DOWN || keycode == LEFT
+		|| keycode == RIGHT || keycode == S || keycode == D)
 	{
 		param->key_press = keycode;
 		return (0);
@@ -80,9 +82,9 @@ int	handle_keypress(int keycode, t_mlx *param)
 	return (0);
 }
 
-void add_to_scaling_z(t_mlx *param, int sign)
+void	add_to_scaling_z(t_mlx *param, int sign)
 {
-	double tmp;
+	double	tmp;
 
 	if (param->projection != STEREOGRAPHIC)
 	{
@@ -91,7 +93,7 @@ void add_to_scaling_z(t_mlx *param, int sign)
 	}
 }
 
-int handle_hook(t_mlx *param)
+int	handle_hook(t_mlx *param)
 {
 	if (param->key_press > 0)
 	{

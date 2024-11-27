@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 15:39:16 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:42:37 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@
 # define Y_AXE 1
 # define Z_AXE 2
 
-#ifndef M_PI
+#ifndef	M_PI
 # define M_PI 3.14159265358979323846
 #endif
- 
+
 typedef struct s_point
 {
 	double		x;
@@ -106,9 +106,14 @@ void	free_wrong_parsing(t_mlx *param);
 int		is_fdf_file(char *argv);
 int		parsing(char *argv[], t_mlx *all);
 /* Colors */
+int		calculate_color(t_mlx *param, int z_origin);
 int		color_x(t_mlx *param, t_point p1, t_point p2, int dif);
 int		color_y(t_mlx *param, t_point p1, t_point p2, int dif);
 int		color_z(t_mlx *param, t_point p1, t_point p2, int dif);
+int		create_rgb(int red, int green, int blue);
+void	retrieve_rgb(int color, double rgb[3]);
+int		next_color(int rgb1, int rgb2, double gradient_value);
+int		find_color(int color1, int color2, double gradient_value);
 /* Errors */
 void	malloc_error(void);
 void	wrong_fd_error(void);

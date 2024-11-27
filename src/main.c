@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:49:51 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 01:18:27 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:26:46 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	print(t_point *node)
 	printf("x=%f, y=%f, z=%f\n", node->x, node->y, node->z);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_mlx	*param;
 
@@ -40,8 +40,8 @@ int main(int argc, char *argv[])
 	draw_line(param);
 	mlx_put_image_to_window(param->mlx_ptr, param->win_ptr, param->img, 0, 0);
 	mlx_mouse_hook(param->win_ptr, handle_mouse, param);
-	mlx_hook(param->win_ptr, 3, 1L<<1, handle_keyrelease, param);
-	mlx_hook(param->win_ptr, 2, 1L<<0, handle_keypress, param);
+	mlx_hook(param->win_ptr, 3, 1L << 1, handle_keyrelease, param);
+	mlx_hook(param->win_ptr, 2, 1L << 0, handle_keypress, param);
 	mlx_hook(param->win_ptr, 17, 0, destroy_window, param);
 	mlx_loop_hook(param->mlx_ptr, handle_hook, param);
 	mlx_loop(param->mlx_ptr);

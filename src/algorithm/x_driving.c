@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   x_driving.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:09:35 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/26 22:52:14 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:30:13 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	x_driving_1(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 {
 	int	param1;
 	int	param2;
-	
+
 	param1 = 2 * d_s_xyz[0][1] - d_s_xyz[0][0];
 	param2 = 2 * d_s_xyz[0][2] - d_s_xyz[0][0];
 	if (floor(p1.x) == floor(p2.x))
@@ -70,7 +70,7 @@ static void	x_driving_2(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 	}
 }
 
-void x_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
+void	x_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 {
 	{
 		if (floor(p1.x) < floor(p2.x))

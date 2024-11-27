@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   z_driving.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:09:19 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/26 22:28:59 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:30:27 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	z_driving_2(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 {
 	int	param1;
 	int	param2;
-	
+
 	param1 = 2 * d_s_xyz[0][0] - d_s_xyz[0][2];
 	param2 = 2 * d_s_xyz[0][1] - d_s_xyz[0][2];
 	while (floor(p1.z) > floor(p2.z))
@@ -66,7 +66,7 @@ static void	z_driving_2(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 	}
 }
 
-void z_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
+void	z_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 {
 	{
 		if (p1.z < p2.z)

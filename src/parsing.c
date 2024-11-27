@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:50:41 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 23:32:43 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:28:11 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static t_point	***init_map(t_point ***new, t_point ****old, int rows)
 	return (new);
 }
 
-static int create_row(t_mlx *param, char *line, int y)
+static int	create_row(t_mlx *param, char *line, int y)
 {
 	t_point	***tmp;
 
@@ -118,7 +118,7 @@ int	parsing(char *argv[], t_mlx *param)
 	y = 0;
 	while (line)
 	{
-		if (!create_row(param, line, y))
+		if (!create_row(param, line, y++))
 		{
 			map_clear(&param->map);
 			while (line)
@@ -130,7 +130,6 @@ int	parsing(char *argv[], t_mlx *param)
 			return (0);
 		}
 		line = get_next_line(fd);
-		y++;
 	}
 	param->y_max = (double) y - 1;
 	close(fd);

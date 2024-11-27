@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:04:16 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/26 22:55:40 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:24:44 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	reset_transform(t_mlx *param)
 	mlx_put_image_to_window(param->mlx_ptr, param->win_ptr, param->img, 0, 0);
 }
 
-void apply_transform(t_mlx *param, t_transform *data, double matrix[4][4])
+void	apply_transform(t_mlx *param, t_transform *data, double matrix[4][4])
 {
-	double tmp1[4][4];
-	double tmp2[4][4];
-	double tmp3[4][4];
+	double	tmp1[4][4];
+	double	tmp2[4][4];
+	double	tmp3[4][4];
 
 	if (data->rx == 360)
 		data->rx = 0;
@@ -49,5 +49,6 @@ void apply_transform(t_mlx *param, t_transform *data, double matrix[4][4])
 		data->rz = 0;
 	rotate_z(param, data->rz, tmp1);
 	multiply_matrix(tmp3, tmp1, matrix);
-	translate(param, param->scale * data->tx, param->scale * data->ty, param->scale * data->tz);
+	translate(param, param->scale * data->tx,
+		param->scale * data->ty, param->scale * data->tz);
 }

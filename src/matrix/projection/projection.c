@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:07 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 21:58:22 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:50:18 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	do_projection(t_mlx *param)
 
 void	change_projection(t_mlx *param)
 {
-	double matrix[4][4];
+	double	matrix[4][4];
 
 	param->projection++;
 	if (param->projection > STEREOGRAPHIC)

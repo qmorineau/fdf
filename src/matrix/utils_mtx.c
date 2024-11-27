@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_mtx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:47:26 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 13:43:53 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:50:10 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	m_to_point(t_mlx *param, double matrix[4][4])
 		j = -1;
 		while (map[i][++j])
 		{
-			w  = matrix[3][0] * map[i][j]->x + matrix[3][1]
+			w = matrix[3][0] * map[i][j]->x + matrix[3][1]
 				* map[i][j]->y + matrix[3][2] * map[i][j]->z + matrix[3][3];
 			xyz[0] = matrix[0][0] * map[i][j]->x + matrix[0][1] * map[i][j]->y
 				+ matrix[0][2] * map[i][j]->z + matrix[0][3] / w;
@@ -86,4 +86,3 @@ void	multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4])
 		i++;
 	}
 }
-

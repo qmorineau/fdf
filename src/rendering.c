@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:44:20 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/27 12:10:45 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:31:58 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	render_frame(t_mlx *param)
 {
-	double tmp1[4][4];
-	double tmp2[4][4];
-	double tmp3[4][4];
+	double	tmp1[4][4];
+	double	tmp2[4][4];
+	double	tmp3[4][4];
 
 	mlx_destroy_image(param->mlx_ptr, param->img);
 	param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
@@ -40,17 +40,18 @@ int	render_frame(t_mlx *param)
 void	put_pixel_in_img(t_mlx *param, t_point p, int color)
 {
 	char	*dst;
+
 	if (param->projection != STEREOGRAPHIC)
 	{
 		(void) color;
 		dst = param->address + (int) p.y * param->size_line + (int) p.x * 4;
-		*(unsigned int* )dst = color;
+		*(unsigned int *)dst = color;
 	}
 	else if (p.z <= 0)
 	{
 		(void) color;
 		dst = param->address + (int) p.y * param->size_line + (int) p.x * 4;
-		*(unsigned int* )dst = color;
+		*(unsigned int *)dst = color;
 	}
 }
 
@@ -69,8 +70,7 @@ void	draw_line(t_mlx *param)
 			if (param->map[y + 1])
 				draw_bresenham(param, param->map[y][x], param->map[y + 1][x]);
 			if (param->map[y][x + 1])
-			  	draw_bresenham(param, param->map[y][x], param->map[y][x + 1]);
-			//put_pixel_in_img(param, *param->map[y][x], WHITE);
+				draw_bresenham(param, param->map[y][x], param->map[y][x + 1]);
 			x++;
 		}
 		y++;

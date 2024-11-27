@@ -41,6 +41,8 @@ SRC_LIST = main.c\
 			event/key_event.c\
 			event/mouse_event.c\
 			colors/colors.c\
+			colors/colors_drive.c\
+			colors/utils_colors.c\
 			utils/free.c\
 			utils/map_lst.c\
 			utils/error.c\
@@ -95,7 +97,7 @@ fclean:
 re: fclean all
 
 test: all
-	./$(NAME) "test_maps/10-70.fdf"
+	./$(NAME) "planet_maps/earth.fdf"
 
 leak: all
 	-valgrind --leak-check=full ./$(NAME) "planet_maps/moon.fdf"

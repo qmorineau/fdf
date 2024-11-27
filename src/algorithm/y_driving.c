@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   y_driving.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:09:31 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/26 22:30:08 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:30:20 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	y_driving_2(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 	}
 }
 
-void y_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
+void	y_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2)
 {
 	{
 		if (p1.y < p2.y)
