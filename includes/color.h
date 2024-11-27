@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:07 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 14:42:46 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:15:05 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define BLUE 0x0000FF
 # define DARK_BLUE 0x0000CB
 # define DARKER_BLUE 0x00008B
-# define PURPLE 0x301934
+# define PURPLE 0x501954
 # define BROWN 0x964B00
 # define WHITE 0xFFFFFF
 #endif

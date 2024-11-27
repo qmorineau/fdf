@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 10:01:41 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:39:16 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 # include "mouse.h"
 # include "color.h"
 
-# define HEIGHT 720
-# define WIDTH 720
+//# define HEIGHT 720
+//# define WIDTH 720
 # define DEEP 1000
-/* # define HEIGHT 1080
-# define WIDTH 1920 */
+# define HEIGHT 1920
+# define WIDTH 1920
 
 # define ISOMETRIC 0
 # define ORTHOGRAPHIC 1

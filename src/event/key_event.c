@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:42:11 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 00:05:08 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:11:19 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,12 @@ int	handle_keypress(int keycode, t_mlx *param)
 
 void add_to_scaling_z(t_mlx *param, int sign)
 {
-	int tmp;
+	double tmp;
 
 	if (param->projection != STEREOGRAPHIC)
 	{
-		tmp = param->scale / 20;
-		printf("zscale = %f\n", param->z_scale);
-		param->z_scale += (tmp * sign);
+		tmp = param->scale / 100 * sign;
+		param->z_scale += (tmp * 5);
 	}
 }
 
