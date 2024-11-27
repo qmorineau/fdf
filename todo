@@ -12,5 +12,4 @@ set repeat key => xset r
 
 protect win and mlx ptr
 
-
-problem normal projection => z_scale and rotation x
+draw circle for stereo (little map don't see the perfect shape)

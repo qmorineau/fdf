@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:47 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 23:11:49 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:23:21 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,18 @@ void	init_scaling(t_mlx *param)
 
 	scale_x = WIDTH / (param->map[0][param->x_max]->x);
 	scale_y = HEIGHT / (param->map[param->y_max][0]->y);
-	if (scale_x < scale_y)
-		param->scale = scale_x;
-	else
-		param->scale = scale_y;
+	param->scale = fmin(scale_x, scale_y);
 	param->z_scale = (param->scale / (param->z_max - param->z_min)) * 10;
 	if (param->projection == ISOMETRIC || param->projection == ORTHOGRAPHIC)
 	{
-		param->scale *= 100;
-		param->z_scale *= 100;
+		param->scale *= 120;
+		param->z_scale *= 120;
+		printf("%f\n", param->z_scale);
 	}
 	else if (param->projection == STEREOGRAPHIC)
 	{
-		param->scale *= 25;
-		param->z_scale *= 25;
+		param->scale *= fmax(param->x_max, param->y_max) / 5;
+		param->z_scale *= fmax(param->x_max, param->y_max) / 5;
 	}
 	scale_matrix(param, matrix);
 	m_to_point(param, matrix);
