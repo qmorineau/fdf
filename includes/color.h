@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:07 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/25 15:39:23 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 09:58:06 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@
 # define ORANGE 0xFFA500
 # define YELLOW 0xFFFF00
 # define GREEN 0x00FF00
+# define DARK_GREEN 0x00DB00
 # define CYAN 0x00FFFF
 # define BLUE 0x0000FF
+# define DARK_BLUE 0x0000CB
+# define DARKER_BLUE 0x00008B
 # define PURPLE 0x800080
 # define BROWN 0x964B00
 # define WHITE 0xFFFFFF

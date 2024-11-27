@@ -95,7 +95,7 @@ fclean:
 re: fclean all
 
 test: all
-	./$(NAME) "planet_maps/earth.fdf"
+	./$(NAME) "test_maps/pyramide.fdf"
 
 leak: all
 	-valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) "test_maps/42.fdf"

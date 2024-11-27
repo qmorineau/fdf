@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:42:11 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 14:26:22 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 00:05:08 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void add_to_scaling_z(t_mlx *param, int sign)
 	if (param->projection != STEREOGRAPHIC)
 	{
 		tmp = param->scale / 20;
+		printf("zscale = %f\n", param->z_scale);
 		param->z_scale += (tmp * sign);
 	}
 }

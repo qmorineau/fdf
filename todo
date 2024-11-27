@@ -13,5 +13,4 @@ set repeat key => xset r
 protect win and mlx ptr
 
 
-Sterographic :
-bug rotate (z and y);
+problem normal projection => z_scale and rotation x

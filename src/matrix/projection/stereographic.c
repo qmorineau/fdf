@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:45:35 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 23:11:17 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 09:45:51 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	stereographic(t_mlx *param, t_point ***map)
 {
 	double	longitude;
 	double	latitude;
+	double	scaling_factor;
 	int		i;
 	int		j;
 
@@ -65,9 +66,11 @@ void	stereographic(t_mlx *param, t_point ***map)
 		{
 			longitude = (map[i][j]->x_origin / param->x_max) * convert_angle(360) - convert_angle(180);
 			latitude = convert_angle(90) - (map[i][j]->y_origin / param->y_max) * convert_angle(180);
-			map[i][j]->x = param->scale * cos(latitude) * cos(longitude);
-			map[i][j]->y = param->scale * cos(latitude) * sin(longitude);
-			map[i][j]->z = param->scale * sin(latitude);
+			scaling_factor = 0.95 + 0.05 * cos(latitude);
+			scaling_factor *= param->scale;
+			map[i][j]->x = scaling_factor * cos(latitude) * cos(longitude);
+			map[i][j]->y = scaling_factor * cos(latitude) * sin(longitude);
+			map[i][j]->z = scaling_factor * sin(latitude);
 		}
 	}
 	apply_stereo_matrices(param);
