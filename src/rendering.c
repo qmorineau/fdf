@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:44:20 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/27 10:16:34 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/27 10:20:56 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,12 @@ int	render_frame(t_mlx *param)
 	map_iter(param->map, reset_xyz);
 	if (param->projection != STEREOGRAPHIC)
 	{
-		//centered_obj(param);
-		//scaling_percent(param, 100);
-		scale_matrix(param, tmp1);
-		center_obj_matrix(param, tmp2);
-		multiply_matrix(tmp1, tmp2, tmp3);
-		m_to_point(param, tmp3);
-
-		
 		apply_transform(param, param->transformation, tmp2);
-		//multiply_matrix(tmp1, tmp2, tmp3);
-		m_to_point(param, tmp2);
+		scale_matrix(param, tmp1);
+		multiply_matrix(tmp2, tmp1, tmp3);
+		center_obj_matrix(param, tmp2);
+		multiply_matrix(tmp3, tmp2, tmp1);
+		m_to_point(param, tmp1);
 	}
 	do_projection(param);
 	draw_line(param);
