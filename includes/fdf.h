@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/28 23:55:01 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/29 00:10:37 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ int		do_transparency(int color);
 /* Errors */
 void	malloc_error(void);
 void	wrong_fd_error(void);
+void	parsing_error(void);
 /* Rendering */
 void	draw_line(t_mlx *param);
 void	put_pixel_in_img(t_mlx *param, t_point p, int color);

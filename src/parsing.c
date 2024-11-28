@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:50:41 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 16:28:11 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 00:25:37 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,16 @@ static int	add_line(t_mlx *param, char *line, int y)
 
 	tab = ft_split(line, 32);
 	if (!tab)
-		return (0);
+		return (free_ptr(&line), 0);
 	tab_len = 0;
 	while (tab[tab_len])
 		tab_len++;
 	row = ft_calloc(tab_len + 1, sizeof(t_point *));
 	if (!row)
 	{
+		free_ptr(&line);
 		free_tab(&tab);
-		return (0);
+		return (malloc_error(), 0);
 	}
 	x = 0;
 	while (tab[x])
@@ -55,15 +56,17 @@ static int	add_line(t_mlx *param, char *line, int y)
 		{
 			free(row);
 			free_tab(&tab);
-			return (0);
+			return (malloc_error(), 0);
 		}
 		row[x] = tmp;
 		x++;
 	}
-	param->x_max = (double) x - 1;
 	param->map[y] = row;
 	free_tab(&tab);
 	free_ptr(&line);
+	if (y > 0 && param->x_max != x - 1)
+		return (parsing_error(), 0);
+	param->x_max = (double) x - 1;
 	return (1);
 }
 
@@ -98,10 +101,7 @@ static int	create_row(t_mlx *param, char *line, int y)
 	}
 	param->map = init_map(tmp, &param->map, y);
 	if (!add_line(param, line, y))
-	{
-		malloc_error();
 		return (0);
-	}
 	return (1);
 }
 
@@ -121,6 +121,7 @@ int	parsing(char *argv[], t_mlx *param)
 		if (!create_row(param, line, y++))
 		{
 			map_clear(&param->map);
+			line = get_next_line(fd);
 			while (line)
 			{
 				free_ptr(&line);

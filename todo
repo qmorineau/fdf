@@ -1,14 +1,1 @@
-valid map (every row have same size, else stop program)
-
-orthographic always square ? (need to adjust width and height to be square, or adapt it)
-
-z_scale automatic calculation ?
-
-handle one press vs pressing with no release
-
-set no repeat key => xset -r
-set repeat key => xset r
-
 protect win and mlx ptr
-
-draw circle for stereo (little map don't see the perfect shape)
