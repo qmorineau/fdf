@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/28 11:55:20 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/28 23:14:15 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,15 @@
 # include "mouse.h"
 # include "color.h"
 
-//# define HEIGHT 720
-//# define WIDTH 720
 # define DEEP 1000
-# define HEIGHT 1920
-# define WIDTH 1920
+# define HEIGHT 1000
+# define WIDTH 1000
+//# define HEIGHT 1920
+//# define WIDTH 1920
 
 # define ISOMETRIC 0
 # define ORTHOGRAPHIC 1
 # define STEREOGRAPHIC 2
-
-// #ifndef	M_PI
-// # define M_PI 3.14159265358979323846
-// #endif
 
 typedef struct s_point
 {
@@ -110,12 +106,14 @@ int		create_rgb(int red, int green, int blue);
 void	retrieve_rgb(int color, double rgb[3]);
 int		next_color(int rgb1, int rgb2, double gradient_value);
 int		find_color(int color1, int color2, double gradient_value);
+int		do_transparency(int color);
 /* Errors */
 void	malloc_error(void);
 void	wrong_fd_error(void);
 /* Rendering */
 void	draw_line(t_mlx *param);
 void	put_pixel_in_img(t_mlx *param, t_point p, int color);
+void	add_text(t_mlx *param);
 int		render_frame(t_mlx *param);
 /* Init */
 t_mlx	*init_window(char *argv[]);

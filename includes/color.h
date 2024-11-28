@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:07 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/28 12:32:13 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/28 22:13:13 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define MAP 2
 # define RAINBOW 3
 # define Z_COLOR 4
+# define BLACK 0x000000
 # define RED 0xFF0000
 # define ORANGE 0xFFA500
 # define DARK_YELLOW 0xDFDF00

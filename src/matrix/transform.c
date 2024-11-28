@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:04:16 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/27 16:24:44 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/28 22:53:25 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,19 @@ void	apply_transform(t_mlx *param, t_transform *data, double matrix[4][4])
 
 	if (data->rx == 360)
 		data->rx = 0;
+	if (data->rx == -1)
+		data->rx = 359;
 	rotate_x(param, data->rx, tmp1);
 	if (data->ry == 360)
 		data->ry = 0;
+	if (data->ry == -1)
+		data->ry = 359;
 	rotate_y(param, data->ry, tmp2);
 	multiply_matrix(tmp1, tmp2, tmp3);
 	if (data->rz == 360)
 		data->rz = 0;
+	if (data->rz == -1)
+		data->rz = 359;
 	rotate_z(param, data->rz, tmp1);
 	multiply_matrix(tmp3, tmp1, matrix);
 	translate(param, param->scale * data->tx,
