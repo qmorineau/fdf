@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:42:11 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 16:51:00 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:00:05 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	add_to_scaling_z(t_mlx *param, int sign)
 	if (param->projection != STEREOGRAPHIC)
 	{
 		tmp = param->scale / 100 * sign;
-		param->z_scale += (tmp * 5);
+		param->z_scale += tmp;
 	}
 }
 
