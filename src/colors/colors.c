@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:40:22 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 17:17:47 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:51:48 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,75 @@ int	do_rainbow(t_mlx *param, int z_origin)
 
 int	do_map(t_mlx *param, int z_origin)
 {
-	int		range[4];
+	int		upper_range[5];
+	int		lower_range[4];
 	double	color;
 	double	tmp;
 	int		i;
 
-	range[0] = DARK_GREEN;
-	range[1] = YELLOW;
-	range[2] = BROWN;
-	range[3] = RED;
+	upper_range[0] = DARK_GREEN;
+	upper_range[1] = DARKER_GREEN;
+	upper_range[2] = DARK_YELLOW;
+	upper_range[3] = BROWN;
+	upper_range[4] = WHITE;
+	lower_range[0] = BLUE;
+	lower_range[1] = LOW_DARK_BLUE;
+	lower_range[2] = DARK_BLUE;
+	lower_range[3] = DARKER_BLUE;
+	if (z_origin == 0)
+		return (BLUE);
+	else if (z_origin < 0)
+	{
+		color = (double) param->z_min / 7;
+		color *= -1;
+		i = 0;
+		tmp = color;
+		while (abs(z_origin) > tmp)
+		{
+			tmp += color;
+			i++;
+		}
+		if (i > 3)
+			return (lower_range[3]);
+		return (lower_range[i]);
+	}
+	else
+	{
+		color = (double) param->z_max / 11;
+		i = 0;
+		tmp = color;
+		while (z_origin > tmp)
+		{
+			tmp += color;
+			i++;
+		}
+		if (i > 4)
+			return (upper_range[4]);
+		return (upper_range[i]);
+	}
+}
+
+/* 
+int	do_map(t_mlx *param, int z_origin)
+{
+	int		upper_range[4];
+	int		lower_range[4];
+	double	color;
+	double	tmp;
+	int		i;
+
+	upper_range[0] = DARKER_GREEN;
+	upper_range[1] = DARK_YELLOW;
+	upper_range[2] = BROWN;
+	upper_range[3] = WHITE;
 	if (z_origin <= -300)
 		return (DARKER_BLUE);
 	else if (z_origin <= -200)
 		return (DARK_BLUE);
 	else if (z_origin <= 0)
 		return (BLUE);
+	else if (z_origin <= 100)
+		return (DARK_GREEN);
 	color = (double) param->z_max / 8;
 	i = 0;
 	tmp = color;
@@ -77,6 +131,7 @@ int	do_map(t_mlx *param, int z_origin)
 		return (range[3]);
 	return (range[i]);
 }
+ */
 
 int	do_temp(t_mlx *param, int z_origin)
 {

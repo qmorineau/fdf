@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 17:19:14 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/28 11:55:20 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,6 @@
 # define ISOMETRIC 0
 # define ORTHOGRAPHIC 1
 # define STEREOGRAPHIC 2
-
-# define X_AXE 0
-# define Y_AXE 1
-# define Z_AXE 2
 
 // #ifndef	M_PI
 // # define M_PI 3.14159265358979323846
