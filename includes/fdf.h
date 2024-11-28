@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/28 23:14:15 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/28 23:55:01 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 # include <mlx.h>
 # include <fcntl.h>
 # include "libft.h"
-# include "key.h"
-# include "mouse.h"
+# include "key_and_mouse.h"
 # include "color.h"
 
 # define DEEP 1000

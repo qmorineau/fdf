@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:04:16 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/28 22:53:25 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/28 23:51:28 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ void	apply_transform(t_mlx *param, t_transform *data, double matrix[4][4])
 		data->rz = 359;
 	rotate_z(param, data->rz, tmp1);
 	multiply_matrix(tmp3, tmp1, matrix);
-	translate(param, param->scale * data->tx,
-		param->scale * data->ty, param->scale * data->tz);
+	translate(param, param->scale * data->tx / 100,
+		param->scale * data->ty / 100, param->scale * data->tz / 100);
 }

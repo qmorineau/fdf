@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:42:11 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/28 23:15:55 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/28 23:48:37 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ int	handle_keypress(int keycode, t_mlx *param)
 		param->color++;
 	else if (keycode == P)
 		change_projection(param);
+	else if (keycode == UP)
+		param->transformation->ty--;
+	else if (keycode == DOWN)
+		param->transformation->ty++;
+	else if (keycode == LEFT)
+		param->transformation->tx--;
+	else if (keycode == RIGHT)
+		param->transformation->tx++;
 	else
 		return (0);
 	return (render_frame(param));

@@ -1,6 +1,6 @@
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(LIBFT_INC) $(MLX_FLAGS)
+CFLAGS = -Wall -Wextra -Werror -I $(LIBFT_INC) $(MLX_FLAGS) -g -fsanitize=address
 MLX_FLAGS = -lX11 -lXext -lXrandr -lXrender -lXfixes -lm -lbsd
 
 # Directories
@@ -12,13 +12,11 @@ LIBFT_DIR = libft
 NAME = fdf
 LIBFT = $(LIBFT_DIR)/libft.a
 MLX_LIB = ./libmlx.a
-# MLX_LIB = /usr/local/lib/libmlx.a
 
 # Header
 INC = includes
 LIBFT_INC = libft/includes
 MLX_INC = .
-#MLX_INC = /usr/local/include
 
 # Source and Object files
 SRC_LIST = main.c\

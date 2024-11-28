@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:44:20 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/28 23:12:33 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/28 23:56:19 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void add_text(t_mlx *param)
 		mlx_string_put(param->mlx_ptr, param->win_ptr, 78, 30, YELLOW, "ORTHOGRAPHIC PROJECTION");
 	else
 		mlx_string_put(param->mlx_ptr, param->win_ptr, 73, 30, YELLOW, "STEREOGRAPHIC PROJECTION");
-	mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 50, WHITE, "Press key, use mouse scroll if mode enable:");
+	mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 50, WHITE, "Press key, use mouse scroll if mode's enabled:");
 	if (param->key_press == X)
 		mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 65, GREEN, "Rotate X mode : Enabled");
 	else
@@ -82,7 +82,7 @@ void	put_pixel_in_img(t_mlx *param, t_point p, int color)
 	{
 		(void) color;
 		dst = param->address + (int) p.y * param->size_line + (int) p.x * 4;
-		if (p.y < 220 && p.x < 300)
+		if (p.y < 220 && p.x < 320)
 			*(unsigned int *)dst = do_transparency(color);
 		else
 			*(unsigned int *)dst = color;
@@ -91,7 +91,7 @@ void	put_pixel_in_img(t_mlx *param, t_point p, int color)
 	{
 		(void) color;
 		dst = param->address + (int) p.y * param->size_line + (int) p.x * 4;
-		if (p.y < 220 && p.x < 300)
+		if (p.y < 220 && p.x < 320)
 			*(unsigned int *)dst = do_transparency(color);
 		else
 			*(unsigned int *)dst = color;
