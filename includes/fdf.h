@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/28 11:55:20 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/28 17:58:26 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,13 @@ typedef struct s_mlx
 	int			key_press;
 	int			projection;
 	int			color;
+
+	void		*filter;
+	void		*add;
+	int			bpp;
+	int			l_size;
+	int			end;
+
 }	t_mlx;
 
 /* Transform */
