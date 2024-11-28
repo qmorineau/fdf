@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:36:03 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/24 00:40:33 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/29 00:41:30 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,22 @@ int	destroy_window(t_mlx *param)
 		free(param->transformation);
 	param->transformation = NULL;
 	free(param->mlx_ptr);
+	free(param);
+	param = NULL;
+	exit(0);
+	return (0);
+}
+
+int	destroy_window_before_loop(t_mlx *param)
+{
+	map_clear(&param->map);
+	if (param->mlx_ptr)
+		mlx_destroy_display(param->mlx_ptr);
+	if (param->transformation)
+		free(param->transformation);
+	param->transformation = NULL;
+	if (param->mlx_ptr)
+		free(param->mlx_ptr);
 	free(param);
 	param = NULL;
 	exit(0);

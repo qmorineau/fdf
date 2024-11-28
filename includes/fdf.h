@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 00:10:37 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/29 00:38:48 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ int		handle_hook(t_mlx *param);
 int		handle_mouse(int button, int x, int y, t_mlx *param);
 /* Close Window */
 int		destroy_window(t_mlx *param);
+int		destroy_window_before_loop(t_mlx *param);
 /* Rotate matrix */
 void	rx_matrix(double matrix[4][4], double radian);
 void	ry_matrix(double matrix[4][4], double radian);

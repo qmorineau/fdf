@@ -6,7 +6,7 @@
 /*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:49:07 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 11:34:28 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/29 00:44:13 by quentin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,10 @@ t_mlx	*init_window(char *argv[])
 		free_wrong_parsing(param);
 	init_z_min_max(param);
 	param->mlx_ptr = mlx_init();
+	if (!param->mlx_ptr)
+		destroy_window_before_loop(param);
 	param->win_ptr = mlx_new_window(param->mlx_ptr, WIDTH, HEIGHT, "fdf");
+	if (!param->win_ptr)
+		destroy_window_before_loop(param);
 	return (param);
 }
