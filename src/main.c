@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:49:51 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 12:36:38 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 12:51:26 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,7 @@ int	main(int argc, char *argv[])
 	t_mlx	*param;
 
 	if (argc != 2)
-	{
-		ft_putstr_fd(strerror(7), 2);
-		ft_putchar_fd('\n', 2);
-		return (0);
-	}
+		return (args_error(argc));
 	if (!is_fdf_file(argv[1]))
 		return (0);
 	param = init_window(argv);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:48:58 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 00:32:24 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/29 12:54:41 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,14 @@ void	parsing_error(void)
 {
 	ft_putstr_fd(strerror(5), 2);
 	ft_putchar_fd('\n', 2);
+}
+
+int	args_error(int argc)
+{
+	if (argc < 2)
+		ft_putstr_fd(strerror(22), 2);
+	else
+		ft_putstr_fd(strerror(7), 2);
+	ft_putchar_fd('\n', 2);
+	return (0);
 }

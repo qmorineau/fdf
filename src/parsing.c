@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:50:41 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 00:25:37 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/29 13:02:35 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int	is_fdf_file(char *argv)
 		return (1);
 	else
 	{
-		ft_putstr_fd(strerror(9), 2);
-		ft_putchar_fd('\n', 2);
+		wrong_fd_error();
 		return (0);
 	}
 }
@@ -113,7 +112,7 @@ int	parsing(char *argv[], t_mlx *param)
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		return (0);
+		return (args_error(1));
 	line = get_next_line(fd);
 	y = 0;
 	while (line)

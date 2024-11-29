@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 00:38:48 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/29 12:51:02 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int		do_transparency(int color);
 void	malloc_error(void);
 void	wrong_fd_error(void);
 void	parsing_error(void);
+int		args_error(int argc);
 /* Rendering */
 void	draw_line(t_mlx *param);
 void	put_pixel_in_img(t_mlx *param, t_point p, int color);
