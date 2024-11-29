@@ -6,16 +6,11 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:49:51 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 12:51:26 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:34:41 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	print(t_point *node)
-{
-	printf("x=%f, y=%f, z=%f\n", node->x, node->y, node->z);
-}
 
 int	main(int argc, char *argv[])
 {
@@ -28,14 +23,7 @@ int	main(int argc, char *argv[])
 	param = init_window(argv);
 	if (!param)
 		return (0);
-	param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
-	param->address = mlx_get_data_addr(param->img, &param->bits_per_pixel, &param->size_line, &param->endians);
-	centered_obj(param);
-	init_scaling(param);
-	do_projection(param);
-	draw_line(param);
-	mlx_put_image_to_window(param->mlx_ptr, param->win_ptr, param->img, 0, 0);
-	add_text(param);
+	first_and_reset_render(param);
 	mlx_key_hook(param->win_ptr, handle_keypress, param);
 	mlx_mouse_hook(param->win_ptr, handle_mouse, param);
 	mlx_hook(param->win_ptr, 17, 0, destroy_window, param);

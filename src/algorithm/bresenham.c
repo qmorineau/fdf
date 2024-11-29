@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:39:45 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 12:29:37 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:24:54 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	calculate_xyz_sign(double p1_xyz, double p2_xyz)
 		return (-1);
 }
 
-void	draw_bresenham(t_mlx *param, t_point *p1, t_point *p2)
+static void	draw_bresenham(t_mlx *param, t_point *p1, t_point *p2)
 {
 	int	dif_sign_xyz[2][3];
 
@@ -38,4 +38,28 @@ void	draw_bresenham(t_mlx *param, t_point *p1, t_point *p2)
 		y_driving(param, dif_sign_xyz, *p1, *p2);
 	else
 		z_driving(param, dif_sign_xyz, *p1, *p2);
+}
+
+void	draw_line(t_mlx *param)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+
+	translate(param);
+	while (param->map[y])
+	{
+		x = 0;
+		while (param->map[y][x])
+		{
+			if (param->map[y + 1])
+				draw_bresenham(param, param->map[y][x], param->map[y + 1][x]);
+			if (param->map[y][x + 1])
+				draw_bresenham(param, param->map[y][x], param->map[y][x + 1]);
+			x++;
+		}
+		y++;
+	}
 }

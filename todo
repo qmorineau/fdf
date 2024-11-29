@@ -1,1 +1,3 @@
-translate bug with sphere
+remove mlx in makefile and test to compile
+
+void x and y in mouse evnt

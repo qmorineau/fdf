@@ -1,6 +1,6 @@
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(LIBFT_INC) $(MLX_FLAGS) -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -I $(LIBFT_INC) $(MLX_FLAGS)
 MLX_FLAGS = -lX11 -lXext -lXrandr -lXrender -lXfixes -lm -lbsd
 
 # Directories
@@ -20,33 +20,33 @@ MLX_INC = .
 
 # Source and Object files
 SRC_LIST = main.c\
-			matrix/utils_mtx.c\
+			algorithm/bresenham.c\
+			algorithm/x_driving.c\
+			algorithm/y_driving.c\
+			algorithm/z_driving.c\
+			colors/colors.c\
+			colors/colors_drive.c\
+			colors/utils_colors.c\
+			event/destroy_window.c\
+			event/key_event.c\
+			event/mouse_event.c\
 			matrix/projection/projection.c\
 			matrix/projection/orthographic.c\
 			matrix/projection/isometric.c\
 			matrix/projection/stereographic.c\
+			matrix/utils_mtx.c\
 			matrix/transform.c\
 			matrix/rotate_ft.c\
 			matrix/rotate_mtx.c\
 			matrix/centering.c\
 			matrix/scaling.c\
-			algorithm/bresenham.c\
-			algorithm/x_driving.c\
-			algorithm/y_driving.c\
-			algorithm/z_driving.c\
-			event/destroy_window.c\
-			event/key_event.c\
-			event/mouse_event.c\
-			colors/colors.c\
-			colors/colors_drive.c\
-			colors/utils_colors.c\
 			utils/free.c\
 			utils/map_lst.c\
 			utils/error.c\
 			utils/translate.c\
-			parsing.c\
-			rendering.c\
-			init.c
+			utils/parsing.c\
+			utils/rendering.c\
+			utils/init.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_LIST))
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC_LIST:.c=.o))

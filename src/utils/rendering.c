@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:44:20 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/29 13:15:37 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:44:38 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,19 @@ void add_text(t_mlx *param)
 	mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 200, RED, "R => Reset transformations");
 }
 
+void	first_and_reset_render(t_mlx *param)
+{
+	param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
+	param->address = mlx_get_data_addr(param->img,
+			&param->bits_per_pixel, &param->size_line, &param->endians);
+	centered_obj(param);
+	init_scaling(param);
+	do_projection(param);
+	draw_line(param);
+	mlx_put_image_to_window(param->mlx_ptr, param->win_ptr, param->img, 0, 0);
+	add_text(param);
+}
+
 int	render_frame(t_mlx *param)
 {
 	double	tmp1[4][4];
@@ -56,7 +69,8 @@ int	render_frame(t_mlx *param)
 
 	mlx_destroy_image(param->mlx_ptr, param->img);
 	param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
-	param->address = mlx_get_data_addr(param->img, &param->bits_per_pixel, &param->size_line, &param->endians);
+	param->address = mlx_get_data_addr(param->img,
+			&param->bits_per_pixel, &param->size_line, &param->endians);
 	map_iter(param->map, reset_xyz);
 	if (param->projection != STEREOGRAPHIC)
 	{
@@ -95,29 +109,5 @@ void	put_pixel_in_img(t_mlx *param, t_point p, int color)
 			*(unsigned int *)dst = do_transparency(color);
 		else
 			*(unsigned int *)dst = color;
-	}
-}
-
-void	draw_line(t_mlx *param)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-
-	translate(param);
-	while (param->map[y])
-	{
-		x = 0;
-		while (param->map[y][x])
-		{
-			if (param->map[y + 1])
-				draw_bresenham(param, param->map[y][x], param->map[y + 1][x]);
-			if (param->map[y][x + 1])
-				draw_bresenham(param, param->map[y][x], param->map[y][x + 1]);
-			x++;
-		}
-		y++;
 	}
 }

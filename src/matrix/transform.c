@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:04:16 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/29 13:14:13 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:37:25 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,15 @@
 void	reset_transform(t_mlx *param)
 {
 	param->key_press = 0;
-	mlx_destroy_image(param->mlx_ptr, param->img);
-	param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
-	param->address = mlx_get_data_addr(param->img, &param->bits_per_pixel, &param->size_line, &param->endians);
-	map_iter(param->map, reset_xyz);
-	mlx_clear_window(param->mlx_ptr, param->win_ptr);
-	centered_obj(param);
-	init_scaling(param);
 	param->transformation->rx = 0;
 	param->transformation->ry = 0;
 	param->transformation->rz = 0;
 	param->transformation->tx = 0;
 	param->transformation->ty = 0;
 	param->transformation->tz = 0;
-	do_projection(param);
-	draw_line(param);
-	mlx_put_image_to_window(param->mlx_ptr, param->win_ptr, param->img, 0, 0);
+	map_iter(param->map, reset_xyz);
+	mlx_destroy_image(param->mlx_ptr, param->img);
+	first_and_reset_render(param);
 }
 
 void	apply_transform(t_mlx *param, t_transform *data, double matrix[4][4])

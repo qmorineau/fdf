@@ -6,13 +6,13 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:40:22 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 11:41:55 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:26:26 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	adjust_range(t_mlx *param)
+static int	adjust_range(t_mlx *param)
 {
 	if (param->z_min < 0)
 		return (-param->z_min);
@@ -20,7 +20,7 @@ int	adjust_range(t_mlx *param)
 		return (param->z_min);
 }
 
-int	do_rainbow(t_mlx *param, int z_origin)
+static int	do_rainbow(t_mlx *param, int z_origin)
 {
 	int		range[7];
 	double	color;
@@ -48,7 +48,7 @@ int	do_rainbow(t_mlx *param, int z_origin)
 	return (range[i]);
 }
 
-int	do_map(t_mlx *param, int z_origin)
+static int	do_map(t_mlx *param, int z_origin)
 {
 	int		upper_range[5];
 	int		lower_range[4];
@@ -98,7 +98,7 @@ int	do_map(t_mlx *param, int z_origin)
 	}
 }
 
-int	do_temp(t_mlx *param, int z_origin)
+static int	do_temp(t_mlx *param, int z_origin)
 {
 	int		rgb[3];
 	double	rgb_bottom[3];

@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:07 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 16:50:18 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:42:06 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,10 @@ void	do_projection(t_mlx *param)
 
 void	change_projection(t_mlx *param)
 {
-	double	matrix[4][4];
-
 	param->projection++;
 	if (param->projection > STEREOGRAPHIC)
 		param->projection = ISOMETRIC;
 	map_iter(param->map, reset_xyz);
-	centered_obj(param);
-	init_scaling(param);
-	apply_transform(param, param->transformation, matrix);
-	m_to_point(param, matrix);
-	do_projection(param);
-	draw_line(param);
+	mlx_destroy_image(param->mlx_ptr, param->img);
+	first_and_reset_render(param);
 }

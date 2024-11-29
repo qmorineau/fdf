@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:31:52 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 11:43:27 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:27:08 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	retrieve_rgb(int color, double rgb[3])
 	rgb[2] = color;
 }
 
-int	next_color(int rgb1, int rgb2, double gradient_value)
+static int	next_color(int rgb1, int rgb2, double gradient_value)
 {
 	double	tmp;
 

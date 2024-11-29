@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_event.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:44:05 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/28 23:15:08 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/29 13:28:06 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	add_to_scaling_z(t_mlx *param, int sign)
 
 int	handle_mouse(int button, int x, int y, t_mlx *param)
 {
-	(void) x;	
+	(void) x;
 	(void) y;
 	if (param->key_press == X && button == SCROLL_D)
 		param->transformation->rx++;

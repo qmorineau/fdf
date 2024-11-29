@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 13:19:34 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:35:08 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@
 # define DEEP 1000
 # define HEIGHT 1000
 # define WIDTH 1000
-//# define HEIGHT 1920
-//# define WIDTH 1920
 
 # define ISOMETRIC 0
 # define ORTHOGRAPHIC 1
@@ -80,7 +78,6 @@ void	apply_transform(t_mlx *param, t_transform *data, double matrix[4][4]);
 void	reset_transform(t_mlx *param);
 /* Bresenham */
 void	put_pixel_in_img(t_mlx *param, t_point p, int color);
-void	draw_bresenham(t_mlx *param, t_point *p1, t_point *p2);
 void	draw_line(t_mlx *param);
 void	x_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2);
 void	y_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2);
@@ -103,7 +100,6 @@ int		color_y(t_mlx *param, t_point p1, t_point p2, int dif);
 int		color_z(t_mlx *param, t_point p1, t_point p2, int dif);
 int		create_rgb(int red, int green, int blue);
 void	retrieve_rgb(int color, double rgb[3]);
-int		next_color(int rgb1, int rgb2, double gradient_value);
 int		find_color(int color1, int color2, double gradient_value);
 int		do_transparency(int color);
 /* Errors */
@@ -115,6 +111,7 @@ int		args_error(int argc);
 void	draw_line(t_mlx *param);
 void	put_pixel_in_img(t_mlx *param, t_point p, int color);
 void	add_text(t_mlx *param);
+void	first_and_reset_render(t_mlx *param);
 int		render_frame(t_mlx *param);
 /* Init */
 t_mlx	*init_window(char *argv[]);

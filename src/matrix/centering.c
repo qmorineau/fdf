@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   center_mtx.c                                       :+:      :+:    :+:   */
+/*   centering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:44:42 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:44:55 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:44:48 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,5 @@ void	centered_obj(t_mlx *param)
 	double	matrix[4][4];
 
 	center_obj_matrix(param, matrix);
-	m_to_point(param, matrix);
-}
-
-void	centered_win(t_mlx *param)
-{
-	double	matrix[4][4];
-
-	center_win_matrix(matrix);
 	m_to_point(param, matrix);
 }
