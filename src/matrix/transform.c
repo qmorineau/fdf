@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:04:16 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/29 11:50:27 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:14:13 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,4 @@ void	apply_transform(t_mlx *param, t_transform *data, double matrix[4][4])
 		data->rz = 359;
 	rotate_z(param, data->rz, tmp1);
 	multiply_matrix(tmp3, tmp1, matrix);
-	translate(param, param->scale * data->tx / 50,
-		param->scale * data->ty / 50, param->scale * data->tz / 50);
 }

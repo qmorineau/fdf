@@ -1,6 +1,6 @@
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(LIBFT_INC) $(MLX_FLAGS)
+CFLAGS = -Wall -Wextra -Werror -I $(LIBFT_INC) $(MLX_FLAGS) -fsanitize=address -g
 MLX_FLAGS = -lX11 -lXext -lXrandr -lXrender -lXfixes -lm -lbsd
 
 # Directories
@@ -30,7 +30,6 @@ SRC_LIST = main.c\
 			matrix/rotate_mtx.c\
 			matrix/centering.c\
 			matrix/scaling.c\
-			matrix/translating.c\
 			algorithm/bresenham.c\
 			algorithm/x_driving.c\
 			algorithm/y_driving.c\
@@ -44,6 +43,7 @@ SRC_LIST = main.c\
 			utils/free.c\
 			utils/map_lst.c\
 			utils/error.c\
+			utils/translate.c\
 			parsing.c\
 			rendering.c\
 			init.c
@@ -95,7 +95,7 @@ fclean:
 re: fclean all
 
 test: all
-	./$(NAME) "test.fdf"
+	./$(NAME) "planet_maps/earth.fdf"
 
 leak: all
 	-valgrind --leak-check=full ./$(NAME) "planet_maps/moon.fdf"

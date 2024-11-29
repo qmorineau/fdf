@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 12:51:02 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:19:34 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,8 +148,7 @@ void	orthographic(t_mlx *param);
 void	isometric(t_mlx *param);
 void	stereographic(t_mlx *param, t_point ***map);
 /* Translate matrix */
-void	translate_matrix(double matrix[4][4], double x, double y, double z);
-void	translate(t_mlx *param, double x, double y, double z);
+void	translate(t_mlx *param);
 void	reset_translate(t_mlx *param);
 /* Utils matrix */
 void	multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4]);
