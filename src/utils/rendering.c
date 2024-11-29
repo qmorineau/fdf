@@ -6,13 +6,13 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:44:20 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/29 13:44:38 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:15:38 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void add_text(t_mlx *param)
+void	add_text(t_mlx *param)
 {
 	if (param->projection == ISOMETRIC)
 		mlx_string_put(param->mlx_ptr, param->win_ptr, 85, 30, YELLOW, "ISOMETRIC PROJECTION");

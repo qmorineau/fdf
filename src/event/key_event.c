@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:42:11 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 13:27:50 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:14:55 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,3 @@ int	handle_keypress(int keycode, t_mlx *param)
 		return (reset_key(param));
 	return (render_frame(param));
 }
-

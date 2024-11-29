@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:15:57 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 13:21:28 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:15:07 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	translate(t_mlx *param)
 
 	x = 0;
 	y = 0;
-
 	while (param->map[y])
 	{
 		x = 0;

@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:39:45 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 13:24:54 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 14:14:37 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	draw_line(t_mlx *param)
 
 	x = 0;
 	y = 0;
-
 	translate(param);
 	while (param->map[y])
 	{
