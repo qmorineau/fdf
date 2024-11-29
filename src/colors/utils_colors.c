@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:31:52 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/28 22:16:34 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/29 11:43:27 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ int	find_color(int color1, int color2, double gradient_value)
 
 int	do_transparency(int color)
 {
-	double color_rgb[3];
-	double new_color[3];
+	double	color_rgb[3];
+	double	new_color[3];
 
 	retrieve_rgb(color, color_rgb);
-	new_color[0] = color_rgb[0] / 5;
-	new_color[1] = color_rgb[1] / 5;
-	new_color[2] = color_rgb[2] / 5;
+	new_color[0] = color_rgb[0] / 3;
+	new_color[1] = color_rgb[1] / 3;
+	new_color[2] = color_rgb[2] / 3;
 	return (create_rgb(new_color[0], new_color[1], new_color[2]));
 }

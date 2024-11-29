@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:40:22 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/28 12:51:48 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:41:55 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,41 +97,6 @@ int	do_map(t_mlx *param, int z_origin)
 		return (upper_range[i]);
 	}
 }
-
-/* 
-int	do_map(t_mlx *param, int z_origin)
-{
-	int		upper_range[4];
-	int		lower_range[4];
-	double	color;
-	double	tmp;
-	int		i;
-
-	upper_range[0] = DARKER_GREEN;
-	upper_range[1] = DARK_YELLOW;
-	upper_range[2] = BROWN;
-	upper_range[3] = WHITE;
-	if (z_origin <= -300)
-		return (DARKER_BLUE);
-	else if (z_origin <= -200)
-		return (DARK_BLUE);
-	else if (z_origin <= 0)
-		return (BLUE);
-	else if (z_origin <= 100)
-		return (DARK_GREEN);
-	color = (double) param->z_max / 8;
-	i = 0;
-	tmp = color;
-	while (z_origin > tmp)
-	{
-		tmp += color;
-		i++;
-	}
-	if (i > 3)
-		return (range[3]);
-	return (range[i]);
-}
- */
 
 int	do_temp(t_mlx *param, int z_origin)
 {

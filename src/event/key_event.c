@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   key_event.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:42:11 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/28 23:48:37 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/29 11:49:42 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int	reset_key(t_mlx *param)
+{
+	if (param->key_press != 0)
+	{
+		param->key_press = 0;
+		render_frame(param);
+	}
+	return (0);
+}
 
 int	handle_keypress(int keycode, t_mlx *param)
 {
@@ -19,10 +29,7 @@ int	handle_keypress(int keycode, t_mlx *param)
 	else if (keycode == X || keycode == Y || keycode == Z || keycode == S || keycode == I)
 		param->key_press = keycode;
 	else if (keycode == R)
-	{
-		param->key_press = 0;
 		reset_transform(param);
-	}
 	else if (keycode == C)
 		reset_translate(param);
 	else if (keycode == V)
@@ -38,7 +45,7 @@ int	handle_keypress(int keycode, t_mlx *param)
 	else if (keycode == RIGHT)
 		param->transformation->tx++;
 	else
-		return (0);
+		return (reset_key(param));
 	return (render_frame(param));
 }
 

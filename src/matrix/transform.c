@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   transform.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:04:16 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/28 23:51:28 by quentin          ###   ########.fr       */
+/*   Updated: 2024/11/29 11:50:27 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	reset_transform(t_mlx *param)
 {
+	param->key_press = 0;
 	mlx_destroy_image(param->mlx_ptr, param->img);
 	param->img = mlx_new_image(param->mlx_ptr, WIDTH, HEIGHT);
 	param->address = mlx_get_data_addr(param->img, &param->bits_per_pixel, &param->size_line, &param->endians);
@@ -55,6 +56,6 @@ void	apply_transform(t_mlx *param, t_transform *data, double matrix[4][4])
 		data->rz = 359;
 	rotate_z(param, data->rz, tmp1);
 	multiply_matrix(tmp3, tmp1, matrix);
-	translate(param, param->scale * data->tx / 100,
-		param->scale * data->ty / 100, param->scale * data->tz / 100);
+	translate(param, param->scale * data->tx / 50,
+		param->scale * data->ty / 50, param->scale * data->tz / 50);
 }
