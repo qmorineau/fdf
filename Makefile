@@ -112,7 +112,7 @@ $(NAME): $(OBJ) $(LIBFT)
 
 # Compiling source files to object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC) $(LIBFT_INC) $(MLX_INC)
-	$(CC) $(CFLAGS) -I $(INC) -c $< -o $@
+	@$(CC) $(CFLAGS) -I $(INC) -c $< -o $@
 # Compile bonus source files to object files
 $(OBJ_BONUS_DIR)/%.o: $(BONUS_DIR)/%.c $(INC_BONUS) $(LIBFT_INC) $(MLX_INC)
 	@$(CC) $(CFLAGS) -I $(INC_BONUS) -c $< -o $@
@@ -138,7 +138,7 @@ bonus: $(OBJ_BONUS_DIR) $(OBJ_BONUS) $(LIBFT)
 	@echo "$(YELLOW)BONUS : Exec $(NAME) created.$(RESET)"
 
 test: all
-	./$(NAME) "planet_maps/earth.fdf"
+	./$(NAME) "test_maps/julia.fdf"
 
 leak: bonus
 	-valgrind --leak-check=full ./$(NAME) "planet_maps/moon.fdf"

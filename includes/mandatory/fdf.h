@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/02 15:54:14 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:31:53 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,9 @@ typedef struct s_mlx
 	int			z_min;
 	int			z_max;
 	int			key_press;
-	int			projection;
-	int			color;
 }	t_mlx;
 
 /* Bresenham */
-void	put_pixel_in_img(t_mlx *param, t_point p, int color);
 void	draw_line(t_mlx *param);
 void	x_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2);
 void	y_driving(t_mlx *param, int d_s_xyz[2][3], t_point p1, t_point p2);
@@ -77,36 +74,18 @@ void	free_gnl(int fd);
 /* Parsing */
 int		is_fdf_file(char *argv);
 int		parsing(char *argv[], t_mlx *all);
-/* Colors */
-int		calculate_color(t_mlx *param, int z_origin);
-int		color_x(t_mlx *param, t_point p1, t_point p2, int dif);
-int		color_y(t_mlx *param, t_point p1, t_point p2, int dif);
-int		color_z(t_mlx *param, t_point p1, t_point p2, int dif);
-int		create_rgb(int red, int green, int blue);
-void	retrieve_rgb(int color, double rgb[3]);
-int		find_color(int color1, int color2, double gradient_value);
-int		do_transparency(int color);
-/* Colors Map */
-int		do_map(t_mlx *param, int z_origin);
 /* Errors */
 void	malloc_error(void);
 void	wrong_fd_error(void);
 void	parsing_error(void);
 int		args_error(int argc);
 /* Rendering */
-void	draw_line(t_mlx *param);
 void	put_pixel_in_img(t_mlx *param, t_point p, int color);
-void	add_text(t_mlx *param);
-void	first_and_reset_render(t_mlx *param);
 void	render_frame(t_mlx *param);
 /* Init */
 t_mlx	*init_window(char *argv[]);
 /* Key Event */
-int		handle_keyrelease(int keycode, t_mlx *param);
 int		handle_keypress(int keycode, t_mlx *param);
-int		handle_hook(t_mlx *param);
-/* Mouse Event */
-int		handle_mouse(int button, int x, int y, t_mlx *param);
 /* Close Window */
 int		destroy_window(t_mlx *param);
 int		destroy_window_before_loop(t_mlx *param);
@@ -121,25 +100,15 @@ void	rotate_z(int repeat, double matrix[4][4]);
 void	center_obj_matrix(t_mlx *param, double matrix[4][4]);
 void	center_win_matrix(double matrix[4][4]);
 void	centered_obj(t_mlx *param);
-void	centered_win(t_mlx *param);
-/* Projection */
-void	do_projection(t_mlx *param);
-void	change_projection(t_mlx *param);
 /* Matrix */
 void	ortho_matrix(double matrix[4][4]);
 void	orthographic(t_mlx *param);
 void	isometric(t_mlx *param);
-void	stereographic(t_mlx *param, t_point ***map);
-/* Translate matrix */
-void	translate(t_mlx *param);
-void	reset_translate(t_mlx *param);
 /* Utils matrix */
 void	multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4]);
 void	m_to_point(t_mlx *param, double matrix[4][4]);
-void	reset_xyz(t_point *node);
 double	convert_angle(double angle);
 /* Scale matrix */
 void	scale_matrix(t_mlx *param, double matrix[4][4]);
 void	init_scaling(t_mlx *param);
-void	scaling_percent(t_mlx *param, double percent);
 #endif
