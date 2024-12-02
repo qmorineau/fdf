@@ -1,0 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   destroy_window.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 15:36:03 by qmorinea          #+#    #+#             */
+/*   Updated: 2024/12/02 14:00:11 by qmorinea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fdf.h"
+
+int	destroy_window(t_mlx *param)
+{
+	mlx_loop_end(param->mlx_ptr);
+	mlx_destroy_image(param->mlx_ptr, param->img);
+	map_clear(&param->map);
+	mlx_destroy_window(param->mlx_ptr, param->win_ptr);
+	mlx_destroy_display(param->mlx_ptr);
+	free(param->mlx_ptr);
+	free(param);
+	param = NULL;
+	exit(0);
+	return (0);
+}
+
+int	destroy_window_before_loop(t_mlx *param)
+{
+	map_clear(&param->map);
+	if (param->mlx_ptr)
+		mlx_destroy_display(param->mlx_ptr);
+	if (param->mlx_ptr)
+		free(param->mlx_ptr);
+	free(param);
+	param = NULL;
+	exit(0);
+	return (0);
+}

@@ -1,0 +1,81 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_mtx.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/22 15:47:26 by qmorinea          #+#    #+#             */
+/*   Updated: 2024/12/02 13:49:56 by qmorinea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fdf.h"
+
+double	convert_angle(double angle)
+{
+	double	radian;
+
+	radian = (M_PI / 180) * angle;
+	return (radian);
+}
+
+void	set_point(t_point *point, double xyz[3])
+{
+	point->x = xyz[0];
+	point->y = xyz[1];
+	point->z = xyz[2];
+}
+
+void	m_to_point(t_mlx *param, double matrix[4][4])
+{
+	t_point	***map;
+	int		i;
+	int		j;
+	double	xyz[3];
+	double	w;
+
+	i = -1;
+	map = param->map;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			w = matrix[3][0] * map[i][j]->x + matrix[3][1]
+				* map[i][j]->y + matrix[3][2] * map[i][j]->z + matrix[3][3];
+			xyz[0] = matrix[0][0] * map[i][j]->x + matrix[0][1] * map[i][j]->y
+				+ matrix[0][2] * map[i][j]->z + matrix[0][3] / w;
+			xyz[1] = matrix[1][0] * map[i][j]->x + matrix[1][1] * map[i][j]->y
+				+ matrix[1][2] * map[i][j]->z + matrix[1][3] / w;
+			xyz[2] = matrix[2][0] * map[i][j]->x + matrix[2][1] * map[i][j]->y
+				+ matrix[2][2] * map[i][j]->z + matrix[2][3] / w;
+			set_point(map[i][j], xyz);
+		}
+	}
+}
+
+void	multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4])
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	while (i < 4)
+	{
+		j = 0;
+		while (j < 4)
+		{
+			k = 0;
+			m_c[i][j] = 0;
+			while (k < 4)
+			{
+				m_c[i][j] += (m_a[i][k] * m_b[k][j]);
+				k++;
+			}
+			j++;
+		}
+		i++;
+	}
+}
