@@ -1,51 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendering.c                                        :+:      :+:    :+:   */
+/*   rendering_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:44:20 by quentin           #+#    #+#             */
-/*   Updated: 2024/11/29 14:15:38 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:41:54 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	add_text(t_mlx *param)
+static void	add_first_lines(t_mlx *param, void *mlx, void *win)
 {
 	if (param->projection == ISOMETRIC)
-		mlx_string_put(param->mlx_ptr, param->win_ptr, 85, 30, YELLOW, "ISOMETRIC PROJECTION");
+		mlx_string_put(mlx, win, 85, 30, YELLOW, "ISOMETRIC PROJECTION");
 	else if (param->projection == ORTHOGRAPHIC)
-		mlx_string_put(param->mlx_ptr, param->win_ptr, 78, 30, YELLOW, "ORTHOGRAPHIC PROJECTION");
+		mlx_string_put(mlx, win, 78, 30, YELLOW, "ORTHOGRAPHIC PROJECTION");
 	else
-		mlx_string_put(param->mlx_ptr, param->win_ptr, 73, 30, YELLOW, "STEREOGRAPHIC PROJECTION");
-	mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 50, WHITE, "Press key, use mouse scroll if mode's enabled:");
+		mlx_string_put(mlx, win, 73, 30, YELLOW, "STEREOGRAPHIC PROJECTION");
+	mlx_string_put(mlx, win, 20, 50, WHITE,
+		"Press key, use mouse scroll if mode's enabled:");
 	if (param->key_press == X)
-		mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 65, GREEN, "Rotate X mode : Enabled");
+		mlx_string_put(mlx, win, 20, 65, GREEN, "Rotate X mode : Enabled");
 	else
-		mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 65, WHITE, "X => Rotate X axe");
+		mlx_string_put(mlx, win, 20, 65, WHITE, "X => Rotate X axe");
 	if (param->key_press == Y)
-		mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 80, GREEN, "Rotate Y mode : Enabled");
+		mlx_string_put(mlx, win, 20, 80, GREEN, "Rotate Y mode : Enabled");
 	else
-		mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 80, WHITE, "Y => Rotate Y axe");
+		mlx_string_put(mlx, win, 20, 80, WHITE, "Y => Rotate Y axe");
 	if (param->key_press == Z)
-		mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 95, GREEN, "Rotate Z mode : Enabled");
+		mlx_string_put(mlx, win, 20, 95, GREEN, "Rotate Z mode : Enabled");
 	else
-		mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 95, WHITE, "Z => Rotate Z axe");
+		mlx_string_put(mlx, win, 20, 95, WHITE, "Z => Rotate Z axe");
 	if (param->key_press == I)
-		mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 110, GREEN, "Zoom mode : Enable");
+		mlx_string_put(mlx, win, 20, 110, GREEN, "Zoom mode : Enable");
 	else
-		mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 110, WHITE, "I => Zoom");
+		mlx_string_put(mlx, win, 20, 110, WHITE, "I => Zoom");
+}
+
+void	add_text(t_mlx *param)
+{
+	void	*mlx;
+	void	*win;
+
+	mlx = param->mlx_ptr;
+	win = param->win_ptr;
+
+	add_first_lines(param, mlx, win);
 	if (param->key_press == S)
-		mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 125, GREEN, "Z Scaling mode : Enable");
+		mlx_string_put(mlx, win, 20, 125, GREEN, "Z Scaling mode : Enable");
 	else
-		mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 125, WHITE, "S => Change Z scaling");
-	mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 140, WHITE, "C => Recenter the object");
-	mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 155, WHITE, "P => Change the projection");
-	mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 170, WHITE, "Arrows => Translate the object");
-	mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 185, WHITE, "V => Change colors");
-	mlx_string_put(param->mlx_ptr, param->win_ptr, 20, 200, RED, "R => Reset transformations");
+		mlx_string_put(mlx, win, 20, 125, WHITE, "S => Change Z scaling");
+	mlx_string_put(mlx, win, 20, 140, WHITE, "C => Recenter the object");
+	mlx_string_put(mlx, win, 20, 155, WHITE, "P => Change the projection");
+	mlx_string_put(mlx, win, 20, 170, WHITE, "Arrows => Translate the object");
+	mlx_string_put(mlx, win, 20, 185, WHITE, "V => Change colors");
+	mlx_string_put(mlx, win, 20, 200, RED, "R => Reset transformations");
 }
 
 void	first_and_reset_render(t_mlx *param)

@@ -7,7 +7,7 @@ MLX_FLAGS = -lX11 -lXext -lXrandr -lXrender -lXfixes -lm -lbsd
 SRC_DIR = src/mandatory
 BONUS_DIR = src/bonus
 OBJ_DIR = obj/mandatory
-OBJ_BONUS_DIR = OBJ/bonus
+OBJ_BONUS_DIR = obj/bonus
 LIBFT_DIR = libft
 
 # Name
@@ -133,16 +133,12 @@ fclean:
 
 re: fclean all
 
-bonus: $(OBJ_BONUS) $(LIBFT)
+bonus: $(OBJ_BONUS_DIR) $(OBJ_BONUS) $(LIBFT)
 	@$(CC) $(CFLAGS) -I $(INC_BONUS) $(OBJ_BONUS) $(LIBFT) $(MLX_LIB) -o $(NAME) $(MLX_FLAGS)
 	@echo "$(YELLOW)BONUS : Exec $(NAME) created.$(RESET)"
 
 test: all
 	./$(NAME) "planet_maps/earth.fdf"
-
-bla:
-	@echo $(OBJ)
-	@echo $(OBJ_BONUS)
 
 leak: all
 	-valgrind --leak-check=full ./$(NAME) "planet_maps/moon.fdf"

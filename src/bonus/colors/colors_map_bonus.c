@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors_map.c                                       :+:      :+:    :+:   */
+/*   colors_map_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:18:51 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/02 12:31:26 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:44:47 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,3 @@ int	do_map(t_mlx *param, int z_origin)
 	else
 		return (do_upper_range(param->z_max, z_origin, upper_range));
 }
-
