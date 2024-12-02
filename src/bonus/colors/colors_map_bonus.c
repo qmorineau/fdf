@@ -6,11 +6,11 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 12:18:51 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/02 15:44:47 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:59:17 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 static void	create_range_map(int upper_range[5], int lower_range[4])
 {

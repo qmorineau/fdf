@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   key_and_mouse.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:39:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/28 23:54:33 by quentin          ###   ########.fr       */
+/*   Updated: 2024/12/02 15:57:44 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEY_H
-# define KEY_H
+#ifndef KEY_AND_MOUSE_BONUS_H
+# define KEY_AND_MOUSE_BONUS_H
 # define LEFT_C 1
 # define MIDDLE_C 2
 # define RIGHT_C 3

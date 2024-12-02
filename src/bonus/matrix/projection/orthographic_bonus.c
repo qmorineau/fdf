@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   proj_orthographic.c                                :+:      :+:    :+:   */
+/*   orthographic_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:45:15 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/22 15:45:28 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:59:38 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 void	ortho_matrix(double matrix[4][4])
 {

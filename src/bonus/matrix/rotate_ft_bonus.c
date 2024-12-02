@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_ft.c                                        :+:      :+:    :+:   */
+/*   rotate_ft_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:15 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/26 22:22:31 by quentin          ###   ########.fr       */
+/*   Updated: 2024/12/02 15:59:49 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 void	rotate_x(t_mlx *param, int repeat, double matrix[4][4])
 {

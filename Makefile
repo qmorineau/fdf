@@ -140,7 +140,7 @@ bonus: $(OBJ_BONUS_DIR) $(OBJ_BONUS) $(LIBFT)
 test: all
 	./$(NAME) "planet_maps/earth.fdf"
 
-leak: all
+leak: bonus
 	-valgrind --leak-check=full ./$(NAME) "planet_maps/moon.fdf"
 
 .PHONY: all clean fclean re bonus test

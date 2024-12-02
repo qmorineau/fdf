@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stereographic.c                                    :+:      :+:    :+:   */
+/*   stereographic_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:45:35 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 16:50:46 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:59:43 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 static void	stereo_matrix(double matrix[4][4])
 {

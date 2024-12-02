@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quentin <quentin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:48:44 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 00:16:36 by quentin          ###   ########.fr       */
+/*   Updated: 2024/12/02 16:00:11 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 void	free_ptr(char **ptr)
 {
@@ -45,4 +45,16 @@ void	free_wrong_parsing(t_mlx *param)
 	free(param);
 	param = NULL;
 	exit(0);
+}
+
+void	free_gnl(int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	while (line)
+	{
+		free_ptr(&line);
+		line = get_next_line(fd);
+	}
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors_drive.c                                     :+:      :+:    :+:   */
+/*   colors_drive_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:36:27 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/27 16:37:11 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:59:11 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 int	color_x(t_mlx *param, t_point p2, t_point p1, int dif)
 {

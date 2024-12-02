@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fdf_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/02 13:17:47 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:58:31 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef FDF_BONUS_H
+# define FDF_BONUS_H
 # include <stdlib.h>
 # include <math.h>
 # include <unistd.h>
@@ -20,8 +20,8 @@
 # include <../../mlx.h>
 # include <fcntl.h>
 # include "libft.h"
-# include "key_and_mouse.h"
-# include "color.h"
+# include "key_and_mouse_bonus.h"
+# include "color_bonus.h"
 
 # define DEEP 1000
 # define HEIGHT 1000
@@ -90,6 +90,7 @@ void	map_iter(t_point ***map, void (*f)(t_point *));
 void	free_ptr(char **ptr);
 void	free_tab(char ***tab);
 void	free_wrong_parsing(t_mlx *param);
+void	free_gnl(int fd);
 /* Parsing */
 int		is_fdf_file(char *argv);
 int		parsing(char *argv[], t_mlx *all);

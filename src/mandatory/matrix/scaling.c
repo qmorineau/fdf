@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:47 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/02 13:55:25 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:53:22 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,3 @@ void	init_scaling(t_mlx *param)
 	scale_matrix(param, matrix);
 	m_to_point(param, matrix);
 }
-

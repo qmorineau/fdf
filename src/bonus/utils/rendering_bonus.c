@@ -6,11 +6,11 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 17:44:20 by quentin           #+#    #+#             */
-/*   Updated: 2024/12/02 15:41:54 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:00:30 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 static void	add_first_lines(t_mlx *param, void *mlx, void *win)
 {
@@ -47,7 +47,6 @@ void	add_text(t_mlx *param)
 
 	mlx = param->mlx_ptr;
 	win = param->win_ptr;
-
 	add_first_lines(param, mlx, win);
 	if (param->key_press == S)
 		mlx_string_put(mlx, win, 20, 125, GREEN, "Z Scaling mode : Enable");

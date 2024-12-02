@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:50:41 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 13:02:35 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:00:26 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 int	is_fdf_file(char *argv)
 {
@@ -120,12 +120,7 @@ int	parsing(char *argv[], t_mlx *param)
 		if (!create_row(param, line, y++))
 		{
 			map_clear(&param->map);
-			line = get_next_line(fd);
-			while (line)
-			{
-				free_ptr(&line);
-				line = get_next_line(fd);
-			}
+			free_gnl(fd);
 			close(fd);
 			return (0);
 		}

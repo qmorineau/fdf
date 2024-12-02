@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/02 13:59:38 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:54:14 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	map_iter(t_point ***map, void (*f)(t_point *));
 void	free_ptr(char **ptr);
 void	free_tab(char ***tab);
 void	free_wrong_parsing(t_mlx *param);
+void	free_gnl(int fd);
 /* Parsing */
 int		is_fdf_file(char *argv);
 int		parsing(char *argv[], t_mlx *all);

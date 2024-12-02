@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_colors.c                                     :+:      :+:    :+:   */
+/*   utils_colors_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:31:52 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/11/29 13:27:08 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:59:20 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 int	create_rgb(int red, int green, int blue)
 {
