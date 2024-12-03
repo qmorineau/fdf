@@ -6,13 +6,13 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:47 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/03 14:53:41 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:08:36 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	scale_matrix(t_mlx *param, double matrix[4][4])
+static void	scale_matrix(t_mlx *param, double matrix[4][4])
 {
 	matrix[0][0] = param->scale;
 	matrix[0][1] = 0;

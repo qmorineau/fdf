@@ -6,13 +6,13 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:44:42 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/03 11:52:29 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:09:49 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	center_obj_matrix(t_mlx *param, double matrix[4][4])
+static void	center_obj_matrix(t_mlx *param, double matrix[4][4])
 {
 	double	z_centering;
 

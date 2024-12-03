@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/02 16:31:53 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:10:01 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void	rotate_x(int repeat, double matrix[4][4]);
 void	rotate_y(int repeat, double matrix[4][4]);
 void	rotate_z(int repeat, double matrix[4][4]);
 /* Center matrix */
-void	center_obj_matrix(t_mlx *param, double matrix[4][4]);
 void	center_win_matrix(double matrix[4][4]);
 void	centered_obj(t_mlx *param);
 /* Matrix */
@@ -109,6 +108,5 @@ void	multiply_matrix(double m_a[4][4], double m_b[4][4], double m_c[4][4]);
 void	m_to_point(t_mlx *param, double matrix[4][4]);
 double	convert_angle(double angle);
 /* Scale matrix */
-void	scale_matrix(t_mlx *param, double matrix[4][4]);
 void	init_scaling(t_mlx *param);
 #endif
