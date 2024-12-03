@@ -8,6 +8,7 @@ SRC_DIR = src/mandatory
 BONUS_DIR = src/bonus
 OBJ_DIR = obj/mandatory
 OBJ_BONUS_DIR = obj/bonus
+OBJ_FOLDER = obj
 LIBFT_DIR = libft
 
 # Name
@@ -132,6 +133,7 @@ clean:
 
 fclean:
 	@rm -f $(NAME)
+	@rm -f $(NAME_BONUS)
 	@rm -rf $(OBJ_FOLDER)
 	@rm -rf minilibx-linux/obj
 	@make fclean -C $(LIBFT_DIR) --no-print-directory
@@ -145,7 +147,9 @@ $(NAME_BONUS): $(LIBFT) $(OBJ_BONUS) $(MLX_LIB)
 	@$(CC) $(CFLAGS) -I $(INC_BONUS) $(OBJ_BONUS) $(LIBFT) $(MLX_LIB) -o $(NAME_BONUS) $(MLX_FLAGS)
 	@echo "$(YELLOW)BONUS : Exec $(NAME) created.$(RESET)"
 
-test: bonus
-	./$(NAME) "planet_maps/earth.fdf"
+norm:
+	@norminette includes
+	@norminette libft
+	@norminette src
 
-.PHONY: all clean fclean re bonus test
+.PHONY: all clean fclean re bonus norm
