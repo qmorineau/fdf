@@ -1,3 +1,5 @@
 remove mlx in makefile and test to compile
 
-void x and y in mouse evnt
+adapt z_scale better
+if z_min > 0 adjust to 0;
+if z_max < 0 adjust to 0 for centering

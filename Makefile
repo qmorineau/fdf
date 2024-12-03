@@ -137,8 +137,8 @@ bonus: $(OBJ_BONUS_DIR) $(OBJ_BONUS) $(LIBFT)
 	@$(CC) $(CFLAGS) -I $(INC_BONUS) $(OBJ_BONUS) $(LIBFT) $(MLX_LIB) -o $(NAME) $(MLX_FLAGS)
 	@echo "$(YELLOW)BONUS : Exec $(NAME) created.$(RESET)"
 
-test: all
-	./$(NAME) "test_maps/julia.fdf"
+test: bonus
+	./$(NAME) "test.fdf"
 
 leak: bonus
 	-valgrind --leak-check=full ./$(NAME) "planet_maps/moon.fdf"
