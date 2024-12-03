@@ -1,6 +1,6 @@
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(LIBFT_INC) $(MLX_FLAGS)
+CFLAGS = -Wall -Wextra -Werror -O3 -I $(LIBFT_INC) $(MLX_FLAGS)
 MLX_FLAGS = -lX11 -lXext -lXrandr -lXrender -lXfixes -lm -lbsd
 
 # Directories
@@ -13,13 +13,13 @@ LIBFT_DIR = libft
 # Name
 NAME = fdf
 LIBFT = $(LIBFT_DIR)/libft.a
-MLX_LIB = ./libmlx.a
+MLX_LIB = minilibx-linux/libmlx.a
 
 # Header
 INC = includes/mandatory
 INC_BONUS = includes/bonus
 LIBFT_INC = libft/includes
-MLX_INC = .
+MLX_INC = minilibx-linux
 
 # Source and Object files
 SRC_LIST = main.c\
@@ -106,13 +106,13 @@ $(OBJ_BONUS_DIR):
 	@mkdir -p $(OBJ_BONUS_DIR)/event
 
 # Linking object files
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(MLX_LIB) $(OBJ) $(LIBFT)
 	@$(CC) $(CFLAGS) -I $(INC) $(OBJ) $(LIBFT) $(MLX_LIB) -o $(NAME) $(MLX_FLAGS)
 	@echo "$(YELLOW)Exec $(NAME) created.$(RESET)"
 
 # Compiling source files to object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC) $(LIBFT_INC) $(MLX_INC)
-	$(CC) $(CFLAGS) -I $(INC) -c $< -o $@
+	@$(CC) $(CFLAGS) -I $(INC) -c $< -o $@
 # Compile bonus source files to object files
 $(OBJ_BONUS_DIR)/%.o: $(BONUS_DIR)/%.c $(INC_BONUS) $(LIBFT_INC) $(MLX_INC)
 	@$(CC) $(CFLAGS) -I $(INC_BONUS) -c $< -o $@
@@ -120,24 +120,29 @@ $(OBJ_BONUS_DIR)/%.o: $(BONUS_DIR)/%.c $(INC_BONUS) $(LIBFT_INC) $(MLX_INC)
 $(LIBFT):
 	@make -C $(LIBFT_DIR) --no-print-directory
 
+$(MLX_LIB):
+	@make -C $(MLX_INC) --no-print-directory
+
 clean:
 	@rm -rf $(OBJ_FOLDER)
 	@make clean -C $(LIBFT_DIR) --no-print-directory
+	@make clean -C $(MLX_INC) --no-print-directory
 	@echo "$(RED)Fdf: Cleaned object files$(RESET)"
 
 fclean:
 	@rm -f $(NAME)
 	@rm -rf $(OBJ_FOLDER)
+	@rm -rf minilibx-linux/obj
 	@make fclean -C $(LIBFT_DIR) --no-print-directory
 	@echo "$(RED)Fdf: Removed binary files$(RESET)"
 
 re: fclean all
 
-bonus: $(OBJ_BONUS_DIR) $(OBJ_BONUS) $(LIBFT)
-	@$(CC) $(CFLAGS) -I $(INC_BONUS) $(OBJ_BONUS) $(LIBFT) $(MLX_LIB) -o $(NAME) $(MLX_FLAGS)
+bonus: $(OBJ_BONUS_DIR) $(LIBFT) $(OBJ_BONUS) $(MLX_LIB)
+	$(CC) $(CFLAGS) -I $(INC_BONUS) $(OBJ_BONUS) $(LIBFT) $(MLX_LIB) -o $(NAME) $(MLX_FLAGS)
 	@echo "$(YELLOW)BONUS : Exec $(NAME) created.$(RESET)"
 
-test: all
+test: bonus
 	./$(NAME) "planet_maps/earth.fdf"
 
 .PHONY: all clean fclean re bonus test
