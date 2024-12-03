@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:44:05 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/02 15:59:31 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:55:17 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	handle_mouse(int button, int x, int y, t_mlx *param)
 		add_to_scaling_z(param, 1);
 	else if (param->key_press == S && button == SCROLL_U)
 		add_to_scaling_z(param, -1);
-	else if (param->key_press == I && button == SCROLL_D)
-		scaling_percent(param, 90);
 	else if (param->key_press == I && button == SCROLL_U)
+		scaling_percent(param, 90);
+	else if (param->key_press == I && button == SCROLL_D)
 		scaling_percent(param, 110);
 	else
 		return (0);

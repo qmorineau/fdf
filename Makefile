@@ -138,7 +138,7 @@ bonus: $(OBJ_BONUS_DIR) $(OBJ_BONUS) $(LIBFT)
 	@echo "$(YELLOW)BONUS : Exec $(NAME) created.$(RESET)"
 
 test: bonus
-	./$(NAME) "test.fdf"
+	./$(NAME) "planet_maps/earth_XL.fdf"
 
 leak: bonus
 	-valgrind --leak-check=full ./$(NAME) "planet_maps/moon.fdf"

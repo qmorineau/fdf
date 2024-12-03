@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:44:42 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/03 11:51:40 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:56:53 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	center_obj_matrix(t_mlx *param, double matrix[4][4])
 	double	z_centering;
 
 	z_centering = 0;
-	if (param->z_min > 0)
+	if (param->z_min > 0 || param->z_min < 0)
 		z_centering = (double) -param->z_min;
 	else if (param->z_max < 0)
 		z_centering = (double) -param->z_max;

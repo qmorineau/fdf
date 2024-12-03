@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:47 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/02 15:53:22 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:53:41 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_scaling(t_mlx *param)
 
 	scale_x = WIDTH / (param->map[0][param->x_max]->x);
 	scale_y = HEIGHT / (param->map[param->y_max][0]->y);
-	param->scale = fmin(scale_x, scale_y);
+	param->scale = fmin(scale_x, scale_y) / 2;
 	if (param->z_max - param->z_min == 0)
 		param->z_scale = param->scale / 10;
 	else
