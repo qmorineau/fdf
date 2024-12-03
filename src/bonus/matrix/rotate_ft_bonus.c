@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:46:15 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/02 15:59:49 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:09:35 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	rotate_y(t_mlx *param, int repeat, double matrix[4][4])
 	double	radian;
 	double	angle;
 
+	angle = 1;
 	if (param->projection == ISOMETRIC)
 		angle = 1;
 	else if (param->projection == ORTHOGRAPHIC)
@@ -48,6 +49,7 @@ void	rotate_z(t_mlx *param, int repeat, double matrix[4][4])
 	double	radian;
 	double	angle;
 
+	angle = 1;
 	if (param->projection == ISOMETRIC)
 		angle = 1;
 	else if (param->projection == ORTHOGRAPHIC)

@@ -1,6 +1,6 @@
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -O3 -I $(LIBFT_INC) $(MLX_FLAGS)
+CFLAGS = -Wall -Wextra -Werror -I $(LIBFT_INC) $(MLX_FLAGS)
 MLX_FLAGS = -lX11 -lXext -lXrandr -lXrender -lXfixes -lm -lbsd
 
 # Directories
@@ -12,6 +12,7 @@ LIBFT_DIR = libft
 
 # Name
 NAME = fdf
+NAME_BONUS = fdf_bonus
 LIBFT = $(LIBFT_DIR)/libft.a
 MLX_LIB = minilibx-linux/libmlx.a
 
@@ -138,8 +139,10 @@ fclean:
 
 re: fclean all
 
-bonus: $(OBJ_BONUS_DIR) $(LIBFT) $(OBJ_BONUS) $(MLX_LIB)
-	$(CC) $(CFLAGS) -I $(INC_BONUS) $(OBJ_BONUS) $(LIBFT) $(MLX_LIB) -o $(NAME) $(MLX_FLAGS)
+bonus: $(OBJ_BONUS_DIR) $(NAME_BONUS)
+
+$(NAME_BONUS): $(LIBFT) $(OBJ_BONUS) $(MLX_LIB)
+	@$(CC) $(CFLAGS) -I $(INC_BONUS) $(OBJ_BONUS) $(LIBFT) $(MLX_LIB) -o $(NAME_BONUS) $(MLX_FLAGS)
 	@echo "$(YELLOW)BONUS : Exec $(NAME) created.$(RESET)"
 
 test: bonus
