@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:37:21 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/02 15:58:31 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/04 12:01:12 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <string.h>
-# include <../../mlx.h>
+# include "mlx.h"
 # include <fcntl.h>
 # include "libft.h"
 # include "key_and_mouse_bonus.h"
@@ -91,6 +91,7 @@ void	free_ptr(char **ptr);
 void	free_tab(char ***tab);
 void	free_wrong_parsing(t_mlx *param);
 void	free_gnl(int fd);
+int		free_if_not_row(char **line, char ***tab);
 /* Parsing */
 int		is_fdf_file(char *argv);
 int		parsing(char *argv[], t_mlx *all);

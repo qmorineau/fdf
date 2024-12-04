@@ -1,6 +1,6 @@
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(LIBFT_INC) $(MLX_FLAGS)
+CFLAGS = -Wall -Wextra -Werror -I $(LIBFT_INC) $(MLX_FLAGS) -fsanitize=address -g
 MLX_FLAGS = -lX11 -lXext -lXrandr -lXrender -lXfixes -lm -lbsd
 
 # Directories
@@ -43,7 +43,8 @@ SRC_LIST = main.c\
 			utils/error.c\
 			utils/parsing.c\
 			utils/rendering.c\
-			utils/init.c
+			utils/init.c\
+			utils/is_fdf_file.c
 
 # Source and Object files BONUS
 BONUS_LIST = main_bonus.c\
@@ -74,7 +75,8 @@ BONUS_LIST = main_bonus.c\
 			utils/translate_bonus.c\
 			utils/parsing_bonus.c\
 			utils/rendering_bonus.c\
-			utils/init_bonus.c
+			utils/init_bonus.c\
+			utils/is_fdf_file_bonus.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_LIST))
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC_LIST:.c=.o))
@@ -114,10 +116,10 @@ $(NAME): $(MLX_LIB) $(OBJ) $(LIBFT)
 
 # Compiling source files to object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC) $(LIBFT_INC) $(MLX_INC)
-	@$(CC) $(CFLAGS) -I $(INC) -c $< -o $@
+	@$(CC) $(CFLAGS) -I $(INC) -I $(MLX_INC) -c $< -o $@
 # Compile bonus source files to object files
 $(OBJ_BONUS_DIR)/%.o: $(BONUS_DIR)/%.c $(INC_BONUS) $(LIBFT_INC) $(MLX_INC)
-	@$(CC) $(CFLAGS) -I $(INC_BONUS) -c $< -o $@
+	@$(CC) $(CFLAGS) -I $(INC_BONUS) -I $(MLX_INC) -c $< -o $@
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR) --no-print-directory

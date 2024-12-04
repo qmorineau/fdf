@@ -6,24 +6,33 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:50:41 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/03 17:28:52 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/04 12:00:17 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
-int	is_fdf_file(char *argv)
+static int	row_from_tab(char ***tab_add, t_point ***row_add, int *x, int y)
 {
-	size_t	len;
+	t_point	**row;
+	char	**tab;
+	t_point	*tmp;
 
-	len = ft_strlen(argv);
-	if (!ft_strncmp(&argv[len - 4], ".fdf", 4))
-		return (1);
-	else
+	row = *row_add;
+	tab = *tab_add;
+	while (tab[*x])
 	{
-		wrong_fd_error();
-		return (0);
+		tmp = map_newpoint((double) *x, (double)y, (double) ft_atoi(tab[*x]));
+		if (!tmp)
+		{
+			free(row);
+			free_tab(tab_add);
+			return (malloc_error(), 0);
+		}
+		row[*x] = tmp;
+		(*x)++;
 	}
+	return (1);
 }
 
 static int	add_line(t_mlx *param, char *line, int y)
@@ -31,7 +40,6 @@ static int	add_line(t_mlx *param, char *line, int y)
 	char	**tab;
 	int		x;
 	t_point	**row;
-	t_point	*tmp;
 	int		tab_len;
 
 	tab = ft_split(line, 32);
@@ -42,24 +50,10 @@ static int	add_line(t_mlx *param, char *line, int y)
 		tab_len++;
 	row = ft_calloc(tab_len + 1, sizeof(t_point *));
 	if (!row)
-	{
-		free_ptr(&line);
-		free_tab(&tab);
-		return (malloc_error(), 0);
-	}
+		return (free_if_not_row(&line, &tab));
 	x = 0;
-	while (tab[x])
-	{
-		tmp = map_newpoint((double) x, (double)y, (double) ft_atoi(tab[x]));
-		if (!tmp)
-		{
-			free(row);
-			free_tab(&tab);
-			return (malloc_error(), 0);
-		}
-		row[x] = tmp;
-		x++;
-	}
+	if (!row_from_tab(&tab, &row, &x, y))
+		return (0);
 	param->map[y] = row;
 	free_tab(&tab);
 	free_ptr(&line);

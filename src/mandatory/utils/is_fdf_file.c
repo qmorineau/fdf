@@ -1,0 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is_fdf_file.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/04 11:52:55 by qmorinea          #+#    #+#             */
+/*   Updated: 2024/12/04 11:53:10 by qmorinea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fdf.h"
+
+int	is_fdf_file(char *argv)
+{
+	size_t	len;
+
+	len = ft_strlen(argv);
+	if (!ft_strncmp(&argv[len - 4], ".fdf", 4))
+		return (1);
+	else
+	{
+		wrong_fd_error();
+		return (0);
+	}
+}

@@ -6,7 +6,7 @@
 /*   By: qmorinea < qmorinea@student.s19.be >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:48:44 by qmorinea          #+#    #+#             */
-/*   Updated: 2024/12/02 15:54:02 by qmorinea         ###   ########.fr       */
+/*   Updated: 2024/12/04 11:56:51 by qmorinea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,12 @@ void	free_gnl(int fd)
 		free_ptr(&line);
 		line = get_next_line(fd);
 	}
+}
+
+int	free_if_not_row(char **line, char ***tab)
+{
+	free_ptr(line);
+	free_tab(tab);
+	malloc_error();
+	return (0);
 }
