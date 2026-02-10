@@ -20,7 +20,7 @@ Unlike standard versions of this project, I implemented Stereographic Projection
 * **Line Rasterization:** Built from scratch using **Bresenham's Algorithm** to draw segments between coordinates.
 * **Planetary Mapping:** Transformation of Cartesian coordinates into spherical space using trigonometry to support global projections.
 * **Graphic Stack:** Built on top of the minimalist **MiniLibX**.
-* **Linear Algebra Pipeline:** Optimized vertex processing by using Matrix Concatenation. Rotation, Scaling, and Translation are combined into a single transformation matrix to minimize floating-point operations per frame.
+* **Linear Algebra Pipeline:** Implemented a custom 4x4 Matrix library to handle vertex processing. Rotation, Scaling, and Translation are combined via **Matrix Concatenation** into a single transformation matrix, significantly reducing floating-point operations and CPU overhead per frame.
 
 ## Gallery
 
