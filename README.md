@@ -49,4 +49,4 @@ make bonus
 ```
 
 ---
-Developed by *Quentin Morineau* (qmorineau) as part of the 42 Common Core.
+Developed by *Quentin Morineau* ([qmorineau](https://github.com/qmorineau)) as part of the 42 Common Core.
